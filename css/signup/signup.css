@@ -1,0 +1,159 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    /*animation: backgroundAnimation 50s;*/
+    /*-webkit-animation: backgroundAnimation 50s;*/
+    background: url('../../profile/assets/doodle.png');
+    background-size: 30% auto;
+}
+
+.main-content {
+    width: 50%;
+    background: rgba(255, 255, 255, 0.79);
+    min-height: 760px;
+    border-radius: 20px;
+    margin: auto;
+    position: relative;
+    top: 50px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    text-align: center;
+    z-index: 2000;
+}
+
+.main-content-login {
+    min-height: 410px;
+}
+
+#change_password {
+    font-size: 14px;
+}
+
+.main-content h2 {
+    text-align: center;
+    padding-top: 30px;
+    font-weight: 100;
+}
+
+#main-form {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    top: 45px;
+    text-align: center;
+}
+
+#main-form input {
+    width: 100%;
+    height: 35px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #37474f;
+    background: none;
+}
+
+#main-form label {
+    font-size: 15px;
+    padding-right: 20px;
+    float: left;
+}
+
+/* https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
+/* eliminam outline-ul albastru cand isi ia inputul focus, pentru design */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+#main-form input#submit-input {
+    border: none;
+    background: #263238;
+    color: white;
+    position: relative;
+    top: 25px;
+    border-radius: 5px;
+    transition: 1s;
+    width: 30%;
+    font-size: 14px;
+    height: 40px;
+}
+
+.nav-icon {
+    padding: 0 8px 0 0;
+    position: relative;
+    top: 5px;
+}
+
+#main-form input#submit-input:hover {
+    background: grey;
+}
+
+@media screen and (max-width: 650px) {
+    .nav-bar nav {
+        min-height: 250px;
+    }
+  
+    .nav-bar nav a {
+        display: block;
+        padding: 10px;
+    }
+  
+    .main-content {
+        width: 85%;
+        margin: auto;
+        position: relative;
+        top: 50px;
+    }
+
+    .container {
+        min-height: 800px;
+    }
+  
+    #sign_up_link, #login_link {
+        display: block;
+        float: none;
+    }
+}
+
+.spacer {
+    padding: 20px;
+}
+
+@media screen and (max-width: 650px) {
+    .nav-bar nav {
+        min-height: 250px;
+    }
+  
+    .nav-bar nav a {
+        display: block;
+        padding: 10px;
+    }
+  
+    .main-content {
+        width: 85%;
+        margin: auto;
+        position: relative;
+        top: 50px;
+    }
+
+    .container {
+        min-height: 800px;
+    }
+  
+    #sign_up_link, #login_link {
+        display: block;
+        float: none;
+    }
+}
+
+.warning {
+    width: 100%;
+    text-align: center;
+    background: #ff8a80;
+    margin: 4px 0;
+    padding: 10px 0;
+    color: white;
+}

@@ -33,40 +33,35 @@ if (!empty($_POST)) {
     $cerere = DB::get_connnection()->prepare($sql);
     $cerere->execute();
 
-    if($phonenumber != 0){
-    if ($cerere->rowCount() >= 1) {
-         echo "Numarul de telefon este deja folosit";
-         $eroare = 1;
+    if($phonenumber != 0) {
+        if ($cerere->rowCount() >= 1) {
+            echo '<div class="warning">Numarul de telefon este deja folosit!</div>';
+            $eroare = 1;
+        }
     }
-}
 
     $sql = "SELECT email FROM users WHERE email = '$email'";
     $cerere = DB::get_connnection()->prepare($sql);
     $cerere->execute();
     if ($cerere->rowCount() >= 1) {
-         echo "Adresa de Email este deja folosita";
+         echo '<div class="warning">Adresa de Email este deja folosita!</div>';
          $eroare = 1;
     }
-
     
     $sql = "SELECT username FROM users WHERE username = '$username'";
     $cerere = DB::get_connnection()->prepare($sql);
     $cerere->execute();
     if ($cerere->rowCount() >= 1) {
-         echo "Username-ul este deja folosit";
+         echo '<div class="warning">Username-ul este deja folosit!</div>';
          $eroare = 1;
     }
 
-
-    if($eroare != 1){
-    $sql = "INSERT INTO users (first_name,last_name,username,password,email,phone_number ) VALUES( '$firstname' , '$lastname' , '$username' , '$password','$email', '$phonenumber' )";
-    $cerere = DB::get_connnection()->prepare($sql);
-    $cerere->execute();
+    if($eroare != 1) {
+        $sql = "INSERT INTO users (first_name,last_name,username,password,email,phone_number ) VALUES( '$firstname' , '$lastname' , '$username' , '$password','$email', '$phonenumber' )";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute();
     }
-
-
 }
-
 ?>
 
 
@@ -82,9 +77,9 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/signup/signup.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="../css/signup/signup.css">
 
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -94,9 +89,9 @@ if (!empty($_POST)) {
     <div class="container">
         <header class="nav-bar">
             <nav>
-                <a id="a1" href="#"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
-                <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-                <a id="a3" href="#"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
+                <a id="a1" href="#"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
+                <a id="a2" href="#"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
+                <a id="a3" href="#"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
                 <a id="a4" href="#">LOGIN</a>
             </nav>
         </header>
@@ -128,6 +123,7 @@ if (!empty($_POST)) {
                 </form>
             </div>
         </section>
+        <div class="spacer"></div>
         <!-- FOOTER START -->
         <div class="footer">
             <div class="contain">
