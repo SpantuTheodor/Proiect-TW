@@ -25,7 +25,7 @@ if (!empty($_POST)) {
     $row = $cerere->fetch();
 
     if ($cerere->rowCount() == 1) {
-        header("Location: http://www.example.com/");
+        header("Location: profileDemo.html");
     } else {
         echo "Nu merge";
     }
