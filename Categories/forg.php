@@ -1,3 +1,13 @@
+<?php
+
+$conexiune = mysqli_connect("localhost", "root", "", "forg_database");
+
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Dosis%7CRoboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="appl.css">
-    
+
 
 
     <title>Forg</title>
@@ -21,8 +31,7 @@
         <header class="nav-bar">
             <nav>
                 <a id="a1" href="#"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
-                <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png"
-                        alt="trending-icon">TRENDING</a>
+                <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">TRENDING</a>
                 <a id="a3" href="#"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
                 <a id="a4" href="#">LOGIN</a>
             </nav>
@@ -121,23 +130,57 @@
                 </label>
             </div>
             <section class="content">
-                <article id="id1">
-                    <div class="poze">
-                    </div>
+                
+                    <?php
+
+                    $i = 1;
+                    $i2 = 5;
+
+                    a: for (; $i <= $i2; $i++) {
+                        $sql = "SELECT nume,imagine,pret FROM mancare WHERE id='$i'";
+                        
+                        if($result = mysqli_query($conexiune, $sql)){
+                        $row = mysqli_fetch_row($result);
+                        
+                        $nume=$row[0];
+                        $poza = $row[1];
+                        $pret = $row[2];
+
+                        echo " <article id='id1'>
+                                <div class='poze' style='background-image: url(\"$poza\")'>
+                                </div>
+                                <div class='informatii'>
+                                    <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
+                                    <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
+                                    <h2>$nume</h2>
+                                    <p>Pret: $pret lei grei</p>
+                                </div> 
+                                <button id='pop-up-button'>Citeste mai mult...</button>
+                                </article>";
+                    }
+                    mysqli_free_result($result);
+                }
+
+                    if (isset($_POST['show-more'])) {
+                        $i = $i2 + 1;
+                        $i2 = $i2 + 5;
+                        unset($_POST['show-more']);
+                        goto a;
+                    }
+                    ?>
+
                     <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png"
-                            alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png"
-                            alt="add to shoppping list icon" style="width: 24px; height: 24px;">
+                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
+                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
                         <h2>Somon</h2>
                         <p>Aceasta reteta este Acee Aceasta ret estta esteAceasta reteta est </p>
 
                         <button id="pop-up-button">Citeste mai mult...</button>
 
-                        <!-- The Modal -->
+                        <!-- pop up -->
                         <div id="pop-up" class="popup">
 
-                            <!-- Modal content -->
+                            <!-- pop up content -->
                             <div class="pop-up-content">
                                 <span class="close">&times;</span>
                                 <p>Some text in the Modal..</p>
@@ -150,10 +193,8 @@
                     <div class="poze">
                     </div>
                     <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png"
-                            alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png"
-                            alt="add to shoppping list icon" style="width: 24px; height: 24px;">
+                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
+                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
                         <h2>Somon</h2>
                         <p>Aceasta reteta este Acee Aceasta ret esteAceasta reteta esteAceasta reteta esteAceasta reteta
                             este e</p>
@@ -164,10 +205,8 @@
                     <div class="poze">
                     </div>
                     <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png"
-                            alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png"
-                            alt="add to shoppping list icon" style="width: 24px; height: 24px;">
+                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
+                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
                         <h2>Somon</h2>
                         <p>Aceasta reteta este Acee Aceasta ret esteAceasta reteta esteAceasta reteta esteAceasta reteta
                             este</p>
@@ -178,10 +217,8 @@
                     <div class="poze">
                     </div>
                     <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png"
-                            alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png"
-                            alt="add to shoppping list icon" style="width: 24px; height: 24px;">
+                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
+                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
                         <h2>Somon</h2>
                         <p>Aceasta reteta este Acee Aceasta ret esteAceasta reteta esteAceasta reteta esteAceasta reteta
                             este</p>
@@ -192,16 +229,17 @@
                     <div class="poze">
                     </div>
                     <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png"
-                            alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png"
-                            alt="add to shoppping list icon" style="width: 24px; height: 24px;">
+                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
+                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
                         <h2>Somon</h2>
                         <p>Aceasta reteta este Acee Aceasta ret esteAceasta reteta esteAceasta reteta esteAceasta reteta
                             este</p>
                         <a id="ca1" href="#">Citeste mai mult...</a>
                     </div>
                 </article>
+                <form action="" method="POST">
+                    <button id="show-more" name="show-more" type="submit">Afiseaza mai mult</button>
+                    <form>
             </section>
         </div>
     </div>
