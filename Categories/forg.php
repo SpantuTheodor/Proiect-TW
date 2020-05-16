@@ -137,7 +137,7 @@ if (mysqli_connect_errno()) {
                     $i2 = 5;
 
                     a: for (; $i <= $i2; $i++) {
-                        $sql = "SELECT nume,imagine,pret FROM mancare WHERE id='$i'";
+                        $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie FROM mancare WHERE id='$i'";
                         
                         if($result = mysqli_query($conexiune, $sql)){
                         $row = mysqli_fetch_row($result);
@@ -145,6 +145,16 @@ if (mysqli_connect_errno()) {
                         $nume = $row[0];
                         $poza = $row[1];
                         $pret = $row[2];
+                        $aprecieri = $row[3];
+                        $vegetarian = $row[4];
+                        $categorie = $row[5];
+
+                        if($vegetarian == 0){
+                            $vegetarian = "nu";
+                        }
+                        else{
+                            $vegetarian = "da";
+                        }
 
                         echo " <article id='id1'>
                                 <div class='poze' style='background-image: url(\"$poza\")'>
@@ -153,7 +163,7 @@ if (mysqli_connect_errno()) {
                                     <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
                                     <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
                                     <h2>$nume</h2>
-                                    <p>Pret: $pret lei &nbsp &nbsp &nbsp &nbsp Aprecieri: </p>
+                                    <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $aprecieri &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
                                     <button id='pop-up-button'>Citeste mai mult...</button>
                                 </div> 
                                 
@@ -168,16 +178,7 @@ if (mysqli_connect_errno()) {
                         unset($_POST['show-more']);
                         goto a;
                     }
-                    ?>
-
-                    <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
-                        <h2>Somon</h2>
-                        <p>Aceasta reteta este Acee Aceasta ret estta esteAceasta reteta est </p>
-
-                        <button id="pop-up-button">Citeste mai mult...</button>
-
+                    ?>  
                         <!-- pop up -->
                         <div id="pop-up" class="popup">
 
@@ -188,54 +189,6 @@ if (mysqli_connect_errno()) {
                             </div>
 
                         </div>
-                    </div>
-                </article>
-                <article id="id1">
-                    <div class="poze">
-                    </div>
-                    <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
-                        <h2>Somon</h2>
-                        <p>Aceasta reteta este Acee Aceasta ret esteAceasta reteta esteAceasta reteta esteAceasta reteta
-                            este e</p>
-                        <a id="ca1" href="#">Citeste mai mult...</a>
-                    </div>
-                </article>
-                <article id="id1">
-                    <div class="poze">
-                    </div>
-                    <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
-                        <h2>Somon</h2>
-                        <p>Aceasta reteta este Acee Aceasta ret esteAceasta reteta esteAceasta reteta esteAceasta reteta
-                            este</p>
-                        <a id="ca1" href="#">Citeste mai mult...</a>
-                    </div>
-                </article>
-                <article id="id1">
-                    <div class="poze">
-                    </div>
-                    <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
-                        <h2>Somon</h2>
-                        <p>Aceasta reteta este Acee Aceasta ret esteAceasta reteta esteAceasta reteta esteAceasta reteta
-                            este</p>
-                        <a id="ca1" href="#">Citeste mai mult...</a>
-                    </div>
-                </article>
-                <article id="id1">
-                    <div class="poze">
-                    </div>
-                    <div class="informatii">
-                        <img title="Add to favorites" class="love_icon" src="assets/icons/favorite_icon.png" alt="add to favorites icon">
-                        <img title="Add to shoppping list" class="love_icon" src="assets/icons/add_to_shopping_list.png" alt="add to shoppping list icon" style="width: 24px; height: 24px;">
-                        <h2>Somon</h2>
-                        <p>Aceasta reteta este Acee Aceasta ret esteAceasta reteta esteAceasta reteta esteAceasta reteta
-                            este</p>
-                        <a id="ca1" href="#">Citeste mai mult...</a>
                     </div>
                 </article>
                 <form action="" method="POST">
