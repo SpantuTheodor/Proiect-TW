@@ -142,7 +142,7 @@ if (mysqli_connect_errno()) {
                         if($result = mysqli_query($conexiune, $sql)){
                         $row = mysqli_fetch_row($result);
                         
-                        $nume=$row[0];
+                        $nume = $row[0];
                         $poza = $row[1];
                         $pret = $row[2];
 
@@ -153,9 +153,10 @@ if (mysqli_connect_errno()) {
                                     <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
                                     <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
                                     <h2>$nume</h2>
-                                    <p>Pret: $pret lei grei</p>
+                                    <p>Pret: $pret lei &nbsp &nbsp &nbsp &nbsp Aprecieri: </p>
+                                    <button id='pop-up-button'>Citeste mai mult...</button>
                                 </div> 
-                                <button id='pop-up-button'>Citeste mai mult...</button>
+                                
                                 </article>";
                     }
                     mysqli_free_result($result);
