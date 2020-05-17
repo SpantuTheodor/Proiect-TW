@@ -1,12 +1,14 @@
 <?php
+
+session_start();
 $mysqli = new mysqli("localhost", "root", "", "forg_database");
 if ($mysqli->connect_error) {
     exit('Could not connect');
 }
-
+echo $_SESSION["index"];
 $i2 = $_GET['i'];
 
-for ($i = $i2; $i < $i2 + 5; $i++) {
+for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
     $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie FROM mancare WHERE id = '$i'";
 
     $stmt = $mysqli->prepare($sql);
@@ -34,5 +36,7 @@ for ($i = $i2; $i < $i2 + 5; $i++) {
                                 </div> 
                                 
                                 </article>";
+                                $_SESSION["index"]+=5;
     $stmt->close();
 }
+?>

@@ -1,11 +1,15 @@
-<?php
 
+<?php
+session_start();
 $conexiune = mysqli_connect("localhost", "root", "", "forg_database");
 
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
+
+
+$_SESSION["index"] = 6;
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +31,7 @@ if (mysqli_connect_errno()) {
             
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("MORE").innerHTML = this.responseText;
+                    document.getElementById("MORE").innerHTML += this.responseText;
                 }
             };
             xmlhttp.open("GET", "get.php?i=" + index, true);
@@ -201,7 +205,7 @@ if (mysqli_connect_errno()) {
         </div>
         </article>
         <form>
-            <input id="show-more" type="button" onclick="loadDoc('<?php echo $i2 + 1 ?>');<?php $i2 = $i2 + 5; echo $i2; ?>;" value="AFISEAZA">
+            <input id="show-more" type="button" onclick='loadDoc('<?php echo $_SESSION["index"] ?>' )' value="AFISEAZA">
         </form>
         </section>
     </div>
