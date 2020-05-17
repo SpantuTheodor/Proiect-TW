@@ -21,7 +21,21 @@ if (mysqli_connect_errno()) {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="appl.css">
 
+    <script>
+        function loadDoc(index) {
+            var xmlhttp = new XMLHttpRequest();
+            
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("MORE").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "get.php?i=" + index, true);
+            xmlhttp.send();
 
+            console.log("allllllllllllllll");
+        }
+    </script>
 
     <title>Forg</title>
 </head>
@@ -130,18 +144,18 @@ if (mysqli_connect_errno()) {
                 </label>
             </div>
             <section class="content">
-                
-                    <?php
 
-                    $i = 1;
-                    $i2 = 5;
+                <?php
 
-                    a: for (; $i <= $i2; $i++) {
-                        $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie FROM mancare WHERE id='$i'";
-                        
-                        if($result = mysqli_query($conexiune, $sql)){
+                $i = 1;
+                $i2 = 5;
+
+                for (; $i <= $i2; $i++) {
+                    $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie FROM mancare WHERE id='$i'";
+
+                    if ($result = mysqli_query($conexiune, $sql)) {
                         $row = mysqli_fetch_row($result);
-                        
+
                         $nume = $row[0];
                         $poza = $row[1];
                         $pret = $row[2];
@@ -149,10 +163,9 @@ if (mysqli_connect_errno()) {
                         $vegetarian = $row[4];
                         $categorie = $row[5];
 
-                        if($vegetarian == 0){
+                        if ($vegetarian == 0) {
                             $vegetarian = "nu";
-                        }
-                        else{
+                        } else {
                             $vegetarian = "da";
                         }
 
@@ -172,30 +185,26 @@ if (mysqli_connect_errno()) {
                     mysqli_free_result($result);
                 }
 
-                    if (isset($_POST['show-more'])) {
-                        $i = $i2 + 1;
-                        $i2 = $i2 + 5;
-                        unset($_POST['show-more']);
-                        goto a;
-                    }
-                    ?>  
-                        <!-- pop up -->
-                        <div id="pop-up" class="popup">
+                ?>
+                <div id="MORE"></div>
 
-                            <!-- pop up content -->
-                            <div class="pop-up-content">
-                                <span class="close">&times;</span>
-                                <p>Some text in the Modal..</p>
-                            </div>
+                <!-- pop up -->
+                <div id="pop-up" class="popup">
 
-                        </div>
+                    <!-- pop up content -->
+                    <div class="pop-up-content">
+                        <span class="close">&times;</span>
+                        <p>Some text in the Modal..</p>
                     </div>
-                </article>
-                <form action="" method="POST">
-                    <button id="show-more" name="show-more" type="submit">Afiseaza mai mult</button>
-                    <form>
-            </section>
+
+                </div>
         </div>
+        </article>
+        <form>
+            <input id="show-more" type="button" onclick="loadDoc('<?php echo $i2 + 1 ?>');<?php $i2 = $i2 + 5; echo $i2; ?>;" value="AFISEAZA">
+        </form>
+        </section>
+    </div>
     </div>
 </body>
 
