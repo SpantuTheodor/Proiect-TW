@@ -8,8 +8,10 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
+$variabila = 0;
 
 $_SESSION["index"] = 6;
+
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +38,6 @@ $_SESSION["index"] = 6;
             };
             xmlhttp.open("GET", "get.php?i=" + index, true);
             xmlhttp.send();
-
-            console.log("allllllllllllllll");
         }
     </script>
 
@@ -204,8 +204,8 @@ $_SESSION["index"] = 6;
                 </div>
         </div>
         </article>
-        <form>
-            <input id="show-more" type="button" onclick='loadDoc('<?php echo $_SESSION["index"] ?>' )' value="AFISEAZA">
+        <form><?php $variabila = $_SESSION['index']; ?>
+            <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>' )" value="AFISEAZA">
         </form>
         </section>
     </div>

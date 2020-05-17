@@ -5,7 +5,7 @@ $mysqli = new mysqli("localhost", "root", "", "forg_database");
 if ($mysqli->connect_error) {
     exit('Could not connect');
 }
-echo $_SESSION["index"];
+
 $i2 = $_GET['i'];
 
 for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
@@ -16,7 +16,6 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
     $stmt->store_result();
     $stmt->bind_result($nume, $poza, $pret, $aprecieri, $vegetarian, $categorie);
     $stmt->fetch();
-    echo $i;
 
     if ($vegetarian == 0) {
         $vegetarian = "nu";
@@ -36,7 +35,9 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
                                 </div> 
                                 
                                 </article>";
-                                $_SESSION["index"]+=5;
     $stmt->close();
 }
+
+$_SESSION["index"]+=5;
+
 ?>
