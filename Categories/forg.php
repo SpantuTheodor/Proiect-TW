@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $conexiune = mysqli_connect("localhost", "root", "", "forg_database");
@@ -10,8 +9,7 @@ if (mysqli_connect_errno()) {
 
 $variabila = 0;
 
-$_SESSION["index"] = 6;
-
+$_SESSION['index'] = 1;
 ?>
 
 <!DOCTYPE html>
@@ -27,10 +25,24 @@ $_SESSION["index"] = 6;
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="appl.css">
 
+
+
     <script>
-        function loadDoc(index) {
+        index = 1; //primul pas facut de la sine
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("MORE").innerHTML += this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "get.php?i=" + index, true);
+        xmlhttp.send();
+
+
+        function loadDoc(index) { //urmatorii pasii
             var xmlhttp = new XMLHttpRequest();
-            
+
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("MORE").innerHTML += this.responseText;
@@ -39,7 +51,32 @@ $_SESSION["index"] = 6;
             xmlhttp.open("GET", "get.php?i=" + index, true);
             xmlhttp.send();
         }
+
+        function showResult(str) {
+            if (str.length == 0) {
+                document.getElementById("searchresults").style.display = "none";
+                document.getElementById("MORE").style.display = "block";
+                document.getElementById("show-more").style.display = "block";
+            }
+            else{
+                document.getElementById("MORE").style.display = "none";
+                document.getElementById("searchresults").style.display = "block";
+                document.getElementById("show-more").style.display = "none";
+            }
+
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("searchresults").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "search.php?str=" + str, true);
+            xmlhttp.send();
+        }
     </script>
+
+
 
     <title>Forg</title>
 </head>
@@ -90,8 +127,9 @@ $_SESSION["index"] = 6;
         </section>
 
         <div id="srch">
-            <input type="text" id="search" name="search" placeholder="Search for a recipe...">
+            <input type="text" id="search" name="search" placeholder="Search for a recipe..." onkeyup="showResult(this.value)">
             <input id="submit-input" type="submit" name="submit-input" value="Caută!">
+            <div id="search"></div>
         </div>
 
         <div class="lista">
@@ -149,47 +187,9 @@ $_SESSION["index"] = 6;
             </div>
             <section class="content">
 
-                <?php
 
-                $i = 1;
-                $i2 = 5;
+                <div id="searchresults"></div>
 
-                for (; $i <= $i2; $i++) {
-                    $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie FROM mancare WHERE id='$i'";
-
-                    if ($result = mysqli_query($conexiune, $sql)) {
-                        $row = mysqli_fetch_row($result);
-
-                        $nume = $row[0];
-                        $poza = $row[1];
-                        $pret = $row[2];
-                        $aprecieri = $row[3];
-                        $vegetarian = $row[4];
-                        $categorie = $row[5];
-
-                        if ($vegetarian == 0) {
-                            $vegetarian = "nu";
-                        } else {
-                            $vegetarian = "da";
-                        }
-
-                        echo " <article id='id1'>
-                                <div class='poze' style='background-image: url(\"$poza\")'>
-                                </div>
-                                <div class='informatii'>
-                                    <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
-                                    <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
-                                    <h2>$nume</h2>
-                                    <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $aprecieri &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                                    <button id='pop-up-button'>Citeste mai mult...</button>
-                                </div> 
-                                
-                                </article>";
-                    }
-                    mysqli_free_result($result);
-                }
-
-                ?>
                 <div id="MORE"></div>
 
                 <!-- pop up -->
@@ -205,7 +205,7 @@ $_SESSION["index"] = 6;
         </div>
         </article>
         <form><?php $variabila = $_SESSION['index']; ?>
-            <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>' )" value="AFISEAZA">
+            <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>')" value="AFISEAZA">
         </form>
         </section>
     </div>

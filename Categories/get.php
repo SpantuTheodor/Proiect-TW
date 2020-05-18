@@ -6,7 +6,7 @@ if ($mysqli->connect_error) {
     exit('Could not connect');
 }
 
-$i2 = $_GET['i'];
+$conditie = 0;
 
 for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
     $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie FROM mancare WHERE id = '$i'";
@@ -17,12 +17,17 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
     $stmt->bind_result($nume, $poza, $pret, $aprecieri, $vegetarian, $categorie);
     $stmt->fetch();
 
+    if($_SESSION['nume'] == $nume || $nume == NULL)
+    {
+        $conditie = 1;
+    }
     if ($vegetarian == 0) {
         $vegetarian = "nu";
     } else {
         $vegetarian = "da";
     }
 
+    if($conditie == 0){
     echo " <article id='id1'>
                                 <div class='poze' style='background-image: url(\"$poza\")'>
                                 </div>
@@ -35,6 +40,8 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
                                 </div> 
                                 
                                 </article>";
+    }
+    $_SESSION['nume'] = $nume;
     $stmt->close();
 }
 
