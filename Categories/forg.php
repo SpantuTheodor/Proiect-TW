@@ -131,7 +131,7 @@ $_SESSION['index'] = 1;
         <div id="srch">
             <input type="text" id="search" name="search" placeholder="Search for a recipe..." onkeyup="showResult(this.value)">
             <input id="submit-input" type="submit" name="submit-input" value="Caută!">
-            <div id="search"></div>
+            <!-- <div id="search"></div> -->
         </div>
 
         <div class="lista">
@@ -209,7 +209,7 @@ $_SESSION['index'] = 1;
         </div>
         </article>
         <form><?php $variabila = $_SESSION['index']; ?>
-            <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>')" value="AFISEAZA">
+            <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>')" value="AFISEAZA MAI MULT">
         </form>
         </section>
     </div>
