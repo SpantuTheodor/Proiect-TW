@@ -104,3 +104,7 @@ button:focus {
 .spacer {
     padding: 20px;
 }
+
+#recovery_box {
+    height: 400px !important;
+}

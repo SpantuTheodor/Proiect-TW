@@ -68,7 +68,7 @@ if (!empty($_POST)) {
                     <label for="password">Password:</label><br>
                     <input class="required" type="password" id="password" name="password" placeholder="Enter your password..." required><br><br>
 
-                    <a id="change_password" href="#">Forgot/Change password?</a><br>
+                    <a id="change_password" href="recovery.php">Forgot/Change password?</a><br>
                     <input id="submit-input" type="submit" name="submit">
                 </form>
             </div>
