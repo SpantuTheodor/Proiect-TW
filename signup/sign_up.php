@@ -29,9 +29,11 @@ if (!empty($_POST)) {
     $username = $_POST['uname'];
     $eroare = 0; 
 
-    $sql = "SELECT phone_number FROM users WHERE phone_number = '$phonenumber'";
+    $sql = "SELECT phone_number FROM users WHERE phone_number = :phonenumber";
     $cerere = DB::get_connnection()->prepare($sql);
-    $cerere->execute();
+    $cerere->execute([
+        'phonenumber' => $phonenumber
+    ]);
 
     if($phonenumber != 0) {
         if ($cerere->rowCount() >= 1) {
@@ -40,26 +42,37 @@ if (!empty($_POST)) {
         }
     }
 
-    $sql = "SELECT email FROM users WHERE email = '$email'";
+    $sql = "SELECT email FROM users WHERE email = :email";
     $cerere = DB::get_connnection()->prepare($sql);
-    $cerere->execute();
+    $cerere->execute([
+        'email' => $email
+    ]);
     if ($cerere->rowCount() >= 1) {
          echo '<div class="warning">Adresa de Email este deja folosita!</div>';
          $eroare = 1;
     }
     
-    $sql = "SELECT username FROM users WHERE username = '$username'";
+    $sql = "SELECT username FROM users WHERE username = :uname";
     $cerere = DB::get_connnection()->prepare($sql);
-    $cerere->execute();
+    $cerere->execute([
+        'uname' => $username
+    ]);
     if ($cerere->rowCount() >= 1) {
          echo '<div class="warning">Username-ul este deja folosit!</div>';
          $eroare = 1;
     }
 
     if($eroare != 1) {
-        $sql = "INSERT INTO users (first_name,last_name,username,password,email,phone_number ) VALUES( '$firstname' , '$lastname' , '$username' , '$password','$email', '$phonenumber' )";
+        $sql = "INSERT INTO users (first_name,last_name,username,password,email,phone_number ) VALUES( :firstname , :lastname , :uname , :pass, :mail, :phonenumber )";
         $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute();
+        $cerere->execute([
+            'firstname'    => $firstname,
+            'lastname'     => $lastname,
+            'uname'        => $username,
+            'pass'         => $password,
+            'mail'         => $email,
+            'phonenumber'  => $phonenumber
+        ]);
     }
 }
 ?>

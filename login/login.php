@@ -17,11 +17,13 @@ if (!empty($_POST)) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM users WHERE username=:uname AND password=:pass";
     $cerere = DB::get_connnection()->prepare($sql);
 
-    $cerere->execute();
+    $cerere->execute([
+        'uname' => $username,
+        'pass'  => $password
+    ]);
     $row = $cerere->fetch();
 
     if ($cerere->rowCount() == 1) {
@@ -35,7 +37,6 @@ if (!empty($_POST)) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,9 +60,9 @@ if (!empty($_POST)) {
     <div class="container">
         <section>
             <div class="main-content main-content-login">
-                <h2>Please enter email and password</h2>
+                <h2>Please enter your username and password</h2>
                 <form id="main-form" action="" method="POST">
-                    <label for="email">Email adress:</label><br>
+                    <label for="email">Username:</label><br>
                     <input class="required" type="text" id="username" name="username" placeholder="Enter your username..." required><br><br>
 
                     <label for="password">Password:</label><br>
