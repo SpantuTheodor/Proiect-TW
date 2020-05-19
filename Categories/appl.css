@@ -222,15 +222,6 @@ h1 {
     background-color: orangered;
 }
 
-.checkmark:after {
-    content: "X";
-    color: white;
-    position: absolute;
-    font-weight: bold;
-    display: none;
-    padding-left: 5px;
-}
-
 .container input:checked~.checkmark:after {
     display: block;
 }

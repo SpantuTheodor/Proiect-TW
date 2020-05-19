@@ -15,6 +15,7 @@ class DB
 session_start();
 
 $conditie = 0;
+$nume = ' ';
 
 for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
     $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie FROM mancare WHERE id = :index";

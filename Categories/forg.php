@@ -54,11 +54,13 @@ $_SESSION['index'] = 1;
 
         function showResult(str) {
             if (str.length == 0) {
+                document.getElementById("filterresults").style.display = "block";
                 document.getElementById("searchresults").style.display = "none";
                 document.getElementById("MORE").style.display = "block";
                 document.getElementById("show-more").style.display = "block";
             }
             else{
+                document.getElementById("filterresults").style.display = "none";
                 document.getElementById("MORE").style.display = "none";
                 document.getElementById("searchresults").style.display = "block";
                 document.getElementById("show-more").style.display = "none";
@@ -136,57 +138,60 @@ $_SESSION['index'] = 1;
             <div class="filtre">
                 <h3>Filtre</h3>
                 <label class="container">Fast Food
-                    <input type="checkbox">
+                    <input type="checkbox" id="id0" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Salate
-                    <input type="checkbox">
+                    <input type="checkbox" id="id1"  onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Supe și ciorbe
-                    <input type="checkbox">
+                    <input type="checkbox" id="id2" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Aperitive
-                    <input type="checkbox">
+                    <input type="checkbox" id="id3" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Mic Dejun
-                    <input type="checkbox">
+                    <input type="checkbox" id="id4" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Garnituri
-                    <input type="checkbox">
+                    <input type="checkbox" id="id5" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Cu carne
-                    <input type="checkbox">
+                    <input type="checkbox" id="id6" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Murături
-                    <input type="checkbox">
+                    <input type="checkbox" id="id7" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Gustări
-                    <input type="checkbox">
+                    <input type="checkbox" id="id8" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="container">Desert
-                    <input type="checkbox">
+                    <input type="checkbox" id="id9" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
+
+                <button id="reset" onclick="clearcheckboxes()">Reset filters</button>
             </div>
             <section class="content">
 
+                <div id="filterresults"></div>
 
                 <div id="searchresults"></div>
 
@@ -211,6 +216,6 @@ $_SESSION['index'] = 1;
     </div>
     </div>
 </body>
-
+<script src="bifare.js"></script>
 </html>
-<script src="categorii.js"></script>
+<!-- <script src="categorii.js"></script> -->

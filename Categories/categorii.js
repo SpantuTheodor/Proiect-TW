@@ -17,7 +17,3 @@ window.onclick = function(event) { //click inafara popup ului
         popup.style.display = "none";
     }
 }
-
-function jsFunction() {
-    console.log("SAVAG");
-}
