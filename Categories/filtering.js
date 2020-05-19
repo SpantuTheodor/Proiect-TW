@@ -77,16 +77,3 @@ function filtrare(index) {
         xmlhttp.send();
     }
 }
-
-function clearcheckboxes() {
-    document.getElementById("id0").checked = false;
-    document.getElementById("id1").checked = false;
-    document.getElementById("id2").checked = false;
-    document.getElementById("id3").checked = false;
-    document.getElementById("id4").checked = false;
-    document.getElementById("id5").checked = false;
-    document.getElementById("id6").checked = false;
-    document.getElementById("id7").checked = false;
-    document.getElementById("id8").checked = false;
-    document.getElementById("id9").checked = false;
-}

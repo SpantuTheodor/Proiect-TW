@@ -187,7 +187,6 @@ $_SESSION['index'] = 1;
                     <span class="checkmark"></span>
                 </label>
 
-                <button id="reset" onclick="clearcheckboxes()">Reset filters</button>
             </div>
             <section class="content">
 
@@ -216,6 +215,6 @@ $_SESSION['index'] = 1;
     </div>
     </div>
 </body>
-<script src="bifare.js"></script>
+<script src="filtering.js"></script>
 </html>
 <!-- <script src="categorii.js"></script> -->
