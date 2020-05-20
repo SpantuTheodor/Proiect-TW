@@ -4,12 +4,14 @@ var btn = document.getElementById("pop-up-button");
 
 var span = document.getElementsByClassName("close")[0];
 
+
 btn.onclick = function() {
     popup.style.display = "block";
+    console.log("AAAAAAAAAAAAAAAAAAAAAA");
 }
 
 span.onclick = function() { //click pe (x)
-    popup.style.display = "none";
+    popup.style.display = none;
 }
 
 window.onclick = function(event) { //click inafara popup ului

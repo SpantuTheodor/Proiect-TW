@@ -11,32 +11,41 @@ class DB
         return self::$db;
     }
 }
-$username = '';
-$password = '';
-if (!empty($_POST)) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE username=:uname AND password=:pass";
-    $cerere = DB::get_connnection()->prepare($sql);
+if (isset($_COOKIE['user'])) {
+    header("Location: ../index.html");
+} else {
 
-    $cerere->execute([
-        'uname' => $username,
-        'pass'  => $password
-    ]);
-    $row = $cerere->fetch();
+    $username = '';
+    $password = '';
+    if (!empty($_POST)) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-    if ($cerere->rowCount() == 1) {
-        header("Location: profileDemo.html");
-    } else {
-        echo "Nu merge";
+        $sql = "SELECT * FROM users WHERE username=:uname AND password=:pass";
+        $cerere = DB::get_connnection()->prepare($sql);
+
+        $cerere->execute([
+            'uname' => $username,
+            'pass'  => $password
+        ]);
+        $row = $cerere->fetch();
+
+        if ($cerere->rowCount() == 1) {
+            header("Location: profileDemo.html");
+            $cookie_name = "user";
+            $cookie_value = $username;
+            setcookie($cookie_name, $cookie_value, time() + 7200, "/"); // 2 ore
+        } else {
+            echo "Nu merge";
+        }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

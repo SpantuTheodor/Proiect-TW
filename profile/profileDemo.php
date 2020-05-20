@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/profile/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="../logout.js"></script>
 </head>
 <body>
     <div id="app_content" class="container">
@@ -21,7 +22,7 @@
             <div id="login_menu">
                 <a href="#">Vizualizare profil</a>
                 <a href="#">Modificare profil</a>
-                <a href="#">Deconectare</a>
+                <a href="#" onclick="logout()">Deconectare</a>
             </div>
             <div id="main_menu">
                 <img id="close" src="assets/icons/close.png" alt="close menu">

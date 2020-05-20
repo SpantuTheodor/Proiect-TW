@@ -57,12 +57,21 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
                         <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $aprecieri &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
                         <button id='pop-up-button'>Citeste mai mult...</button>
                     </div>                     
-                </article>";
+                </article>
+                <div id='pop-up' class='popup'>
+                    
+                    <div class='pop-up-content'>
+                        <span class='close'>&times;</span>
+                        <p>Some text in the Modal..</p>
+                    </div>
+
+                </div>";
+        
         }
         $_SESSION['nume'] = $nume;
     }
 }
-
+echo "<script src=\"categorii.js\"  type=\"text/javascript\"></script>"; //nu se incarca
 $_SESSION["index"]+=5;
 
 ?>

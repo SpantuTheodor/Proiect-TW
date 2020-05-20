@@ -24,7 +24,7 @@ $_SESSION['index'] = 1;
     <link href="https://fonts.googleapis.com/css?family=Dosis%7CRoboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="appl.css">
-
+    <script src="../logout.js"></script>
 
 
     <script>
@@ -58,8 +58,7 @@ $_SESSION['index'] = 1;
                 document.getElementById("searchresults").style.display = "none";
                 document.getElementById("MORE").style.display = "block";
                 document.getElementById("show-more").style.display = "block";
-            }
-            else{
+            } else {
                 document.getElementById("filterresults").style.display = "none";
                 document.getElementById("MORE").style.display = "none";
                 document.getElementById("searchresults").style.display = "block";
@@ -76,6 +75,7 @@ $_SESSION['index'] = 1;
             xmlhttp.open("GET", "search.php?str=" + str, true);
             xmlhttp.send();
         }
+
     </script>
 
 
@@ -91,6 +91,8 @@ $_SESSION['index'] = 1;
                 <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">TRENDING</a>
                 <a id="a3" href="#"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
                 <a id="a4" href="#">LOGIN</a>
+                <a id="a5" href="#" onclick="logout()">LOGOUT</a>
+                <a id="a6" href="#">SIGN UP</a>
             </nav>
         </header>
 
@@ -143,7 +145,7 @@ $_SESSION['index'] = 1;
                 </label>
 
                 <label class="container">Salate
-                    <input type="checkbox" id="id1"  onclick="bifare(this.id);filtrare(this.id);">
+                    <input type="checkbox" id="id1" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
                 </label>
 
@@ -196,7 +198,7 @@ $_SESSION['index'] = 1;
 
                 <div id="MORE"></div>
 
-                <!-- pop up -->
+                <button id="pop-up-button">Citeste mai mult...</button>
                 <div id="pop-up" class="popup">
 
                     <!-- pop up content -->
@@ -216,5 +218,22 @@ $_SESSION['index'] = 1;
     </div>
 </body>
 <script src="filtering.js"></script>
+
 </html>
-<!-- <script src="categorii.js"></script> -->
+
+<?php
+
+if (isset($_COOKIE['user'])) {  //daca avem user logat
+    echo "<script>document.getElementById(\"a4\").style.display = \"none\";
+                  document.getElementById(\"a6\").style.display = \"none\";
+                  document.getElementById(\"a5\").style.display = \"inline\";    
+          </script>";
+}
+else{
+    echo "<script>document.getElementById('a5').style.display = \"none\";
+    document.getElementById('a4').style.display = \"inline\"; 
+    document.getElementById('a6').style.display = \"inline\";               
+    </script>";
+}
+
+?>

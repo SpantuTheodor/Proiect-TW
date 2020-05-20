@@ -72,6 +72,7 @@ if (!empty($_POST)) {
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="assets/banana_de_nigga.png">
+    <script src="../logout.js"></script>
 </head>
 
 <body>
@@ -81,7 +82,9 @@ if (!empty($_POST)) {
                 <a id="a1" href="#"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
                 <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">TRENDING</a>
                 <a id="a3" href="#"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
-                <a id="a4" href="#">SIGN UP</a>
+                <a id="a4" href="#">LOGIN</a>
+                <a id="a5" href="#" onclick="logout()">LOGOUT</a>
+                <a id="a6" href="#">SIGN UP</a>
             </nav>
         </header>
         <div class="container2">
@@ -192,3 +195,20 @@ if (!empty($_POST)) {
         </form>
     </div>
 </body>
+
+<?php
+
+if (isset($_COOKIE['user'])) {  //daca avem user logat
+    echo "<script>document.getElementById(\"a4\").style.display = \"none\";
+                  document.getElementById(\"a6\").style.display = \"none\";
+                  document.getElementById(\"a5\").style.display = \"inline\";    
+          </script>";
+}
+else{
+    echo "<script>document.getElementById('a5').style.display = \"none\";
+    document.getElementById('a4').style.display = \"inline\"; 
+    document.getElementById('a6').style.display = \"inline\";               
+    </script>";
+}
+
+?>

@@ -15,6 +15,16 @@ header {
     z-index: 3000;
 }
 
+#logout{
+    float: right;
+    color: white;
+    text-decoration: none;
+    margin-right: 64px;
+    position: relative;
+    top: -30px;
+    cursor: pointer;
+}
+
 #greeting {
     color: white;
     margin-left: 90px;
