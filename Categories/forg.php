@@ -103,10 +103,21 @@ $_SESSION['index'] = 1;
             xmlhttp.open("GET", "search.php?str=" + str, true);
             xmlhttp.send();
         }
+
+        function sendFoodId(index) { //urmatorii pasii
+            console.log(index);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // document.getElementById("MORE").innerHTML += this.responseText;
+                    // popup();
+                    console.log("eu merg!");
+                }
+            };
+            xmlhttp.open("GET", "getIdMancare.php?i=" + index, true);
+            xmlhttp.send();
+        }
     </script>
-
-
-
     <title>Forg</title>
 </head>
 
@@ -218,6 +229,8 @@ $_SESSION['index'] = 1;
 
             </div>
             <section class="content">
+                <div class="popup_box">
+                </div>
 
                 <div id="filterresults"></div>
 
@@ -247,10 +260,26 @@ $_SESSION['index'] = 1;
     </div>
 </body>
 <script src="filtering.js"></script>
+<script>
+    function displayPopup() {
+        var butoane = document.getElementsByClassName('pop-up-button');
+        console.log(butoane.length);
+        var popupbox = document.getElementsByClassName('popup_box')[0];
+        for (var i = 0; i < butoane.length; ++i) {
+            butoane[i].addEventListener('click', function(){
+                if (popupbox.style.display === 'none') {
+                    popupbox.style.display = 'block'; 
+                }
+            });
+        }
+    }
+    displayPopup();
+</script>
 
 </html>
 
 <?php
+
 
 if (isset($_COOKIE['user'])) {  //daca avem user logat
     echo "<script>document.getElementById(\"a4\").style.display = \"none\";

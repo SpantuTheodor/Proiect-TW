@@ -1,3 +1,25 @@
+<?php
+    class DB
+    {
+        private static $db = NULL;
+        public static function get_connnection()
+        {
+            if (is_null(self::$db)) {
+                self::$db = new PDO('mysql:host=localhost;dbname=forg_database', 'root', '');
+            }
+            return self::$db;
+        }
+    }
+    
+    $firstname = '';
+    $lastname ='';
+    $id =0;
+    $email ='';
+    $password = '';
+    $username ='';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

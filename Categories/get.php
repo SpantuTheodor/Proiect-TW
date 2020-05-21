@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class DB
 {
     private static $db = NULL;
@@ -12,13 +12,17 @@ class DB
     }
 }
 
-session_start();
+function setSessionValue($foodId) {
+    $_SESSION['idMancare'] = $foodId;
+}
 
 $conditie = 0;
 $nume = ' ';
 
+$_SESSION['idMancare'] = 1;
+
 for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
-    $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie FROM mancare WHERE id = :index";
+    $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie, id FROM mancare WHERE id = :index";
     $cerere = DB::get_connnection()->prepare($sql);
     $cerere->execute([
         'index' => $i
@@ -31,6 +35,7 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
         $aprecieri = $data["numar_aprecieri"];
         $vegetarian = $data["este_vegetarian"];
         $categorie = $data["categorie"];
+        $_SESSION['idMancare'] = $data["id"];
         
         // echo "<pre>";
         // print_r($data);
@@ -46,6 +51,7 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
             $vegetarian = "da";
         }
 
+        $variabila = $data['id'];
         if($conditie == 0){
         echo " <article id='id1'>
                     <div class='poze' style='background-image: url(\"$poza\")'>
@@ -55,14 +61,7 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
                         <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
                         <h2>$nume</h2>
                         <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $aprecieri &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                        <button class='pop-up-button' style=\"     border: none;
-                        border-radius: 5px;
-                        outline-style: none;
-                        cursor: pointer;
-                        background-color: rgba(255, 68, 0, 0.75);
-                        font-weight: bold;
-                        color: white;
-                        height: 20%; \">Citeste mai mult...</button>
+                        <a target='_blank' href='getIdMancare.php' class='pop-up-button' onclick=' sendFoodId($variabila); setSessionValue($i) ' >Citeste mai mult...</a>
                     </div>                     
                 </article>
                 <div class='popup'>
@@ -72,11 +71,9 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
                     </div>
 
                 </div>";
-        
         }
         $_SESSION['nume'] = $nume;
     }
 }
 $_SESSION["index"]+=5;
-
 ?>
