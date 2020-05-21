@@ -55,13 +55,19 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
                         <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
                         <h2>$nume</h2>
                         <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $aprecieri &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                        <button id='pop-up-button'>Citeste mai mult...</button>
+                        <button class='pop-up-button' style=\"     border: none;
+                        border-radius: 5px;
+                        outline-style: none;
+                        cursor: pointer;
+                        background-color: rgba(255, 68, 0, 0.75);
+                        font-weight: bold;
+                        color: white;
+                        height: 20%; \">Citeste mai mult...</button>
                     </div>                     
                 </article>
-                <div id='pop-up' class='popup'>
+                <div class='popup'>
                     
                     <div class='pop-up-content'>
-                        <span class='close'>&times;</span>
                         <p>Some text in the Modal..</p>
                     </div>
 
@@ -71,7 +77,6 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
         $_SESSION['nume'] = $nume;
     }
 }
-echo "<script src=\"categorii.js\"  type=\"text/javascript\"></script>"; //nu se incarca
 $_SESSION["index"]+=5;
 
 ?>

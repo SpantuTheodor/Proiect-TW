@@ -183,7 +183,7 @@ h1 {
     font-family: "Candara", Gadget, sans-serif;
 }
 
-#search{
+#search {
     background: none;
 }
 
@@ -298,15 +298,15 @@ h1 {
     position: relative;
     margin-top: 1%;
     float: right;
-    margin-right: 1%; 
+    margin-right: 1%;
 }
 
-.informatii .love_icon:hover{
+.informatii .love_icon:hover {
     transform: rotate(360deg);
     transition: 1s;
 }
 
-#pop-up-button {
+button.pop-up-button {
     border: none;
     border-radius: 5px;
     outline-style: none;
@@ -317,7 +317,7 @@ h1 {
     height: 20%;
 }
 
-#pop-up-button:hover {
+button.pop-up-button:hover {
     background-color: orangered;
 }
 
@@ -342,20 +342,6 @@ h1 {
     width: 80%;
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 form {
     width: 30%;
     text-align: center;
@@ -375,7 +361,7 @@ form {
     outline-style: none;
     cursor: pointer;
     background-color: #263238;
-    margin-top:45px;
+    margin-top: 45px;
     padding: 10px 0;
     font-family: 'Montserrat';
     font-weight: bold;

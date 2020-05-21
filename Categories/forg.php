@@ -26,6 +26,25 @@ $_SESSION['index'] = 1;
     <link rel="stylesheet" type="text/css" href="appl.css">
     <script src="../logout.js"></script>
 
+    <script>
+        function popup() {
+            var popup = document.getElementsByClassName("popup");
+
+            var btn = document.getElementsByClassName("pop-up-button");
+
+            for (i = 0; i < btn.length; i++) {
+                btn[i].addEventListener('click', function() {
+                    popup[i].style.display = "block";
+                });
+
+                window.onclick = function(event) { //click inafara popup ului
+                    if (event.target == popup[i]) {
+                        popup[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 
     <script>
         index = 1; //primul pas facut de la sine
@@ -34,6 +53,9 @@ $_SESSION['index'] = 1;
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("MORE").innerHTML += this.responseText;
+
+                popup();
+
             }
         };
         xmlhttp.open("GET", "get.php?i=" + index, true);
@@ -46,6 +68,9 @@ $_SESSION['index'] = 1;
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("MORE").innerHTML += this.responseText;
+
+                    popup();
+
                 }
             };
             xmlhttp.open("GET", "get.php?i=" + index, true);
@@ -70,12 +95,14 @@ $_SESSION['index'] = 1;
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("searchresults").innerHTML = this.responseText;
+
+                    popup();
+
                 }
             };
             xmlhttp.open("GET", "search.php?str=" + str, true);
             xmlhttp.send();
         }
-
     </script>
 
 
@@ -198,8 +225,9 @@ $_SESSION['index'] = 1;
 
                 <div id="MORE"></div>
 
+                <div style="display:none;">
                 <button id="pop-up-button">Citeste mai mult...</button>
-                <div id="pop-up" class="popup">
+                <div  class="popup">
 
                     <!-- pop up content -->
                     <div class="pop-up-content">
@@ -208,6 +236,7 @@ $_SESSION['index'] = 1;
                     </div>
 
                 </div>
+    </div>
         </div>
         </article>
         <form><?php $variabila = $_SESSION['index']; ?>
@@ -228,8 +257,7 @@ if (isset($_COOKIE['user'])) {  //daca avem user logat
                   document.getElementById(\"a6\").style.display = \"none\";
                   document.getElementById(\"a5\").style.display = \"inline\";    
           </script>";
-}
-else{
+} else {
     echo "<script>document.getElementById('a5').style.display = \"none\";
     document.getElementById('a4').style.display = \"inline\"; 
     document.getElementById('a6').style.display = \"inline\";               
@@ -237,3 +265,4 @@ else{
 }
 
 ?>
+<link rel="stylesheet" type="text/css" href="appl.css">

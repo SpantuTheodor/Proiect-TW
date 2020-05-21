@@ -18,16 +18,18 @@ class DB
 
 $index = $_GET['index'];
 
-$categorii=["id0"=>"Fast Food",
-            "id1"=>"Salate",
-            "id2"=>"Supe si ciorbe",
-            "id3"=>"Aperitive",
-            "id4"=>"Mic dejun",
-            "id5"=>"Garnituri",
-            "id6"=>"Cu carne",
-            "id7"=>"Muraturi",
-            "id8"=>"Gustari",
-            "id9"=>"Desert"];
+$categorii = [
+    "id0" => "Fast Food",
+    "id1" => "Salate",
+    "id2" => "Supe si ciorbe",
+    "id3" => "Aperitive",
+    "id4" => "Mic dejun",
+    "id5" => "Garnituri",
+    "id6" => "Cu carne",
+    "id7" => "Muraturi",
+    "id8" => "Gustari",
+    "id9" => "Desert"
+];
 
 $cat_index = $categorii[$index];
 
@@ -46,15 +48,30 @@ foreach ($data as $mancare) {
     }
 
     echo " <article id='id1'>
-             <div class='poze' style='background-image: url(\"$mancare[1]\")'>
-             </div>
-             <div class='informatii'>
-                 <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
-                 <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
-                 <h2>$mancare[0]</h2>
-                 <p>Pret: $mancare[2] RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $mancare[3] &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $mancare[5]</p>
-                 <button id='pop-up-button'>Citeste mai mult...</button>
-             </div>                         
-         </article>";
+    <div class='poze' style='background-image: url(\"$mancare[1]\")'>
+    </div>
+    <div class='informatii'>
+        <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
+        <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
+        <h2>$mancare[0]</h2>
+        <p>Pret: $mancare[2] RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $mancare[3] &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $mancare[5]</p>
+        <button class='pop-up-button' style=\"     border: none;
+        border-radius: 5px;
+        outline-style: none;
+        cursor: pointer;
+        background-color: rgba(255, 68, 0, 0.75);
+        font-weight: bold;
+        color: white;
+        height: 20%; \">Citeste mai mult...</button>
+    </div>                     
+</article>
+<div id='pop-up' class='popup'>
+    
+    <div class='pop-up-content'>
+        <p>Some text in the Modal..</p>
+    </div>
+
+</div>";
+
 }
-?>
+

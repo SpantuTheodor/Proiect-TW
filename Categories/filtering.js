@@ -1,3 +1,21 @@
+function popup() {
+    var popup = document.getElementsByClassName("popup");
+
+    var btn = document.getElementsByClassName("pop-up-button");
+
+    for (i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click', function() {
+            popup[i].style.display = "block";
+        });
+
+        window.onclick = function(event) { //click inafara popup ului
+            if (event.target == popup[i]) {
+                popup[i].style.display = "none";
+            }
+        }
+    }
+}
+
 function bifare(index) {
     var conditie = 0;
     if (document.getElementById(index).checked == true) {
@@ -18,8 +36,7 @@ function bifare(index) {
     if (conditie == 1) {
         document.getElementById(index).checked = true;
         console.log("ASASA");
-    }
-    else {
+    } else {
         document.getElementById(index).checked = false;
         console.log("BPBPBPB");
     }
@@ -33,8 +50,7 @@ function filtrare(index) {
         document.getElementById("searchresults").style.display = "none";
         document.getElementById("MORE").style.display = "block";
         document.getElementById("show-more").style.display = "block";
-    }
-    else {
+    } else {
         document.getElementById("filterresults").style.display = "block";
         document.getElementById("MORE").style.display = "none";
         document.getElementById("searchresults").style.display = "block";
@@ -57,20 +73,25 @@ function filtrare(index) {
         document.getElementById("searchresults").style.display = "none";
         document.getElementById("filterresults").style.display = "none";
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
+        xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("MORE").innerHTML = this.responseText;
+
+                popup();
+
             }
         };
         xmlhttp.open("GET", "get.php?i=1", true);
         xmlhttp.send();
-    }
-    else {
+    } else {
         document.getElementById("filterresults").style.display = "block";
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
+        xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("searchresults").innerHTML = this.responseText;
+                document.getElementById("filterresults").innerHTML = this.responseText;
+
+                popup();
+
             }
         };
         xmlhttp.open("GET", "filtrare.php?index=" + index, true);
