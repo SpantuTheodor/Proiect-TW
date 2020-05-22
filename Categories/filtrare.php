@@ -33,7 +33,7 @@ $categorii = [
 
 $cat_index = $categorii[$index];
 
-$sql = "SELECT nume,imagine,pret,numar_aprecieri, este_vegetarian , categorie FROM mancare WHERE categorie LIKE :index";
+$sql = "SELECT nume,imagine,pret,numar_aprecieri, este_vegetarian , categorie ,id FROM mancare WHERE categorie LIKE :index";
 $cerere = DB::get_connnection()->prepare($sql);
 $cerere->execute([
     'index' => "%$cat_index%"
@@ -55,23 +55,9 @@ foreach ($data as $mancare) {
         <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
         <h2>$mancare[0]</h2>
         <p>Pret: $mancare[2] RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $mancare[3] &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $mancare[5]</p>
-        <button class='pop-up-button' style=\"     border: none;
-        border-radius: 5px;
-        outline-style: none;
-        cursor: pointer;
-        background-color: rgba(255, 68, 0, 0.75);
-        font-weight: bold;
-        color: white;
-        height: 20%; \">Citeste mai mult...</button>
+        <a target='_blank' href='getIdMancare.php?id=$mancare[6]' class='pop-up-button' >Citeste mai mult...</a>
     </div>                     
-</article>
-<div id='pop-up' class='popup'>
-    
-    <div class='pop-up-content'>
-        <p>Some text in the Modal..</p>
-    </div>
-
-</div>";
+</article>";
 
 }
 

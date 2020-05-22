@@ -35,11 +35,8 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
         $aprecieri = $data["numar_aprecieri"];
         $vegetarian = $data["este_vegetarian"];
         $categorie = $data["categorie"];
-        $_SESSION['idMancare'] = $data["id"];
-        
-        // echo "<pre>";
-        // print_r($data);
-        // echo "</pre>";
+        $id = $data["id"];
+
 
         if($_SESSION['nume'] == $nume || $nume == NULL)
         {
@@ -61,16 +58,9 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
                         <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
                         <h2>$nume</h2>
                         <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $aprecieri &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                        <a target='_blank' href='getIdMancare.php' class='pop-up-button' onclick=' sendFoodId($variabila); setSessionValue($i) ' >Citeste mai mult...</a>
+                        <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
                     </div>                     
-                </article>
-                <div class='popup'>
-                    
-                    <div class='pop-up-content'>
-                        <p>Some text in the Modal..</p>
-                    </div>
-
-                </div>";
+                </article>";
         }
         $_SESSION['nume'] = $nume;
     }

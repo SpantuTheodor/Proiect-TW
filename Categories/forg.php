@@ -27,35 +27,12 @@ $_SESSION['index'] = 1;
     <script src="../logout.js"></script>
 
     <script>
-        function popup() {
-            var popup = document.getElementsByClassName("popup");
-
-            var btn = document.getElementsByClassName("pop-up-button");
-
-            for (i = 0; i < btn.length; i++) {
-                btn[i].addEventListener('click', function() {
-                    popup[i].style.display = "block";
-                });
-
-                window.onclick = function(event) { //click inafara popup ului
-                    if (event.target == popup[i]) {
-                        popup[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
-
-    <script>
         index = 1; //primul pas facut de la sine
         var xmlhttp = new XMLHttpRequest();
 
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("MORE").innerHTML += this.responseText;
-
-                popup();
-
             }
         };
         xmlhttp.open("GET", "get.php?i=" + index, true);
@@ -68,8 +45,6 @@ $_SESSION['index'] = 1;
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("MORE").innerHTML += this.responseText;
-
-                    popup();
 
                 }
             };
@@ -95,26 +70,9 @@ $_SESSION['index'] = 1;
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("searchresults").innerHTML = this.responseText;
-
-                    popup();
-
                 }
             };
             xmlhttp.open("GET", "search.php?str=" + str, true);
-            xmlhttp.send();
-        }
-
-        function sendFoodId(index) { //urmatorii pasii
-            console.log(index);
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // document.getElementById("MORE").innerHTML += this.responseText;
-                    // popup();
-                    console.log("eu merg!");
-                }
-            };
-            xmlhttp.open("GET", "getIdMancare.php?i=" + index, true);
             xmlhttp.send();
         }
     </script>
@@ -171,7 +129,6 @@ $_SESSION['index'] = 1;
         <div id="srch">
             <input type="text" id="search" name="search" placeholder="Search for a recipe..." onkeyup="showResult(this.value)">
             <input id="submit-input" type="submit" name="submit-input" value="Caută!">
-            <!-- <div id="search"></div> -->
         </div>
 
         <div class="lista">
@@ -229,8 +186,6 @@ $_SESSION['index'] = 1;
 
             </div>
             <section class="content">
-                <div class="popup_box">
-                </div>
 
                 <div id="filterresults"></div>
 
@@ -238,43 +193,15 @@ $_SESSION['index'] = 1;
 
                 <div id="MORE"></div>
 
-                <div style="display:none;">
-                <button id="pop-up-button">Citeste mai mult...</button>
-                <div  class="popup">
 
-                    <!-- pop up content -->
-                    <div class="pop-up-content">
-                        <span class="close">&times;</span>
-                        <p>Some text in the Modal..</p>
-                    </div>
-
-                </div>
-    </div>
+                <form><?php $variabila = $_SESSION['index']; ?>
+                    <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>')" value="AFISEAZA MAI MULT">
+                </form>
+            </section>
         </div>
-        </article>
-        <form><?php $variabila = $_SESSION['index']; ?>
-            <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>')" value="AFISEAZA MAI MULT">
-        </form>
-        </section>
-    </div>
     </div>
 </body>
 <script src="filtering.js"></script>
-<script>
-    function displayPopup() {
-        var butoane = document.getElementsByClassName('pop-up-button');
-        console.log(butoane.length);
-        var popupbox = document.getElementsByClassName('popup_box')[0];
-        for (var i = 0; i < butoane.length; ++i) {
-            butoane[i].addEventListener('click', function(){
-                if (popupbox.style.display === 'none') {
-                    popupbox.style.display = 'block'; 
-                }
-            });
-        }
-    }
-    displayPopup();
-</script>
 
 </html>
 
