@@ -11,12 +11,126 @@
         }
     }
     
-    $firstname = '';
-    $lastname ='';
-    $id =0;
-    $email ='';
-    $password = '';
-    $username ='';
+    function emailAlreadyExists($email) {
+        // verific daca  mailul nu exista deja la alt user inregistrat
+        $sql = "SELECT phone_number FROM users WHERE email = :mail";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'mail' => $email
+        ]);
+        // daca exista semnalez o eroare si returnez false
+        return $cerere->rowCount() >= 1;
+    }
+
+    // function phoneNumberAlreadyExists($phoneNumber) {
+    //     if ($phoneNumber == '') {
+    //         return false;
+    //     }
+    //     // verific daca numarul de telefon nu exista deja la alt user inregistrat
+    //     $sql = "SELECT phone_number FROM users WHERE phone_number = :phonenumber";
+    //     $cerere = DB::get_connnection()->prepare($sql);
+    //     $cerere->execute([
+    //         'phonenumber' => $phoneNumber
+    //     ]);
+    //     // daca exista numarul de telefon semnalez o eroare si returnez fals
+    //     if($phonenumber != '') {
+    //         if ($cerere->rowCount() >= 1) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    function userNameAlreadyExists($username) {
+        // verific daca username-ul nu exista deja la alt user inregistrat
+        $sql = "SELECT username FROM users WHERE username = :uname";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'uname' => $username
+        ]);
+        return $cerere->rowCount() >= 1;
+    }
+
+    function insertUserInDatabase($firstName, $lastName, $username, $emailAddress, $password, $phoneNumber = '', $adress = '') {
+        $sql = "INSERT INTO users (first_name, last_name, username, password, email, phone_number ) VALUES( :firstname , :lastname , :uname , :pass, :mail, :phonenumber )";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'firstname'    => $firstName,
+            'lastname'     => $lastName,
+            'uname'        => $username,
+            'pass'         => $password,
+            'mail'         => $emailAddress,
+            'phonenumber'  => $phoneNumber
+        ]);
+    }
+
+    function createUser($firstName, $lastName, $username, $emailAddress, $password, $phoneNumber = '', $adress = '') {        
+        // $phoneNumberStatus = phoneNumberAlreadyExists($phoneNumber);
+        $emailStatus       = emailAlreadyExists($emailAddress);
+        $usernameStatus    = userNameAlreadyExists($username);
+        if ($emailStatus == true) {
+            echo '<script language="javascript">';
+            echo 'alert("Email address already used!")';
+            echo '</script>';
+            return;
+        }
+        if ($usernameStatus == true) {
+            echo '<script language="javascript">';
+            echo 'alert("Username already used!")';
+            echo '</script>';
+            return;
+        }
+        // nu pot crea userul cu datele acestea pentru ca sunt asociate altor useri
+        if ($phoneNumberStatus == true || $emailStatus == true || $usernameStatus == true) {
+            return;
+        }
+        insertUserInDatabase($firstName, $lastName, $username, $emailAddress, $password, $phoneNumber, $adress);
+    }
+
+    function deleteUser($emailAddress, $username) {
+        $emailStatus = emailAlreadyExists($emailAddress);
+        if ($emailStatus == false) {
+            echo '<script language="javascript">';
+            echo 'alert("An account with this email does not exists!")';
+            echo '</script>';
+            return;
+        }
+        $usernameStatus = userNameAlreadyExists($username);
+        if ($usernameStatus == false) {
+            echo '<script language="javascript">';
+            echo 'alert("An account with this username does not exists!")';
+            echo '</script>';
+            return;
+        }
+
+        $sql = "DELETE FROM users WHERE username = :uname AND email = :mail";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'uname'        => $username,
+            'mail'         => $emailAddress,
+        ]);
+        echo '<script language="javascript">';
+        echo 'alert("Account successfully deleted!")';
+        echo '</script>';
+    }
+
+    if (isset($_POST["create-account"])) {
+        // iau parametrii trimisi in formular in vederea creerii utilizatorului nou
+        $firstName = $_POST["fname"];
+        $lastName  = $_POST["lname"];
+        $userName  = $_POST["uname"];
+        $email     = $_POST["email"];
+        $password  = $_POST["password"];
+        $pnumber   = $_POST["phone-nr"];
+        $address   = $_POST["address"];        
+        createUser($firstName, $lastName, $userName, $email, $password, $pnumber, $address);
+    }
+
+    if (isset($_POST["delete-account"])) {
+        $username = $_POST["uname_to_delete"];
+        $email    = $_POST["email_to_delete"];
+        deleteUser($email, $username);
+    }
 ?>
 
 
@@ -67,7 +181,7 @@
 
                         <label for="address">Adress:</label>
                         <input class="required" type="text" id="address" name="address" placeholder="Enter your address..." ><br><br>
-                        <input id="submit-input" type="submit" name="Create account">
+                        <input id="submit-input-create-user" type="submit" name="create-account">
                     </form>
                 </div>
                 <div id="delete_user_area">
@@ -78,7 +192,7 @@
                         <label for="email_to_delete">Email adress:</label><br>
                         <input class="required" type="email" id="email_to_delete" name="email_to_delete" placeholder="Enter your email..." required><br><br>
 
-                        <input id="submit-input" class="delete_input" type="submit" name="Delete account">
+                        <input id="submit-input-delete-user" class="delete_input" type="submit" name="delete-account">
                     </form>
                 </div>
                 <div id="create_food_area">
@@ -104,7 +218,7 @@
                         <label for="perisability">Valability:</label>
                         <input class="required" type="number" id="valability" name="valability" placeholder="Enter valability..." ><br><br>
                         
-                        <input id="submit-input" type="submit" name="Create Food">
+                        <input id="submit-input-create-food" type="submit" name="Create Food">
                     </form>
                 </div>
                 <div id="delete_food_area">
@@ -117,7 +231,7 @@
 
                         <label for="price">Price:</label><br>
                         <input class="required" type="text" id="price_to_delete" name="price_to_delete" placeholder="Enter food price..." required><br><br>
-                        <input id="submit-input" class="delete_input" type="submit" name="Delete food">
+                        <input id="submit-input-delete-food" class="delete_input" type="submit" name="Delete food">
                     </form>
                 </div>
             </div>

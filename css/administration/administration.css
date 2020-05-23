@@ -138,7 +138,7 @@ button:focus {
     outline: none;
 }
 
-.main_form input#submit-input {
+#submit-input-create-user, #submit-input-delete-user, #submit-input-create-food, #submit-input-delete-food {
     border: none;
     background: #263238;
     color: white;
@@ -155,7 +155,7 @@ button:focus {
     transition: .5s;
 }
 
-.main_form input#submit-input:hover {
+#submit-input-create-user:hover, #submit-input-delete-user:hover, #submit-input-create-food:hover, #submit-input-delete-food:hover {
     background: grey;
 }
 
