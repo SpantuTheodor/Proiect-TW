@@ -164,7 +164,7 @@ body {
 .recommendedcatlist li figure img {
     border-radius: 50%;
     border-style: solid;
-    border-color: rgba(255, 68, 0, 0.75);
+    border-color: #263238;
     border-width: 4px;
 }
 

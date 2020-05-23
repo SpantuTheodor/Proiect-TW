@@ -44,17 +44,21 @@ if (!empty($data)) {
     }
     $variabila = $data['id'];
 
-    $text = " <article id='id1'>
-                    <div class='poze' style='background-image: url(\"$poza\")'>
-                    </div>
-                    <div class='informatii'>
-                        <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
-                        <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
-                        <h2>$nume</h2>
-                        <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $aprecieri &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                        <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
-                    </div>                     
-                </article>";
+    $ingredient = explode(';', $ingrediente); //what will do here
+
+
+    $text = "<h2>$nume</h2>
+    <div>
+        <p>Pret: $pret RON</p>
+        <p>Categorie: $categorie</p>
+        <p>Vegetarian: $vegetarian</p>
+        <p>Perisabilitate: $perisabilitate ore</p>
+        <p>Valabilitate: $valabilitate zile</p>
+        <p>Disponibilitate: $disponibilitate</p>
+        <p>Numar aprecieri: $aprecieri</p>
+        <p>Alergeni: $restrictii</p>
+        <p>Restaurant: </p>
+    </div>";
 }
 ?>
 
@@ -91,13 +95,23 @@ if (!empty($data)) {
         </nav>
     </header>
     <div id="info-page">
-<?php //echo $text; ?>
-<div class='poze' style='background-image: url("assets/burger.jpeg")'> </div>
-<div class='text'>
 
-</div>
-<div class ='rest'>
-</div>
+        <div class='poze' style='background-image: url("<?php echo $poza ?>")'> </div>
+        <div class='text'>
+            <?php echo $text;
+            ?>
+
+        </div>
+        <div class='rest'>
+            <ul>
+                <?php
+                foreach ($ingredient as $out) {
+                    echo "<li> $out </li>";
+                }
+                ?>
+
+            </ul>
+        </div>
     </div>
 
 
