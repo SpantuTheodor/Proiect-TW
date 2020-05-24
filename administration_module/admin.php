@@ -114,6 +114,27 @@
         echo '</script>';
     }
 
+    function createNewRecipe($name, $category, $price, $imagePath, $isVegetarian, $perisability, $valability, $disponibility) {
+        if (!file_exists($imagePath) || getImageSize($imagePath) == false) {
+            echo '<script language="javascript">';
+            echo 'alert("The image path is invalid!")';
+            echo '</script>';
+            return;
+        }
+        $sql = "INSERT INTO mancare (nume, categorie, pret, imagine, este_vegetarian, perisabilitate, valabilitate, disponibilitate) VALUES (:name, :category, :price, :image, :isveg, :perisability, :valability, :disponibility)";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            ':name'          => $nume,
+            ':category'      => $category,
+            ':price'         => $price,
+            ':image'         => $imagePath,
+            ':isveg'         => $isVegetarian,
+            ':perisability'  => $perisability,
+            ':valability'    => $valability,
+            ':disponibility' => $disponibility
+        ]);
+    }
+
     if (isset($_POST["create-account"])) {
         // iau parametrii trimisi in formular in vederea creerii utilizatorului nou
         $firstName = $_POST["fname"];
@@ -206,8 +227,8 @@
                         <label for="price">Price:</label><br>
                         <input class="required" type="text" id="price" name="price" placeholder="Enter food price..." required><br><br>
 
-                        <label id="image_input_label" for="image">Food image:</label><br>
-                        <input class="required" type="file" id="image_input" name="image" placeholder="Enter food image..." accept="image/*" required><br><br>
+                        <label for="image">Food image path:</label><br>
+                        <input id="image_path" class="required" type="text" name="image" placeholder="Enter food image path..." required><br><br>
                         
                         <label for="isvegetarian">Vegetarian food:</label>
                         <input class="required" type="checkbox" id="isvegetarian" name="isvegetarian" placeholder="Check if food is vedetarian..." ><br><br><br>
@@ -217,6 +238,9 @@
                         
                         <label for="perisability">Valability:</label>
                         <input class="required" type="number" id="valability" name="valability" placeholder="Enter valability..." ><br><br>
+                        
+                        <label for="disponibilitate">Disponibility</label>
+                        <input class="required" type="number" id="disponibility" name="disponibility" placeholder="Enter disponibility..."><br><br>
                         
                         <input id="submit-input-create-food" type="submit" name="Create Food">
                     </form>
