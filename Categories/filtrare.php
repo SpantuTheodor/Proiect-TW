@@ -51,8 +51,8 @@ foreach ($data as $mancare) {
     <div class='poze' style='background-image: url(\"$mancare[1]\")'>
     </div>
     <div class='informatii'>
-        <img title='Add to favorites' class='love_icon $mancare[6]' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
-        <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
+        <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon' onclick=\"addToFavorites($mancare[6])\">
+        <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' onclick=\"addToShoppingList($mancare[6])\" style='width: 24px; height: 24px;'>
         <h2>$mancare[0]</h2>
         <p>Pret: $mancare[2] RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $mancare[3] &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $mancare[5]</p>
         <a target='_blank' href='getIdMancare.php?id=$mancare[6]' class='pop-up-button' >Citeste mai mult...</a>

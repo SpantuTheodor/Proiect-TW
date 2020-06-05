@@ -83,6 +83,40 @@ $_SESSION['index'] = 1;
             xmlhttp.send();
             console.log(id);
         }
+
+        
+        function addToShoppingList(id) {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.open("GET", "addToList.php?i=" + id, true);
+            xmlhttp.send();
+            console.log(id);
+        }
+
+        function deleteFromFavorites(id) {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.open("GET", "deleteFromFav.php?i=" + id, true);
+            xmlhttp.send();
+            console.log(id);
+        }
+
+        function deleteFromShoppingList(id) {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.open("GET", "deleteFromList.php?i=" + id, true);
+            xmlhttp.send();
+            console.log(id);
+        }
+
+        function decreaseOpacity(id){
+         document.getElementById(id).style.opacity="0.5";
+        }
+
+        function increaseOpacity(id){
+         document.getElementById(id).style.opacity="1";
+        }
+
     </script>
     <title>Forg</title>
 </head>

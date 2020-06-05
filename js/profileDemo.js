@@ -4,7 +4,7 @@ const favoriteFoodsContainer = document.querySelector("#about_user_favorite_food
 const favoriteRestaurantsContainer = document.querySelector("#about_user_favorite_restaurants");
 
 favoriteFoodsContainer.addEventListener('click', () => {
-    window.open("favorite_food.html");
+    window.open("favorite_food.php");
 });
 
 favoriteRestaurantsContainer.addEventListener('click', () => {
@@ -12,9 +12,9 @@ favoriteRestaurantsContainer.addEventListener('click', () => {
 });
 
 userShoppingListsContainer.addEventListener('click', () => {
-    window.open("shoppingLists.html.html");
+    window.open("shopping_list.php");
 })
 
 userStatisticsContainer.addEventListener('click', () => {
-   window.open("statstics.html");
+    window.open("statstics.html");
 });
