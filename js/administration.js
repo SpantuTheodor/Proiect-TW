@@ -14,6 +14,9 @@ createUserBtn.addEventListener('click', function() {
     deleteFoodArea.style.display = 'none';
     createUserArea.style.display = 'block';
     deleteUserArea.style.display = 'none';
+    // ajustez spatiul suplimentar pentru text area
+    let mainContent = document.getElementsByClassName("main_content")[0];
+    mainContent.style.height = "800px";
 });
 
 deleteUserBtn.addEventListener('click', function() {
@@ -21,6 +24,9 @@ deleteUserBtn.addEventListener('click', function() {
     deleteFoodArea.style.display = 'none';
     createUserArea.style.display = 'none';
     deleteUserArea.style.display = 'block';
+    // ajustez spatiul suplimentar pentru text area
+    let mainContent = document.getElementsByClassName("main_content")[0];
+    mainContent.style.height = "800px";
 });
 
 createFoodBtn.addEventListener('click', function() {
@@ -28,6 +34,9 @@ createFoodBtn.addEventListener('click', function() {
     deleteFoodArea.style.display = 'none';
     createUserArea.style.display = 'none';
     deleteUserArea.style.display = 'none';
+    // fac loc si la text area
+    let mainContent = document.getElementsByClassName("main_content")[0];
+    mainContent.style.height = "1100px";
 });
 
 deleteFoodBtn.addEventListener('click', function(){
@@ -35,4 +44,7 @@ deleteFoodBtn.addEventListener('click', function(){
     deleteFoodArea.style.display = 'block';
     createUserArea.style.display = 'none';
     deleteUserArea.style.display = 'none';
+    // ajustez spatiul suplimentar pentru text area
+    let mainContent = document.getElementsByClassName("main_content")[0];
+    mainContent.style.height = "800px";
 });

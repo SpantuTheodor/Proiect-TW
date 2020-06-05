@@ -114,24 +114,47 @@
         echo '</script>';
     }
 
-    function createNewRecipe($name, $category, $price, $imagePath, $isVegetarian, $perisability, $valability, $disponibility) {
-        if (!file_exists($imagePath) || getImageSize($imagePath) == false) {
+    function uploadImage() {
+        // iau imaginea incarcata si o introduc in folderul general unde se afla imaginile mancarilor. 
+        // actualizez noua cale in fisierul general care va fi si calea finala pentru mancarea introdusa
+        // returnez noua cale a imaginii in caz de upload cu sucess, altfel returnez ""
+        $target_dir  = "../Categories/assets";
+        $target_file = $target_dir . $_FILES["image_path"]["name"]; 
+        
+        // daca imaginea e mai mare de 5mb nu o incarc
+        if ($_FILES["image_path"]["size"] > 5000000) {
             echo '<script language="javascript">';
-            echo 'alert("The image path is invalid!")';
+            echo 'alert("Image too big. Max file size admitted is 5mb!")';
             echo '</script>';
+            return "";
+        }
+
+        // mut poza la calea dorita
+        if (!move_uploaded_file($_FILES["image_path"]["tmp_name"], $target_file)) {
+            echo '<script language="javascript">';
+            echo 'alert("There was a problem uploading this file!")';
+            echo '</script>';
+        }
+        return $target_file;
+    }
+
+    function createNewRecipe($name, $category, $price, $isVegetarian, $perisability, $valability, $disponibility, $ingredients) {
+        $image_ = uploadImage();
+        if ($image_ == "") {
             return;
         }
-        $sql = "INSERT INTO mancare (nume, categorie, pret, imagine, este_vegetarian, perisabilitate, valabilitate, disponibilitate) VALUES (:name, :category, :price, :image, :isveg, :perisability, :valability, :disponibility)";
+        $sql = "INSERT INTO mancare (nume, categorie, pret, imagine, este_vegetarian, perisabilitate, valabilitate, disponibilitate, ingrediente) VALUES (:name, :category, :price, :image, :isveg, :perisability, :valability, :disponibility, :ingredients)";
         $cerere = DB::get_connnection()->prepare($sql);
         $cerere->execute([
-            ':name'          => $nume,
+            ':name'          => $name,
             ':category'      => $category,
             ':price'         => $price,
-            ':image'         => $imagePath,
+            ':image'         => $image_,
             ':isveg'         => $isVegetarian,
             ':perisability'  => $perisability,
             ':valability'    => $valability,
-            ':disponibility' => $disponibility
+            ':disponibility' => $disponibility,
+            ':ingredients'   => $ingredients
         ]);
     }
 
@@ -151,6 +174,24 @@
         $username = $_POST["uname_to_delete"];
         $email    = $_POST["email_to_delete"];
         deleteUser($email, $username);
+    }
+
+    if (isset($_POST["create_food"])) {
+        $nume          = $_POST["food_name"];
+        $category      = $_POST["categorie"];
+        $pret          = $_POST["price"];
+        // $image         = $_POST["image_path"];
+        $isvegetarian  = isset($_POST["isvegetarian"]) ? 1 : 0;
+        $perisability  = $_POST["perisability"];
+        $valability    = $_POST["valability"];
+        $disponibility = $_POST["disponibility"];
+        $ingrediente   = $_POST["retete_area"];
+        if (isset($_FILES["image_path"])) {
+            createNewRecipe($nume, $category, $pret, $isvegetarian, $perisability, $valability, $disponibility, $ingrediente);
+        } 
+        else {
+            echo "Add an image!";
+        }
     }
 ?>
 
@@ -181,7 +222,7 @@
             </div>
             <div class="options_exec_area">
                 <div id="create_user_area">
-                    <form id="create_user_form" class="main_form" method="POST">
+                    <form id="create_user_form" class="main_form" method="POST" >
                         <label for="fname">First name: </label><br>
                         <input class="required" type="text" id="fname" name="fname" placeholder="Enter your first name..." required><br><br>
 
@@ -217,7 +258,7 @@
                     </form>
                 </div>
                 <div id="create_food_area">
-                    <form id="create_food_form" class="main_form" method="POST">
+                    <form id="create_food_form" class="main_form" method="POST" enctype="multipart/form-data">
                         <label for="food_name">Food name: </label><br>
                         <input class="required" type="text" id="food_name" name="food_name" placeholder="Enter food name..." required><br><br>
 
@@ -227,8 +268,8 @@
                         <label for="price">Price:</label><br>
                         <input class="required" type="text" id="price" name="price" placeholder="Enter food price..." required><br><br>
 
-                        <label for="image">Food image path:</label><br>
-                        <input id="image_path" class="required" type="text" name="image" placeholder="Enter food image path..." required><br><br>
+                        <label for="image_input">Food image path:</label><br>
+                        <input id="image_path" class="required" type="file" name="image_path" placeholder="Enter food image ..." accept="image/*" required><br><br>
                         
                         <label for="isvegetarian">Vegetarian food:</label>
                         <input class="required" type="checkbox" id="isvegetarian" name="isvegetarian" placeholder="Check if food is vedetarian..." ><br><br><br>
@@ -236,13 +277,16 @@
                         <label for="perisability">Perisability:</label>
                         <input class="required" type="number" id="perisability" name="perisability" placeholder="Enter perisability..." ><br><br>
                         
-                        <label for="perisability">Valability:</label>
+                        <label for="valability">Valability:</label>
                         <input class="required" type="number" id="valability" name="valability" placeholder="Enter valability..." ><br><br>
                         
-                        <label for="disponibilitate">Disponibility</label>
-                        <input class="required" type="number" id="disponibility" name="disponibility" placeholder="Enter disponibility..."><br><br>
-                        
-                        <input id="submit-input-create-food" type="submit" name="Create Food">
+                        <label for="disponibility">Disponibility</label>
+                        <input class="required" type="text" id="disponibility" name="disponibility" placeholder="Enter disponibility..."><br><br>
+                        <br>
+                        <label id="reteta_area_label" for="reteta_area">Introduceti ingredientele separate prin ';'</label>
+                        <textarea id="retete_area" name="retete_area" autofocus required></textarea>
+
+                        <input id="submit-input-create-food" type="submit" name="create_food">
                     </form>
                 </div>
                 <div id="delete_food_area">
