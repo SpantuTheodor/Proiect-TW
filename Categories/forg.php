@@ -24,6 +24,7 @@ $_SESSION['index'] = 1;
     <link href="https://fonts.googleapis.com/css?family=Dosis%7CRoboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="appl.css">
+    <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <script src="../logout.js"></script>
 
     <script>
@@ -240,6 +241,15 @@ $_SESSION['index'] = 1;
                     <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>')" value="AFISEAZA MAI MULT">
                 </form>
             </section>
+        </div>
+        <div style="padding:50px"></div>
+        <div class="footer">
+            <div class="contain">
+                <div class="col">
+                    <h1>&copy; FORG - Made &amp; Designed By Rogoza Calin Andrei, Spantu Theodor Ioan, Ursulean Ciprian</h1>
+                </div>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
 </body>

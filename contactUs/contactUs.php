@@ -69,6 +69,7 @@ if (!empty($_POST)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORG</title>
     <link rel="stylesheet" type="text/css" href="../css/contactUs/contactUs.css">
+    <link rel="stylesheet" type='text/css' href="../css/footer.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -194,6 +195,14 @@ if (!empty($_POST)) {
                 <button name="submit" type="submit" tabindex="5" id="contact-submit" data-submit="...Sending">Submit</button>
             </div>
         </form>
+    </div>
+    <div class="footer">
+            <div class="contain">
+                <div class="col">
+                    <h1>&copy; FORG - Made &amp; Designed By Rogoza Calin Andrei, Spantu Theodor Ioan, Ursulean Ciprian</h1>
+                </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
 </body>
 

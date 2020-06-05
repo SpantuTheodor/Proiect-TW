@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORG</title>
     <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -144,57 +145,7 @@
         <div class="footer">
             <div class="contain">
                 <div class="col">
-                    <h1>Company</h1>
-                    <ul>
-                        <li>About</li>
-                        <li>Mission</li>
-                        <li>Services</li>
-                        <li>Social</li>
-                        <li>Get in touch</li>
-                    </ul>
-                </div>
-
-                <div class="col">
-                    <h1>Products</h1>
-                    <ul>
-                        <li>About</li>
-                        <li>Mission</li>
-                        <li>Services</li>
-                        <li>Social</li>
-                        <li>Get in touch</li>
-                    </ul>
-                </div>
-
-                <div class="col">
-                    <h1>Accounts</h1>
-                    <ul>
-                        <li>About</li>
-                        <li>Mission</li>
-                        <li>Services</li>
-                        <li>Social</li>
-                        <li>Get in touch</li>
-                    </ul>
-                </div>
-
-                <div class="col">
-                    <h1>Resources</h1>
-                    <ul>
-                        <li>Webmail</li>
-                        <li>Redeem code</li>
-                        <li>WHOIS lookup</li>
-                        <li>Site map</li>
-                        <li>Web templates</li>
-                        <li>Email templates</li>
-                    </ul>
-                </div>
-
-                <div class="col">
-                    <h1>Support</h1>
-                    <ul>
-                        <li>Contact us</li>
-                        <li>Web chat</li>
-                        <li>Open ticket</li>
-                    </ul>
+                    <h1>&copy; FORG - Made &amp; Designed By Rogoza Calin Andrei, Spantu Theodor Ioan, Ursulean Ciprian</h1>
                 </div>
                 <div class="clearfix"></div>
             </div>
