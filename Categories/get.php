@@ -54,8 +54,8 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"]+5; $i++) {
                     <div class='poze' style='background-image: url(\"$poza\")'>
                     </div>
                     <div class='informatii'>
-                        <img title='Add to favorites' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon'>
-                        <img title='Add to shoppping list' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
+                        <img title='Add to favorites' id='f$id' class='love_icon' src='assets/icons/favorite_icon.png' alt='add to favorites icon' onclick=\"addToFavorites($id)\">
+                        <img title='Add to shoppping list' id='s$id' class='love_icon' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' style='width: 24px; height: 24px;'>
                         <h2>$nume</h2>
                         <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $aprecieri &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
                         <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>

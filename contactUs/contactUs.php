@@ -2,6 +2,7 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 require 'vendor\autoload.php';
 
 function _e($string)
@@ -48,7 +49,7 @@ if (!empty($_POST)) {
 
             $mail->isHTML(true);
             $mail->Subject = '[Suport Forg]';
-            $mail->Body    = "<h1>".$fields['name']."</h1><h2>".$fields['email']."</h2><p>".$fields['message']."</p>";
+            $mail->Body    = "<h1>" . $fields['name'] . "</h1><h2>" . $fields['email'] . "</h2><p>" . $fields['message'] . "</p>";
             $mail->AltBody = 'A aparut o problema!';
 
             $mail->send();
@@ -81,10 +82,10 @@ if (!empty($_POST)) {
             <nav>
                 <a id="a1" href="#"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
                 <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-                <a id="a3" href="#"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
-                <a id="a4" href="#">LOGIN</a>
-                <a id="a5" href="#" onclick="logout()">LOGOUT</a>
-                <a id="a6" href="#">SIGN UP</a>
+                <a id="a4" href="../signup/sign_up.php">SIGN UP</a>
+                <a id="a7" href="profile/profileDemo.php">MY PROFILE</a>
+                <a id="a5" href="../logout.php">LOGOUT</a>
+                <a id="a6" href="../login/login.php">LOGIN</a>
             </nav>
         </header>
         <div class="container2">
@@ -160,15 +161,15 @@ if (!empty($_POST)) {
         <h1>
             Contact Us
         </h1>
-        <?php if ( ! empty( $errors ) ) : ?>
-			<div class="errors">
-                <p><?php echo implode( '</p><p>', $errors ); ?></p>
+        <?php if (!empty($errors)) : ?>
+            <div class="errors">
+                <p><?php echo implode('</p><p>', $errors); ?></p>
             </div>
-        <?php elseif ($sent == 1): ?>
-			<div class="success">
-				<p>Your message was sent. We'll be in touch.</p>
-			</div>
-		<?php endif; ?>
+        <?php elseif ($sent == 1) : ?>
+            <div class="success">
+                <p>Your message was sent. We'll be in touch.</p>
+            </div>
+        <?php endif; ?>
         <form id="contact" role="form" method="post" action="contactUs.php">
             <div class="form-group">
                 <label for="name" class="control-label">Name</label>
@@ -177,7 +178,7 @@ if (!empty($_POST)) {
 
             <div class="form-group">
                 <label for="email" class="control-label">Email</label>
-                <input placeholder="Your Email Address" type="email" tabindex="2" required id="email" name="email" value="<?php echo isset( $fields['email'] ) ? _e( $fields['email'] ) : '' ?>">
+                <input placeholder="Your Email Address" type="email" tabindex="2" required id="email" name="email" value="<?php echo isset($fields['email']) ? _e($fields['email']) : '' ?>">
             </div>
 
             <div class="form-group">
@@ -198,17 +199,24 @@ if (!empty($_POST)) {
 
 <?php
 
+
 if (isset($_COOKIE['user'])) {  //daca avem user logat
+    print_r($_COOKIE);
     echo "<script>document.getElementById(\"a4\").style.display = \"none\";
                   document.getElementById(\"a6\").style.display = \"none\";
-                  document.getElementById(\"a5\").style.display = \"inline\";    
+                  document.getElementById(\"a5\").style.display = \"inline\";
+                  document.getElementById(\"a7\").style.display = \"inline\";    
           </script>";
-}
-else{
+} else {
     echo "<script>document.getElementById('a5').style.display = \"none\";
+    document.getElementById(\"a7\").style.display = \"none\";
     document.getElementById('a4').style.display = \"inline\"; 
     document.getElementById('a6').style.display = \"inline\";               
     </script>";
 }
 
 ?>
+
+<script>
+    document.documentElement.scrollTop = 0; // pentru a porni de sus pagina
+</script>

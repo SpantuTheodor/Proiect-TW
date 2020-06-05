@@ -16,10 +16,12 @@
     <div class="container1">
         <header class="nav-bar">
             <nav>
-                <a id="a1" href="#"><img class="nav-icon" src="home/assets/icons/home.png" alt="home-icon">HOME</a>
-                <a id="a2" href="#"><img class="nav-icon" src="home/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-                <a id="a3" href="#"><img class="nav-icon" src="home/assets/icons/about.png" alt="about-icon">ABOUT</a>
+                <a id="a2" href="Categories/forg.php"><img class="nav-icon" src="home/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
+                <a id="a3" href="ContactUs/contactUs.php"><img class="nav-icon" src="home/assets/icons/about.png" alt="about-icon">ABOUT</a>
                 <a id="a4" href="signup/sign_up.php">SIGN UP</a>
+                <a id="a7" href="profile/profileDemo.php">MY PROFILE</a>
+                <a id="a5" href="logout.php">LOGOUT</a>
+                <a id="a6" href="login/login.php">LOGIN</a>
             </nav>
         </header>
         <div class="container2">
@@ -201,3 +203,23 @@
 </body>
 
 </html>
+
+<?php
+
+
+if (isset($_COOKIE['user'])) {  //daca avem user logat
+    print_r($_COOKIE);
+    echo "<script>document.getElementById(\"a4\").style.display = \"none\";
+                  document.getElementById(\"a6\").style.display = \"none\";
+                  document.getElementById(\"a5\").style.display = \"inline\";
+                  document.getElementById(\"a7\").style.display = \"inline\";    
+          </script>";
+} else {
+    echo "<script>document.getElementById('a5').style.display = \"none\";
+    document.getElementById(\"a7\").style.display = \"none\";
+    document.getElementById('a4').style.display = \"inline\"; 
+    document.getElementById('a6').style.display = \"inline\";               
+    </script>";
+}
+
+?>

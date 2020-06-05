@@ -1,3 +1,37 @@
+<?php
+
+class DB
+{
+    private static $db = NULL;
+    public static function get_connnection()
+    {
+        if (is_null(self::$db)) {
+            self::$db = new PDO('mysql:host=localhost;dbname=forg_database', 'root', '');
+        }
+        return self::$db;
+    }
+}
+
+$id = $_COOKIE['id'];
+
+$sql = "SELECT first_name,last_name,username,email,phone_number FROM users WHERE id = :index";
+$cerere = DB::get_connnection()->prepare($sql);
+$cerere->execute([
+    'index' => "$id"
+]);
+$data = $cerere->fetch();
+
+if(!empty($data)){
+    $nume = $data["first_name"];
+    $prenume = $data["last_name"];
+    $username = $data["username"];
+    $email = $data["email"];
+    $nr_telefon = $data["phone_number"];
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="stylesheet" type="text/css" href="../css/profile/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="../logout.js"></script>
 </head>
@@ -38,25 +73,12 @@
             </div>
             <div id="profile_content">
                 <section id="about_user_section">
-                    <h3><img src="assets/icons/user_icon.png" alt="user icon">Ciprian Ursulean</h3>
-                    <h3><img src="assets/icons/email_icon.png" alt="email icon">ciprian.ursulean5@gmail.com</h3>
-                    <h3><img src="assets/icons/location_icon.png" alt="location icon">Romania</h3>
+                    <?php echo '<h3><img src="assets/icons/user_icon.png" alt="user icon">'.$nume.' '.$prenume.'</h3>'?>
+                    <?php echo '<h3><img src="assets/icons/user_icon.png" alt="user icon">'.$username.'</h3>'?>
+                    <?php echo '<h3><img src="assets/icons/email_icon.png" alt="email icon">'.$email.'</h3>'?>
+                    <?php echo '<h3><img src="assets/icons/location_icon.png" alt="location icon">'.$nr_telefon.'</h3>'?>
                 </section>
-                <section id="about_user_biography">
-                    <h3>Bibliography</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </section>
-                <section id="about_user_favorite_categories">
-                    <h3>Favorite food categories</h3>
-                    <div class="items">
-                        <a class="food_category" href="#">Grains, Beans and Nuts</a><br>
-                        <a class="food_category" href="#">Fruits</a>
-                        <a class="food_category" href="#">Vegetables</a><br>
-                        <a class="food_category" href="#">Meat and Poultry</a>
-                        <a class="food_category" href="#">Fish and Seafood</a>
-                        <a class="food_category" href="#">Dairy Foods</a>
-                    </div>
-                </section>
+                
                 <section id="about_user_shopping_list">
                     <h3><img id="list_icon" class="favorite_icon" src="assets/icons/shopping_list_icon.png" alt="shopping list icon">Your shopping lists <img class="goto_icon" id="goto_food" src="assets/icons/goto_icon.png" alt="goto_icon"></h3>
                 </section>

@@ -75,6 +75,14 @@ $_SESSION['index'] = 1;
             xmlhttp.open("GET", "search.php?str=" + str, true);
             xmlhttp.send();
         }
+
+        function addToFavorites(id) {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.open("GET", "addToFav.php?i=" + id, true);
+            xmlhttp.send();
+            console.log(id);
+        }
     </script>
     <title>Forg</title>
 </head>
@@ -83,12 +91,12 @@ $_SESSION['index'] = 1;
     <div class="DIVmare">
         <header class="nav-bar">
             <nav>
-                <a id="a1" href="#"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
-                <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-                <a id="a3" href="#"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
-                <a id="a4" href="#">LOGIN</a>
-                <a id="a5" href="#" onclick="logout()">LOGOUT</a>
-                <a id="a6" href="#">SIGN UP</a>
+                <a id="a1" href="../index.html"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
+                <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
+                <a id="a4" href="../signup/sign_up.php">SIGN UP</a>
+                <a id="a7" href="../profile/profileDemo.php">MY PROFILE</a>
+                <a id="a5" href="../logout.php">LOGOUT</a>
+                <a id="a6" href="../login/login.php">LOGIN</a>
             </nav>
         </header>
 
@@ -209,12 +217,15 @@ $_SESSION['index'] = 1;
 
 
 if (isset($_COOKIE['user'])) {  //daca avem user logat
+    print_r($_COOKIE);
     echo "<script>document.getElementById(\"a4\").style.display = \"none\";
                   document.getElementById(\"a6\").style.display = \"none\";
-                  document.getElementById(\"a5\").style.display = \"inline\";    
+                  document.getElementById(\"a5\").style.display = \"inline\";
+                  document.getElementById(\"a7\").style.display = \"inline\";    
           </script>";
 } else {
     echo "<script>document.getElementById('a5').style.display = \"none\";
+    document.getElementById(\"a7\").style.display = \"none\";
     document.getElementById('a4').style.display = \"inline\"; 
     document.getElementById('a6').style.display = \"inline\";               
     </script>";

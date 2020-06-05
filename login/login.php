@@ -13,7 +13,7 @@ class DB
 }
 
 if (isset($_COOKIE['user'])) {
-    header("Location: ../index.html");
+    header("Location: ../Categories/forg.php");
 } else {
 
     $username = '';
@@ -32,10 +32,14 @@ if (isset($_COOKIE['user'])) {
         $row = $cerere->fetch();
 
         if ($cerere->rowCount() == 1) {
-            header("Location: profileDemo.html");
+            header("Location: ../Categories/forg.php");
             $cookie_name = "user";
             $cookie_value = $username;
             setcookie($cookie_name, $cookie_value, time() + 7200, "/"); // 2 ore
+
+            $cookie_name = "id";
+            $cookie_value = $row[0];
+            setcookie($cookie_name, $cookie_value, time() + 7200, "/");
         } else {
             echo "Nu merge";
         }
@@ -53,6 +57,7 @@ if (isset($_COOKIE['user'])) {
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="stylesheet" type="text/css" href="../css/login/login.css">
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Login to FORG</title>
 </head>
@@ -60,10 +65,10 @@ if (isset($_COOKIE['user'])) {
 <body>
     <header class="nav-bar">
         <nav>
-            <a id="a1" href="#"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
-            <a id="a2" href="#"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-            <a id="a3" href="#"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
-            <a id="a4" href="#">SIGN UP</a>
+            <a id="a1" href="../index.php"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
+            <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
+            <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
+            <a id="a4" href="../signup/sign_up.php">SIGN UP</a>
         </nav>
     </header>
     <div class="container">

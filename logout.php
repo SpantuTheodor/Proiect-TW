@@ -1,7 +1,10 @@
 <?php
 
-session_destroy();
 unset($_COOKIE['user']);
-header("Location: index.html");
+setcookie('user',null, 1, "/");
+unset($_COOKIE['id']);
+setcookie('id',null, 1, "/");
+
+header("Location: index.php");
 
 ?>
