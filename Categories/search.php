@@ -31,7 +31,7 @@ foreach ($data as $mancare) {
     } else {
         $vegetarian = "da";
     }
-
+    if(isset($_COOKIE['id'])){
     echo " <article id='id1'>
              <div class='poze' style='background-image: url(\"$mancare[1]\")'>
              </div>
@@ -43,5 +43,17 @@ foreach ($data as $mancare) {
                         <a target='_blank' href='getIdMancare.php?id=$mancare[6]' class='pop-up-button' >Citeste mai mult...</a>
              </div>                         
          </article>";
+    }
+    else{
+        echo " <article id='id1'>
+             <div class='poze' style='background-image: url(\"$mancare[1]\")'>
+             </div>
+             <div class='informatii'>
+                 <h2>$mancare[0]</h2>
+                 <p>Pret: $mancare[2] RON &nbsp &nbsp &nbsp &nbsp Aprecieri: $mancare[3] &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $mancare[5]</p>
+                        <a target='_blank' href='getIdMancare.php?id=$mancare[6]' class='pop-up-button' >Citeste mai mult...</a>
+             </div>                         
+         </article>";
+    }
 }
 ?>

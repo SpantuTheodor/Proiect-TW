@@ -1,3 +1,7 @@
+*{
+    font-family: 'Montserrat' !important;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -314,7 +318,7 @@ button.pop-up-button {
     background-color: rgba(255, 68, 0, 0.75);
     font-weight: bold;
     color: white;
-    height: 20%;
+    height: 100px;
 }
 
 button.pop-up-button:hover {
@@ -343,11 +347,11 @@ button.pop-up-button:hover {
 }
 
 form {
-    width: 30%;
+    width: 200px;
     text-align: center;
     margin-right: 35%;
     margin-left: 35%;
-    height: 5%;
+    height: 60px;
     margin-bottom: 3%;
     text-decoration: none;
     font-family: 'Montserrat';

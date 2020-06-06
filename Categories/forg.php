@@ -85,7 +85,7 @@ $_SESSION['index'] = 1;
             console.log(id);
         }
 
-        
+
         function addToShoppingList(id) {
             var xmlhttp = new XMLHttpRequest();
 
@@ -110,14 +110,30 @@ $_SESSION['index'] = 1;
             console.log(id);
         }
 
-        function decreaseOpacity(id){
-         document.getElementById(id).style.opacity="0.5";
+        function decreaseOpacity(id) {
+            document.getElementById(id).style.opacity = "0.5";
         }
 
-        function increaseOpacity(id){
-         document.getElementById(id).style.opacity="1";
+        function increaseOpacity(id) {
+            document.getElementById(id).style.opacity = "1";
         }
 
+        function refreshLikes() {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("MORE").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "refresh.php", true);
+            xmlhttp.send();
+        }
+
+        function decrementLikes(id) {
+            var a = parseInt(document.getElementById(id).innerHTML);
+            document.getElementById(id).innerHTML = a - 1;
+        }
     </script>
     <title>Forg</title>
 </head>
@@ -261,7 +277,6 @@ $_SESSION['index'] = 1;
 
 
 if (isset($_COOKIE['user'])) {  //daca avem user logat
-    print_r($_COOKIE);
     echo "<script>document.getElementById(\"a4\").style.display = \"none\";
                   document.getElementById(\"a6\").style.display = \"none\";
                   document.getElementById(\"a5\").style.display = \"inline\";
