@@ -20,6 +20,12 @@ $cerere = DB::get_connnection()->prepare($sql);
 $cerere->execute([
     'indexuser' => "$id_user",
     'index' => "$id"
-])
+]);
+
+$query = "UPDATE mancare SET numar_aprecieri = numar_aprecieri - 1 WHERE id = :index";
+$request =  DB::get_connnection()->prepare($query);
+$request->execute([
+    'index' => "$id"
+]);
 
 ?>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 class DB
 {
     private static $db = NULL;
@@ -12,10 +13,10 @@ class DB
     }
 }
 
-$conditie = 0;
-$nume = ' ';
+$index = $_SESSION['index'];//luam indexul sesiunii pt a returna tot pana unde ramasesem
 
-for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
+
+for ($i = 1; $i < $_SESSION["index"]; $i++) {
     $sql = "SELECT nume,imagine,pret,numar_aprecieri,este_vegetarian , categorie, id FROM mancare WHERE id = :index";
     $cerere = DB::get_connnection()->prepare($sql);
     $cerere->execute([
@@ -32,9 +33,7 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
         $id = $data["id"];
 
 
-        if ($_SESSION['nume'] == $nume || $nume == NULL) {
-            $conditie = 1;
-        }
+        
         if ($vegetarian == 0) {
             $vegetarian = "nu";
         } else {
@@ -59,7 +58,7 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
             $data3 = $cerere->fetch();
 
             $variabila = $data['id'];
-            if ($conditie == 0 && !$data2 && !$data3) {
+            if (!$data2 && !$data3) {
                 echo " <article id='id1'>
                     <div class='poze' style='background-image: url(\"$poza\")'>
                     </div>
@@ -71,19 +70,19 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
                         <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
                     </div>                     
                 </article>";
-            } else if ($conditie == 0 && $data2 && !$data3) {
+            } else if ($data2 && !$data3) {
                 echo " <article id='id1'>
                         <div class='poze' style='background-image: url(\"$poza\")'>
                         </div>
                         <div class='informatii'>
                             <img title='Add to favorites' class='love_icon' id='f$id' src='assets/icons/favorite_icon.png' alt='add to favorites icon' onclick=\"deleteFromFavorites('$id') ; increaseOpacity('f$id') ; refreshLikes()\">
-                            <img title='Add to shoppping list' class='love_icon' id='s$id' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' onclick=\"addToShoppingList('$id') ; increaseOpacity('s$id') ; refreshLikes() \" style='width: 24px; height: 24px; opacity:0.5;'>
+                            <img title='Add to shoppping list' class='love_icon' id='s$id' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' onclick=\"addToShoppingList('$id') ; increaseOpacity('s$id') ; refreshLikes()\" style='width: 24px; height: 24px; opacity:0.5;'>
                             <h2>$nume</h2>
                             <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: <span id='span$id'>$aprecieri</span> &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
                             <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
                         </div>                     
                     </article>";
-            } else if ($conditie == 0 && !$data2 && $data3) {
+            } else if (!$data2 && $data3) {
                 echo " <article id='id1'>
                             <div class='poze' style='background-image: url(\"$poza\")'>
                             </div>
@@ -95,7 +94,7 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
                                 <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
                             </div>                     
                         </article>";
-            } else if ($conditie == 0 && $data2 && $data3) {
+            } else if ($data2 && $data3) {
                 echo " <article id='id1'>
                         <div class='poze' style='background-image: url(\"$poza\")'>
                         </div>
@@ -120,7 +119,8 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
                         </div>                     
                     </article>";
         }
-        $_SESSION['nume'] = $nume;
+       
     }
 }
-$_SESSION["index"] += 5;
+
+?>

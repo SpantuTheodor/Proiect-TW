@@ -20,6 +20,6 @@ $cerere = DB::get_connnection()->prepare($sql);
 $cerere->execute([
     'indexuser' => "$id_user",
     'index' => "$id"
-])
+]);
 
 ?>
