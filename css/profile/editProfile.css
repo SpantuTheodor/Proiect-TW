@@ -1,0 +1,85 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: url('../../profile/assets/doodle.png');
+    background-size: 30% auto;
+}
+
+.main-content {
+    width: 50%;
+    background: rgba(255, 255, 255, 0.79);
+    height: 950px;
+    border-radius: 20px;
+    margin: auto;
+    position: relative;
+    top: 50px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    text-align: center;
+    z-index: 2000;
+}
+
+.main-content h2 {
+    text-align: center;
+    padding-top: 30px;
+    font-weight: 100;
+}
+
+.main_form {
+    width: 90%;
+    height: 70px;
+}
+
+.main_form input, .main_form label {
+    float: left;
+    margin-left: 32px;
+}
+
+.main_form input {
+    width: 80%;
+    height: 40px;
+    border-bottom: 2px solid #263238;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+input[type = "submit"] {
+    width: 120px;
+    height: 40px;
+    border: none;
+    text-align: center;
+    background: orangered;
+    color: white;
+    cursor: pointer;
+    transition: .8s;
+    float: right;
+    position: relative;
+    bottom: 55px;
+    margin-right: -20px;
+}
+
+input[type = "submit"]:hover {
+    background: orange;
+}
+
+input[type = "file"] {
+    border: none;
+    position: relative;
+    top: 10px;
+}
+
+/* https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
+/* eliminam outline-ul albastru cand isi ia inputul focus, pentru design */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.spacer {
+    padding: 50px;
+}

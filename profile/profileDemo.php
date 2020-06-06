@@ -14,19 +14,20 @@ class DB
 
 $id = $_COOKIE['id'];
 
-$sql = "SELECT first_name,last_name,username,email,phone_number FROM users WHERE id = :index";
+$sql = "SELECT first_name,last_name,username,email,phone_number,cale_imagine FROM users WHERE id = :index";
 $cerere = DB::get_connnection()->prepare($sql);
 $cerere->execute([
     'index' => "$id"
 ]);
 $data = $cerere->fetch();
-
+$image_path = '';
 if(!empty($data)){
     $nume = $data["first_name"];
     $prenume = $data["last_name"];
     $username = $data["username"];
     $email = $data["email"];
     $nr_telefon = $data["phone_number"];
+    $image_path = $data["cale_imagine"];
 }
 
 
@@ -69,7 +70,7 @@ if(!empty($data)){
         </header>
         <div id="profile_section">
             <div id="picture_section">
-                <img id="profile_picture" src="assets/default-avatar.png" alt="default avatar image">
+                <?php echo "<img id='profile_picture' src='$image_path' alt='default avatar image'>" ?>
             </div>
             <div id="profile_content">
                 <section id="about_user_section">
