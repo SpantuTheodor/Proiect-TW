@@ -30,6 +30,12 @@ if(!empty($data)){
     $image_path = $data["cale_imagine"];
 }
 
+$sql = "SELECT nume FROM grup a JOIN grupuri b ON a.id = b.id_grup WHERE b.id_utilizator = :index";
+$cerere = DB::get_connnection()->prepare($sql);
+$cerere->execute([
+    'index' => "$id"
+]);
+$data = $cerere->fetchAll();
 
 ?>
 
@@ -76,6 +82,11 @@ if(!empty($data)){
                     <?php echo '<h3><img src="assets/icons/user_icon.png" alt="user icon">'.$username.'</h3>'?>
                     <?php echo '<h3><img src="assets/icons/email_icon.png" alt="email icon">'.$email.'</h3>'?>
                     <?php echo '<h3><img src="assets/icons/location_icon.png" alt="location icon">'.$nr_telefon.'</h3>'?>
+                    <?php echo '<h3><img src="assets/icons/location_icon.png" alt="location icon">';
+                        foreach($data as $index){
+                            echo "$index[nume] &nbsp &nbsp ";
+                        }
+                    echo '</h3>';?>
                 </section>
                 
                 <section id="about_user_shopping_list">

@@ -13,11 +13,11 @@ class DB
 }
 
 $firstname = '';
-$lastname ='';
-$id =0;
-$email ='';
+$lastname = '';
+$id = 0;
+$email = '';
 $password = '';
-$username ='';
+$username = '';
 
 if (!empty($_POST)) {
     $firstname = $_POST['fname'];
@@ -27,7 +27,7 @@ if (!empty($_POST)) {
     $phonenumber = $_POST['phone-nr'];
     $address = $_POST['address'];
     $username = $_POST['uname'];
-    $eroare = 0; 
+    $eroare = 0;
 
     $sql = "SELECT phone_number FROM users WHERE phone_number = :phonenumber";
     $cerere = DB::get_connnection()->prepare($sql);
@@ -35,7 +35,7 @@ if (!empty($_POST)) {
         'phonenumber' => $phonenumber
     ]);
 
-    if($phonenumber != 0) {
+    if ($phonenumber != 0) {
         if ($cerere->rowCount() >= 1) {
             echo '<div class="warning">Numarul de telefon este deja folosit!</div>';
             $eroare = 1;
@@ -48,21 +48,21 @@ if (!empty($_POST)) {
         'email' => $email
     ]);
     if ($cerere->rowCount() >= 1) {
-         echo '<div class="warning">Adresa de Email este deja folosita!</div>';
-         $eroare = 1;
+        echo '<div class="warning">Adresa de Email este deja folosita!</div>';
+        $eroare = 1;
     }
-    
+
     $sql = "SELECT username FROM users WHERE username = :uname";
     $cerere = DB::get_connnection()->prepare($sql);
     $cerere->execute([
         'uname' => $username
     ]);
     if ($cerere->rowCount() >= 1) {
-         echo '<div class="warning">Username-ul este deja folosit!</div>';
-         $eroare = 1;
+        echo '<div class="warning">Username-ul este deja folosit!</div>';
+        $eroare = 1;
     }
 
-    if($eroare != 1) {
+    if ($eroare != 1) {
         $sql = "INSERT INTO users (first_name,last_name,username,password,email,phone_number ) VALUES( :firstname , :lastname , :uname , :pass, :mail, :phonenumber )";
         $cerere = DB::get_connnection()->prepare($sql);
         $cerere->execute([
@@ -72,6 +72,54 @@ if (!empty($_POST)) {
             'pass'         => $password,
             'mail'         => $email,
             'phonenumber'  => $phonenumber
+        ]);
+    }
+
+    sleep(1); //pentru a apuca sa fie inserat utilizatorul cu un id
+
+    $sql = "SELECT id FROM users WHERE username = :uname";//cautam id utilizatorului abia creat pentru a insera si grupurile din care face parte in db
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        'uname' => $username
+    ]);
+    $data = $cerere->fetch();
+    $id = $data['id'];
+    
+    if (isset($_POST['grup1'])) {
+        $grup1 = $_POST['grup1'];
+
+        $sql = "INSERT INTO grupuri (id_utilizator,id_grup) VALUES( :idu , :idg)";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'idu' => $id,
+            'idg' => 1
+        ]);
+    }
+    if (isset($_POST['grup2'])) {
+        $grup1 = $_POST['grup2'];
+        $sql = "INSERT INTO grupuri (id_utilizator,id_grup) VALUES( :idu , :idg)";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'idu' => $id,
+            'idg' => 2
+        ]);
+    }
+    if (isset($_POST['grup3'])) {
+        $grup1 = $_POST['grup3'];
+        $sql = "INSERT INTO grupuri (id_utilizator,id_grup) VALUES( :idu , :idg)";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'idu' => $id,
+            'idg' => 3
+        ]);
+    }
+    if (isset($_POST['grup4'])) {
+        $grup1 = $_POST['grup4'];
+        $sql = "INSERT INTO grupuri (id_utilizator,id_grup) VALUES( :idu , :idg)";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'idu' => $id,
+            'idg' => 4
         ]);
     }
 }
@@ -86,6 +134,7 @@ if (!empty($_POST)) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,6 +147,7 @@ if (!empty($_POST)) {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Create your Forg account</title>
 </head>
+
 <body>
     <div class="container">
         <header class="nav-bar">
@@ -128,10 +178,21 @@ if (!empty($_POST)) {
                     <input class="required" type="password" id="password" name="password" placeholder="Enter your password..." required><br><br>
 
                     <label for="phone-nr">Phone number:</label>
-                    <input class="required" type="text" id="phone-nr" name="phone-nr" placeholder="Enter your phone number..." ><br><br>
+                    <input class="required" type="text" id="phone-nr" name="phone-nr" placeholder="Enter your phone number..."><br><br>
 
                     <label for="address">Adress:</label>
-                    <input class="required" type="text" id="address" name="address" placeholder="Enter your address..." ><br><br>
+                    <input class="required" type="text" id="address" name="address" placeholder="Enter your address..."><br><br><br>
+
+                    <input class="grup" type="checkbox" name="grup1" value="grup1">
+                    <label for="vehicle1">Iubitori Pizza</label><br><br>
+                    <input class="grup" type="checkbox" name="grup2" value="grup2">
+                    <label for="vehicle2">Vegetarieni</label><br><br>
+                    <input class="grup" type="checkbox" name="grup3" value="grup3">
+                    <label for="vehicle2">Anti Fast-food</label><br><br>
+                    <input class="grup" type="checkbox" name="grup4" value="grup4">
+                    <label for="vehicle2">Student (Zacusca lovers)</label><br><br>
+
+
                     <input id="submit-input" type="submit" name="Create account">
                 </form>
             </div>
@@ -147,4 +208,5 @@ if (!empty($_POST)) {
             </div>
         </div>
 </body>
+
 </html>
