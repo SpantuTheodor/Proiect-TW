@@ -174,22 +174,22 @@ if (!empty($_POST)) {
         <form id="contact" role="form" method="post" action="contactUs.php">
             <div class="form-group">
                 <label for="name" class="control-label">Name</label>
-                <input placeholder="Your name" type="text" tabindex="1" required autofocus id="name" name="name" value="<?php echo isset($fields['name']) ? _e($fields['name']) : '' ?>">
+                <input placeholder="  Your name" type="text" tabindex="1" required autofocus id="name" name="name" value="<?php echo isset($fields['name']) ? _e($fields['name']) : '' ?>">
             </div>
 
             <div class="form-group">
                 <label for="email" class="control-label">Email</label>
-                <input placeholder="Your Email Address" type="email" tabindex="2" required id="email" name="email" value="<?php echo isset($fields['email']) ? _e($fields['email']) : '' ?>">
+                <input placeholder="  Your Email Address" type="email" tabindex="2" required id="email" name="email" value="<?php echo isset($fields['email']) ? _e($fields['email']) : '' ?>">
             </div>
 
             <div class="form-group">
                 <label for="message" class="control-label">Message</label>
-                <textarea placeholder="Type your Message Here...." tabindex="3" required id="message" name="message"><?php echo isset($fields['message']) ? _e($fields['message']) : '' ?></textarea>
+                <textarea placeholder="  Type your Message Here...." tabindex="3" required id="message" name="message"><?php echo isset($fields['message']) ? _e($fields['message']) : '' ?></textarea>
             </div>
 
             <div class="form-group">
                 <label for="human" class="control-label">Human Verification</label>
-                <input placeholder="2 + 5 = ?" type="text" tabindex="4" id="human" name="human">
+                <input placeholder="  2 + 5 = ?" type="text" tabindex="4" id="human" name="human">
             </div>
             <div class="form-group">
                 <button name="submit" type="submit" tabindex="5" id="contact-submit" data-submit="...Sending">Submit</button>

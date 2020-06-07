@@ -140,6 +140,53 @@
             </div>
         </div>
 
+        <script>
+            var pozitie_actuala = 1;
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("slideshow-container").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "trending.php?i=" + pozitie_actuala, true);
+            xmlhttp.send();
+
+            function nextTrending(pozitie_actuala) {
+                var xmlhttp = new XMLHttpRequest();
+                pozitie_actuala = pozitie_actuala + 1;
+                if (pozitie_actuala == 11) {
+                    pozitie_actuala = 1;
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("slideshow-container").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "trending.php?i=" + pozitie_actuala, true);
+                xmlhttp.send();
+            }
+
+            function previousTrending(pozitie_actuala) {
+                var xmlhttp = new XMLHttpRequest();
+                pozitie_actuala = pozitie_actuala - 1;
+                if (pozitie_actuala == 0) {
+                    pozitie_actuala = 10;
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("slideshow-container").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "trending.php?i=" + pozitie_actuala, true);
+                xmlhttp.send();
+            }
+        </script>
+
+        <div id="slideshow-container">
+
+        </div>
+
 
         <!-- FOOTER START -->
         <div class="footer">
