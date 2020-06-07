@@ -118,7 +118,7 @@
         // iau imaginea incarcata si o introduc in folderul general unde se afla imaginile mancarilor. 
         // actualizez noua cale in fisierul general care va fi si calea finala pentru mancarea introdusa
         // returnez noua cale a imaginii in caz de upload cu sucess, altfel returnez ""
-        $target_dir  = "../Categories/assets";
+        $target_dir  = "../Categories/assets/";
         $target_file = $target_dir . $_FILES["image_path"]["name"]; 
         
         // daca imaginea e mai mare de 5mb nu o incarc
