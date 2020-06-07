@@ -81,10 +81,10 @@ if (!empty($_POST)) {
     <div class="container1">
         <header class="nav-bar">
             <nav>
-                <a id="a1" href="#"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
-                <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">TRENDING</a>
+                <a id="a1" href="../index.php"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
+                <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">CATEGORIES</a>
                 <a id="a4" href="../signup/sign_up.php">SIGN UP</a>
-                <a id="a7" href="profile/profileDemo.php">MY PROFILE</a>
+                <a id="a7" href="../profile/profileDemo.php">MY PROFILE</a>
                 <a id="a5" href="../logout.php">LOGOUT</a>
                 <a id="a6" href="../login/login.php">LOGIN</a>
             </nav>

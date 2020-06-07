@@ -56,16 +56,14 @@ if(!empty($data)){
                 <img id="login_menu_icon" src="assets/icons/down.png" alt="drop-down menu">
             </nav>
             <div id="login_menu">
-                <a href="#">Vizualizare profil</a>
-                <a href="#">Modificare profil</a>
+                <a href="editProfile.php">Modificare profil</a>
                 <a href="#" onclick="logout()">Deconectare</a>
             </div>
             <div id="main_menu">
                 <img id="close" src="assets/icons/close.png" alt="close menu">
-                <a href="#">Acasa</a>
-                <a href="#">Catalog</a>
-                <a href="#">Lista preferate</a>
-                <a href="#">Contact</a>
+                <a href="../index.php">Acasa</a>
+                <a href="../Categories/forg.php">Catalog</a>
+                <a href="../ContactUs/contactUs.php">Contact</a>
             </div>
         </header>
         <div id="profile_section">
