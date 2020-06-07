@@ -103,7 +103,6 @@ if (!empty($_POST)) {
                 <li>
                     <p> than the love for food.</p>
                 </li>
-                <li><button id="button">How it works</button></li>
             </ul>
         </div>
     </div>

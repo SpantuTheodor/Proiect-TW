@@ -12,7 +12,7 @@
     padding: 0 20px 20px 20px;
 }
 
-.footer .col h1 {
+.footer .contain .col h1 {
     margin: 0;
     font-family: inherit;
     font-size: 12px;
@@ -21,6 +21,7 @@
     color: #0F4C81;
     text-transform: uppercase;
     letter-spacing: 0.250em;
+    text-align: center;
 }
 
 .clearfix {
