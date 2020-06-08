@@ -1,4 +1,9 @@
 <?php
+
+if(!isset($_COOKIE['id'])){ //daca userul incearca sa acceseze pagina fara sa fie logat prin path
+    header("Location: ../login/login.php");
+}
+
 class DB
 {
     private static $db = NULL;

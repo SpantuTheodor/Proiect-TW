@@ -1,5 +1,9 @@
 <?php
 
+if(!isset($_COOKIE['id'])){
+    header("Location: ../login/login.php");
+}
+
 class DB
 {
     private static $db = NULL;
@@ -95,9 +99,6 @@ $data = $cerere->fetchAll();
                 <section id="about_user_favorite_food">
                     <h3><img id="food_icon" class="favorite_icon" src="assets/icons/favorite_food_icon.png" alt="favorite food icon">Your favorite food <img class="goto_icon" id="goto_food" src="assets/icons/goto_icon.png" alt="goto_icon"></h3>
                 </section>
-                <section id="about_user_favorite_restaurants">
-                    <h3><img id="restaurant_icon" class="favorite_icon" src="assets/icons/restaurant_icon.png" alt="favorite restaurant icon"> Your favorite restaurants <img class="goto_icon" id="goto_restaurant" src="assets/icons/goto_icon.png" alt="goto_icon"></h3>
-                </section>
                 <section id="about_user_statistics">
                     <h3><img id="statistics_icon" class="favorite_icon" src="assets/icons/chart.png" alt="statistics icon"> Your statstics <img class="goto_icon" id="goto_statistics" src="assets/icons/goto_icon.png" alt="goto_icon"></h3>
                 </section>
@@ -110,7 +111,7 @@ $data = $cerere->fetchAll();
                 <div class="col">
                     <h1>&copy; FORG - Made &amp; Designed By Rogoza Calin Andrei, Spantu Theodor Ioan, Ursulean Ciprian</h1>
                 </div>
-                <div class="clearfix"></div>
+                
             </div>
         </div>
     </div>

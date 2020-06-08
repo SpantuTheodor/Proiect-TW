@@ -1,5 +1,9 @@
 <?php
 
+if(!isset($_COOKIE['id'])){
+    header("Location: ../login/login.php");
+}
+
 class DB
 {
     private static $db = NULL;
@@ -14,7 +18,7 @@ class DB
 
 $id = $_COOKIE['id'];
 
-$sql = "SELECT m.nume,m.imagine,m.categorie FROM lista_cumparaturi p JOIN mancare m ON p.id_mancare = m.id WHERE p.id_utilizator = :index";
+$sql = "SELECT m.nume,m.imagine,m.categorie,m.id FROM lista_cumparaturi p JOIN mancare m ON p.id_mancare = m.id WHERE p.id_utilizator = :index";
 $cerere = DB::get_connnection()->prepare($sql);
 $cerere->execute([
     'index' => "$id"
@@ -28,7 +32,7 @@ $data = $cerere->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorite food</title>
+    <title>Shopping list</title>
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="stylesheet" type="text/css" href="../css/favorite_food/favorite_food.css">
@@ -46,8 +50,8 @@ $data = $cerere->fetchAll();
             <div class="food_wrapper">
             <?php
                 foreach($data as $mancare){
-                    echo "<div class='favorite_food'>
-                    <img class='remove_favorite_icon' src='assets/icons/favorite_icon.png' alt='remove from favorite icon'>
+                    echo "<div class='favorite_food' id='list$mancare[3]'>
+                    <img class='remove_favorite_icon' src='assets/icons/x.png' alt='remove from shopping list icon' style=\"height:25px;width:25px;\" onclick=\"deleteFromList('$mancare[3]');deleteJS('list$mancare[3]')\">
                     <img class='food_pic' src='../Categories/$mancare[1]' alt='food pic'>
                     <p class='food_title'>$mancare[0]</p>
                     <p class='food_basic_info'>$mancare[2]</p>
@@ -68,6 +72,11 @@ $data = $cerere->fetchAll();
         </div>
       </div>
     </div>
+    <script>
+        function deleteJS(fav) {
+    document.getElementById(fav).style.display="none";
+}
+    </script>
     <script src="../js/favorite_foods.js" async></script>
 </body>
 </html>

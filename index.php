@@ -34,7 +34,7 @@
                     <p id="LOGO">FORG</p>
                 </li>
                 <li>
-                    <p> There is no love sicerer </p>
+                    <p> There is no love sincerer </p>
                 </li>
                 <li>
                     <p> than the love for food.</p>

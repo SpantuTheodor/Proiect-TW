@@ -65,6 +65,7 @@ body {
     margin-left: 64px;
     position: relative;
     top: 64px;
+    margin-bottom: 75px;
 }
 
 #about_user_section img {
@@ -107,7 +108,7 @@ body {
 
 #about_user_statistics {
     height: 60px;
-    background: #78909c;
+    background: #90a4ae;
 }
 
 #about_user_biography,
@@ -289,9 +290,6 @@ body {
 }
 
 @media only screen and (max-width: 1139px) {
-    #profile_section {
-        height: 1540px;
-    }
     .spacer {
         padding: 100px;
     }

@@ -16,12 +16,20 @@ class DB
 
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM mancare WHERE id = :index";
+$sql = "SELECT * FROM mancare WHERE id = :index"; //mancare
 $cerere = DB::get_connnection()->prepare($sql);
 $cerere->execute([
     'index' => $id
 ]);
 $data = $cerere->fetch();
+
+$query = "SELECT r.nume,r.locatie FROM restaurant r JOIN mancare m ON m.id_restaurant = :index"; //restaurant
+$request = DB::get_connnection()->prepare($query);
+$request->execute([
+    'index' => $data["id_restaurant"]
+]);
+$data_restaurant = $request->fetch();
+
 if (!empty($data)) {
     $nume = $data["nume"];
     $poza = $data["imagine"];
@@ -35,7 +43,10 @@ if (!empty($data)) {
     $disponibilitate = $data["disponibilitate"];
     $ingrediente = $data["ingrediente"];
     $restrictii = $data["restrictii"];
-    $restaurante = $data["restaurante"];
+    $restaurant = $data["id_restaurant"];
+
+    $restaurant_nume = $data_restaurant["nume"];
+    $restaurant_locatie = $data_restaurant["locatie"];
 
     if ($vegetarian == 0) {
         $vegetarian = "nu";
@@ -44,7 +55,7 @@ if (!empty($data)) {
     }
     $variabila = $data['id'];
 
-    $ingredient = explode(';', $ingrediente); //what will do here
+    $ingredient = explode(';', $ingrediente);
 
 
     $text = "<h2>$nume</h2>
@@ -57,9 +68,11 @@ if (!empty($data)) {
         <p>Disponibilitate: $disponibilitate</p>
         <p>Numar aprecieri: $aprecieri</p>
         <p>Alergeni: $restrictii</p>
-        <p>Restaurant: </p>
+        <p>Restaurant: <a href=\"$restaurant_locatie\"> $restaurant_nume </a></p>
     </div>";
 }
+
+
 ?>
 
 <script>
@@ -78,6 +91,7 @@ if (!empty($data)) {
     <link href="https://fonts.googleapis.com/css?family=Dosis%7CRoboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="getIdMancare.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <script src="../logout.js"></script>
 
 </head>
@@ -86,12 +100,12 @@ if (!empty($data)) {
 
     <header class="nav-bar">
         <nav>
-            <a id="a1" href="#"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
-            <a id="a2" href="#"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-            <a id="a3" href="#"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
-            <a id="a4" href="#">LOGIN</a>
-            <a id="a5" href="#" onclick="logout()">LOGOUT</a>
-            <a id="a6" href="#">SIGN UP</a>
+            <a id="a1" href="../index.php"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
+            <a id="a2" href="forg.php"><img class="nav-icon" src="assets/icons/trending.png" alt="trending-icon">CATEGORIES</a>
+            <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
+            <a id="a4" href="../login/login.php">SIGN UP</a>
+            <a id="a5" href="../logout.php">LOGOUT</a>
+            <a id="a6" href="../signup/sign_up.php">LOGIN</a>
         </nav>
     </header>
     <div id="info-page">
@@ -113,8 +127,36 @@ if (!empty($data)) {
             </ul>
         </div>
     </div>
+    <div class="spacer">
 
-
+    </div>
+    <div class="footer">
+        <div class="contain">
+            <div class="col">
+                <h1>&copy; FORG - Made &amp; Designed By Rogoza Calin Andrei, Spantu Theodor Ioan, Ursulean Ciprian</h1>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 
 
 </body>
+
+</html>
+
+<?php
+
+
+if (isset($_COOKIE['user'])) {  //daca avem user logat
+    echo "<script>document.getElementById(\"a4\").style.display = \"none\";
+                  document.getElementById(\"a6\").style.display = \"none\";
+                  document.getElementById(\"a5\").style.display = \"inline\"; 
+          </script>";
+} else {
+    echo "<script>document.getElementById('a5').style.display = \"none\";
+    document.getElementById('a4').style.display = \"inline\"; 
+    document.getElementById('a6').style.display = \"inline\";               
+    </script>";
+}
+
+?>

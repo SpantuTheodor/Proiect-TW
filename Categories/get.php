@@ -68,7 +68,15 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
                         <img title='Add to shoppping list' class='love_icon' id='s$id' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' onclick=\"addToShoppingList('$id') ; increaseOpacity('s$id') ; refreshLikes() \" style='width: 24px; height: 24px; opacity:0.5;'>
                         <h2>$nume</h2>
                         <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp  Aprecieri: <span id='span$id'>$aprecieri</span> &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                        <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
+                        <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' style=\"display: inline-block;
+                        border-radius: 5px;
+                        outline-style: none;
+                        cursor: pointer;
+                        background-color: rgba(255, 68, 0, 0.75);
+                        font-weight: bold;
+                        color: white;
+                        padding: 10px 15px;
+                        \">Citeste mai mult...</a>
                     </div>                     
                 </article>";
             } else if ($conditie == 0 && $data2 && !$data3) {
@@ -80,7 +88,15 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
                             <img title='Add to shoppping list' class='love_icon' id='s$id' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' onclick=\"addToShoppingList('$id') ; increaseOpacity('s$id') ; refreshLikes() \" style='width: 24px; height: 24px; opacity:0.5;'>
                             <h2>$nume</h2>
                             <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: <span id='span$id'>$aprecieri</span> &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                            <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
+                            <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' style=\"display: inline-block;
+                            border-radius: 5px;
+                            outline-style: none;
+                            cursor: pointer;
+                            background-color: rgba(255, 68, 0, 0.75);
+                            font-weight: bold;
+                            color: white;
+                            padding: 10px 15px;
+                            \">Citeste mai mult...</a>
                         </div>                     
                     </article>";
             } else if ($conditie == 0 && !$data2 && $data3) {
@@ -92,7 +108,15 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
                                 <img title='Add to shoppping list' class='love_icon' id='s$id' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' onclick=\"deleteFromShoppingList('$id') ; decreaseOpacity('s$id') ; refreshLikes() \" style='width: 24px; height: 24px;'>
                                 <h2>$nume</h2>
                                 <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: <span id='span$id'>$aprecieri</span> &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                                <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
+                                <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' style=\"display: inline-block;
+                                border-radius: 5px;
+                                outline-style: none;
+                                cursor: pointer;
+                                background-color: rgba(255, 68, 0, 0.75);
+                                font-weight: bold;
+                                color: white;
+                                padding: 10px 15px;
+                                \">Citeste mai mult...</a>
                             </div>                     
                         </article>";
             } else if ($conditie == 0 && $data2 && $data3) {
@@ -104,7 +128,15 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
                             <img title='Add to shoppping list' class='love_icon' id='s$id' src='assets/icons/add_to_shopping_list.png' alt='add to shoppping list icon' onclick=\"deleteFromShoppingList('$id') ; decreaseOpacity('s$id') ; refreshLikes() \" style='width: 24px; height: 24px;'>
                             <h2>$nume</h2>
                             <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: <span id='span$id'>$aprecieri</span> &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                            <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
+                            <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' style=\"display: inline-block;
+                            border-radius: 5px;
+                            outline-style: none;
+                            cursor: pointer;
+                            background-color: rgba(255, 68, 0, 0.75);
+                            font-weight: bold;
+                            color: white;
+                            padding: 10px 15px;
+                            \">Citeste mai mult...</a>
                         </div>                     
                     </article>";
             }
@@ -116,7 +148,15 @@ for ($i = $_SESSION["index"]; $i < $_SESSION["index"] + 5; $i++) {
                         <div class='informatii'>
                             <h2>$nume</h2>
                             <p>Pret: $pret RON &nbsp &nbsp &nbsp &nbsp Aprecieri: <span id='span$id'>$aprecieri</span> &nbsp &nbsp &nbsp &nbsp Vegetarian: $vegetarian &nbsp &nbsp &nbsp &nbsp Categorie: $categorie</p>
-                            <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' >Citeste mai mult...</a>
+                            <a target='_blank' href='getIdMancare.php?id=$id' class='pop-up-button' style=\"display: inline-block;
+                            border-radius: 5px;
+                            outline-style: none;
+                            cursor: pointer;
+                            background-color: rgba(255, 68, 0, 0.75);
+                            font-weight: bold;
+                            color: white;
+                            padding: 10px 15px;
+                            \">Citeste mai mult...</a>
                         </div>                     
                     </article>";
         }

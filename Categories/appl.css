@@ -311,7 +311,7 @@ h1 {
 }
 
 button.pop-up-button {
-    border: none;
+    display: inline-block;
     border-radius: 5px;
     outline-style: none;
     cursor: pointer;

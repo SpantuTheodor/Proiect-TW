@@ -1,5 +1,9 @@
 <?php
 
+if(!isset($_COOKIE['id'])){
+    header("Location: ../login/login.php");
+}
+
 class DB
 {
     private static $db = NULL;
@@ -14,7 +18,7 @@ class DB
 
 $id = $_COOKIE['id'];
 
-$sql = "SELECT m.nume,m.imagine,m.categorie FROM mancare_preferata p JOIN mancare m ON p.id_mancare = m.id WHERE p.id_utilizator = :index";
+$sql = "SELECT m.nume,m.imagine,m.categorie,m.id FROM mancare_preferata p JOIN mancare m ON p.id_mancare = m.id WHERE p.id_utilizator = :index";
 $cerere = DB::get_connnection()->prepare($sql);
 $cerere->execute([
     'index' => "$id"
@@ -46,8 +50,8 @@ $data = $cerere->fetchAll();
             <div class="food_wrapper">
             <?php
                 foreach($data as $mancare){
-                    echo "<div class='favorite_food'>
-                    <img class='remove_favorite_icon' src='assets/icons/favorite_icon.png' alt='remove from favorite icon'>
+                    echo "<div class='favorite_food' id='fav$mancare[3]'>
+                    <img class='remove_favorite_icon' src='assets/icons/x.png' alt='remove from favorite icon' style=\"height:25px;width:25px;\" onclick=\"deleteFrom('$mancare[3]');deleteJS('fav$mancare[3]')\">
                     <img class='food_pic' src='../Categories/$mancare[1]' alt='food pic'>
                     <p class='food_title'>$mancare[0]</p>
                     <p class='food_basic_info'>$mancare[2]</p>
