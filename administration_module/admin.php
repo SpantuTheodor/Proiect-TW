@@ -158,6 +158,67 @@
         ]);
     }
 
+    function checkFoodExists($foodId) {
+        $sql = "SELECT * FROM mancare WHERE id = :id";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'id' => $foodId
+        ]);
+        return $cerere->rowCount() >= 1;
+    }
+
+    function deleteFood($foodId) {
+        if (!checkFoodExists($foodId)) {
+            echo '<script language="javascript">';
+            echo 'alert("Food you want to delete does not exists!")';
+            echo '</script>';
+            return;
+        }
+        $sql = "DELETE FROM mancare WHERE id = :id";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'id' => $foodId
+        ]);
+    }
+
+    function checkRestaurantExists($restaurantId) {
+        $sql = "SELECT * FROM restaurant WHERE id = :id";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'id' => $restaurantId
+        ]);
+        return $cerere->rowCount() >= 1;
+    }
+
+    function createRestaurant($restaurantName, $restaurantLink) {
+        if (checkRestaurantExists($restaurantLink)) {
+            echo '<script language="javascript">';
+            echo 'alert("Restaurant you want to insert already exists!")';
+            echo '</script>';
+            return;
+        }
+        $sql = "INSERT INTO restaurant (nume, locatie) VALUES (:nume, :locatie)";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'nume'    => $restaurantName,
+            'locatie' => $restaurantLink
+        ]);
+    }
+
+    function deleteRestaurant($restaurantId) {
+        if (!checkRestaurantExists($restaurantId)) {
+            echo '<script language="javascript">';
+            echo 'alert("Restaurant you want to delete does not exists!")';
+            echo '</script>';
+            return;
+        }
+        $sql = "DELETE FROM restaurant WHERE id = :id";
+        $cerere = DB::get_connnection()->prepare($sql);
+        $cerere->execute([
+            'id' => $restaurantId
+        ]);
+    }
+
     if (isset($_POST["create-account"])) {
         // iau parametrii trimisi in formular in vederea creerii utilizatorului nou
         $firstName = $_POST["fname"];
@@ -193,6 +254,22 @@
             echo "Add an image!";
         }
     }
+    
+    if (isset($_POST["delete_food"])) {
+        $foodId = $_POST["food_id_to_delete"];
+        deleteFood($foodId);
+    }
+
+    if (isset($_POST["create_restaurant"])) {
+        $restaurantName = $_POST["restaurant_name"];
+        $restaurantLink = $_POST["restaurant_link"];
+        createRestaurant($restaurantName, $restaurantLink);
+    }
+
+    if (isset($_POST["delete_restaurant"])) {
+        $restaurantId = $_POST["restaurant_id_to_delete"];
+        deleteRestaurant($restaurantId);
+    }
 ?>
 
 
@@ -219,6 +296,8 @@
                 <button id="delete_user">Delete user</button>
                 <button id="create_food">Submit new food</button>
                 <button id="delete_food">Delete food</button>
+                <button id="create_restaurant">Create restaurant</button>
+                <button id="delete_restaurant">Delete restaurant</button>
             </div>
             <div class="options_exec_area">
                 <div id="create_user_area">
@@ -291,15 +370,27 @@
                 </div>
                 <div id="delete_food_area">
                     <form id="delete_food_form" class="main_form" method="POST">
-                        <label for="food_name_to_delete">Food name: </label><br>
-                        <input class="required" type="text" id="food_name_to_delete" name="food_name_to_delete" placeholder="Enter food name..." required><br><br>
+                        <label for="food_id">Food id: </label><br>
+                        <input class="required" type="text" id="food_id_to_delete" name="food_id_to_delete" placeholder="Enter food id..." required><br><br>
+                        <input id="submit-input-delete-food" class="delete_input" type="submit" name="delete_food">
+                    </form>
+                </div>
+                <div id="create_restaurant_area">
+                    <form id="create_restaurant_form" class="main_form" method="POST">
+                        <label for="restaurant_name">Restaurant name: </label><br>
+                        <input class="required" type="text" id="restaurant_name" name="restaurant_name" placeholder="Enter restaurant name..." required><br><br>
 
-                        <label for="categorie">Category:</label><br>
-                        <input class="required" type="text" id="categorie_to_delete" name="categorie_to_delete" placeholder="Enter food category..." required><br><br>
-
-                        <label for="price">Price:</label><br>
-                        <input class="required" type="text" id="price_to_delete" name="price_to_delete" placeholder="Enter food price..." required><br><br>
-                        <input id="submit-input-delete-food" class="delete_input" type="submit" name="Delete food">
+                        <label for="restaurant_name">Restaurant link: </label><br>
+                        <input class="required" type="text" id="restaurant_link" name="restaurant_link" placeholder="Enter restaurant link..." required><br><br>
+                        
+                        <input id="submit-input-create-restaurant" type="submit" name="create_restaurant">
+                    </form>
+                </div>
+                <div id="delete_restaurant_area">
+                    <form id="delete_restaurant_form" class="main_form" method="POST">
+                        <label for="restaurant_id_to_delete">Restaurant id: </label><br>
+                        <input class="required" type="text" id="restaurant_id_to_delete" name="restaurant_id_to_delete" placeholder="Enter restaurant id..." required><br><br>
+                        <input id="submit-input-delete-restaurant"  class="delete_input" type="submit" name="delete_restaurant">
                     </form>
                 </div>
             </div>
