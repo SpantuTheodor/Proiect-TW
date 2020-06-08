@@ -106,6 +106,18 @@ header h3 {
     display: none;
 }
 
+#create_restaurant_area {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#delete_restaurant_area {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
 .main_form {
     width: 70%;
     margin: auto;
@@ -138,7 +150,12 @@ button:focus {
     outline: none;
 }
 
-#submit-input-create-user, #submit-input-delete-user, #submit-input-create-food, #submit-input-delete-food {
+#submit-input-create-user,
+#submit-input-delete-user, 
+#submit-input-create-food, 
+#submit-input-delete-food, 
+#submit-input-create-restaurant, 
+#submit-input-delete-restaurant {
     border: none;
     background: #263238;
     color: white;
@@ -155,7 +172,12 @@ button:focus {
     transition: .5s;
 }
 
-#submit-input-create-user:hover, #submit-input-delete-user:hover, #submit-input-create-food:hover, #submit-input-delete-food:hover {
+#submit-input-create-user:hover,
+#submit-input-delete-user:hover,
+#submit-input-create-food:hover, 
+#submit-input-delete-food:hover, 
+#submit-input-create-restaurant:hover, 
+#submit-input-delete-restaurant:hover {
     background: grey;
 }
 
@@ -198,4 +220,14 @@ textarea#retete_area {
 
 #reteta_area_label {
     padding: 10px 0;
+}
+
+#logout_link {
+    float: right;
+    margin-right: 32px;
+    text-decoration: none;
+    color: #37474f;
+    position: relative;
+    top: 20px;
+    cursor: pointer;
 }

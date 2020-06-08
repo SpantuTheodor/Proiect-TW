@@ -30,9 +30,13 @@ if (isset($_COOKIE['user'])) {
             'pass'  => $password
         ]);
         $row = $cerere->fetch();
-
+        
         if ($cerere->rowCount() == 1) {
-            header("Location: ../Categories/forg.php");
+            if ($username == 'admin' && $password == 'admin') {
+                header("Location: ../administration_module/admin.php");
+            } else {
+                header("Location: ../Categories/forg.php");
+            }
             $cookie_name = "user";
             $cookie_value = $username;
             setcookie($cookie_name, $cookie_value, time() + 7200, "/"); // 2 ore

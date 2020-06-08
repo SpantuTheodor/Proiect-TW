@@ -45,3 +45,14 @@
 #sign_up_section {
     height: 850px;
 }
+
+@media only screen and (max-width: 600px)  {
+    .nav-bar nav a {
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .nav-bar {
+        height: 180px;
+    }
+}
