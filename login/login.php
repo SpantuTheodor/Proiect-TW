@@ -30,7 +30,7 @@ if (isset($_COOKIE['user'])) {
             'pass'  => $password
         ]);
         $row = $cerere->fetch();
-        
+
         if ($cerere->rowCount() == 1) {
             if ($username == 'admin' && $password == 'admin') {
                 header("Location: ../administration_module/admin.php");
@@ -70,9 +70,9 @@ if (isset($_COOKIE['user'])) {
     <header class="nav-bar">
         <nav>
             <a id="a1" href="../index.php"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
-            <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-            <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
-            <a id="a4" href="../signup/sign_up.php">SIGN UP</a>
+            <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../categories/assets/icons/categories.png" alt="categories-icon">CATEGORIES</a>
+            <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../categories/assets/icons/about.png" alt="about-icon">ABOUT</a>
+            <a id="a4" href="../signup/sign_up.php"><img class="nav-icon" src="../categories/assets/icons/signup.png" alt="login">SIGN UP</a>
         </nav>
     </header>
     <div class="container">

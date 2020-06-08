@@ -153,9 +153,9 @@ if (!empty($_POST)) {
         <header class="nav-bar">
             <nav>
                 <a id="a1" href="../index.php"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
-                <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">CATEGORIES</a>
-                <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
-                <a id="a4" href="../login/login.php">LOGIN</a>
+                <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../categories/assets/icons/categories.png" alt="categories-icon">CATEGORIES</a>
+                <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../categories/assets/icons/about.png" alt="about-icon">ABOUT</a>
+                <a id="a6" href="../login/login.php"><img class="nav-icon" src="../categories/assets/icons/login.png" alt="login" style="height:24px;width:24px;">LOGIN</a>
             </nav>
         </header>
         <section id="sign_up_section">

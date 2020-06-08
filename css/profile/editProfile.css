@@ -1,3 +1,15 @@
+* {
+    font-family: 'Montserrat' !important;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-icon {
+    padding: 0 8px 0 0;
+    position: relative;
+    top: 5px;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -14,7 +26,7 @@ body {
     margin: auto;
     position: relative;
     top: 50px;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     text-align: center;
     z-index: 2000;
 }
@@ -30,7 +42,8 @@ body {
     height: 70px;
 }
 
-.main_form input, .main_form label {
+.main_form input,
+.main_form label {
     float: left;
     margin-left: 32px;
 }
@@ -46,7 +59,7 @@ body {
     font-size: 16px;
 }
 
-input[type = "submit"] {
+input[type="submit"] {
     width: 120px;
     height: 40px;
     border: none;
@@ -61,18 +74,22 @@ input[type = "submit"] {
     margin-right: -20px;
 }
 
-input[type = "submit"]:hover {
+input[type="submit"]:hover {
     background: orange;
 }
 
-input[type = "file"] {
+input[type="file"] {
     border: none;
     position: relative;
     top: 10px;
 }
 
+
 /* https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
+
+
 /* eliminam outline-ul albastru cand isi ia inputul focus, pentru design */
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -84,7 +101,7 @@ button:focus {
     padding: 70px;
 }
 
-#grup_form{
+#grup_form {
     text-align: left;
     display: block;
     margin: auto;
@@ -93,7 +110,8 @@ button:focus {
     width: 90%;
     margin-left: 5%;
 }
-.grup{
+
+.grup {
     display: block;
     height: 20px !important;
     width: 20px !important;
@@ -102,7 +120,7 @@ button:focus {
     float: right;
 }
 
-#submit_grup{
+#submit_grup {
     text-align: center;
     margin: 0;
     margin-top: 5%;
@@ -111,12 +129,11 @@ button:focus {
     margin-right: 40%;
 }
 
-@media only screen and (max-width: 780px)  {
+@media only screen and (max-width: 780px) {
     .nav-bar nav a {
         display: block;
         margin-bottom: 12px;
     }
-
     .nav-bar {
         height: 220px;
     }

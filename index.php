@@ -17,12 +17,12 @@
     <div class="container1">
         <header class="nav-bar">
             <nav>
-                <a id="a2" href="Categories/forg.php"><img class="nav-icon" src="home/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-                <a id="a3" href="ContactUs/contactUs.php"><img class="nav-icon" src="home/assets/icons/about.png" alt="about-icon">ABOUT</a>
-                <a id="a4" href="signup/sign_up.php">SIGN UP</a>
-                <a id="a7" href="profile/profileDemo.php">MY PROFILE</a>
-                <a id="a5" href="logout.php">LOGOUT</a>
-                <a id="a6" href="login/login.php">LOGIN</a>
+                <a id="a2" href="Categories/forg.php"><img class="nav-icon" src="categories/assets/icons/categories.png" alt="categories-icon">CATEGORIES</a>
+                <a id="a3" href="ContactUs/contactUs.php"><img class="nav-icon" src="categories/assets/icons/about.png" alt="about-icon">ABOUT</a>
+                <a id="a4" href="signup/sign_up.php"><img class="nav-icon" src="categories/assets/icons/signup.png" alt="login">SIGN UP</a>
+                <a id="a7" href="profile/profileDemo.php"><img class="nav-icon" src="categories/assets/icons/profile.png" style="height:24px;width:24px;" alt="profile">MY PROFILE</a>
+                <a id="a5" href="logout.php"><img class="nav-icon" src="categories/assets/icons/logout.png" alt="logout">LOGOUT</a>
+                <a id="a6" href="login/login.php"><img class="nav-icon" src="categories/assets/icons/login.png" alt="login" style="height:24px;width:24px;">LOGIN</a>
             </nav>
         </header>
         <div class="container2">
@@ -181,13 +181,34 @@
                 xmlhttp.open("GET", "trending.php?i=" + pozitie_actuala, true);
                 xmlhttp.send();
             }
+
+            function exportJS() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "exportRSS.php", true);
+                xmlhttp.send();
+            }
         </script>
 
-        <div id="slideshow-container">
-
-        </div>
-
-
+        <div id="slideshow-container"> </div>
+        <a href="exportRSS.php" target="_blank" style="text-decoration:none;">
+            <div id="exportRSS" style="
+                        width:200px;
+                        border-radius: 5px;
+                        outline-style: none;
+                        cursor: pointer;
+                        background-color: rgba(255, 68, 0, 0.75);
+                        font-weight: bold;
+                        color: white;
+                        padding: 10px 15px;
+                        margin:auto; 
+                        text-align:center;   
+                        margin-bottom:100px;
+                        font-family: 'Montserrat';
+                        font-weight:200;
+                        font-size:20px;" onclick="exportJS()">
+                Export clasament
+            </div>
+        </a>
         <!-- FOOTER START -->
         <div class="footer">
             <div class="contain">
