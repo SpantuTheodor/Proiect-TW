@@ -110,3 +110,14 @@ button:focus {
     bottom: 0;
     margin-right: 40%;
 }
+
+@media only screen and (max-width: 780px)  {
+    .nav-bar nav a {
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .nav-bar {
+        height: 220px;
+    }
+}

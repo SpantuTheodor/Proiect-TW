@@ -108,3 +108,17 @@ button:focus {
 #recovery_box {
     height: 400px !important;
 }
+
+@media only screen and (max-width: 742px)  {
+    .main-content-login {
+        height: 500px;
+        width: 70%;
+    }
+    #submit-input {
+        width: 150px;
+    }
+    .spacer {
+        padding: 40px;
+    }
+}
+

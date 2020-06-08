@@ -1,4 +1,9 @@
 <?php
+    if (!isset($_COOKIE['user'])) {
+        // nu sunt logat 
+        header("Location: ../login/login.php");
+    }
+
     class DB
     {
         private static $db = NULL;
@@ -269,7 +274,7 @@
     if (isset($_POST["delete_restaurant"])) {
         $restaurantId = $_POST["restaurant_id_to_delete"];
         deleteRestaurant($restaurantId);
-    }
+    } 
 ?>
 
 
@@ -289,6 +294,7 @@
         <header>
             <img id="godfather_icon" src="assets/godfather_24px.png" alt="Gothfather icon">
             <h3>The Forg Godfathers</h3>
+            <a id="logout_link" href="../logout.php">LOGOUT</a>
         </header>
         <div class="main_content">
             <div class="options">

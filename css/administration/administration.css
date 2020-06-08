@@ -221,3 +221,13 @@ textarea#retete_area {
 #reteta_area_label {
     padding: 10px 0;
 }
+
+#logout_link {
+    float: right;
+    margin-right: 32px;
+    text-decoration: none;
+    color: #37474f;
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+}
