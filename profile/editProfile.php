@@ -1,6 +1,6 @@
 <?php
 
-if(!isset($_COOKIE['id'])){ //daca userul incearca sa acceseze pagina fara sa fie logat prin path
+if (!isset($_COOKIE['id'])) { //daca userul incearca sa acceseze pagina fara sa fie logat prin path
     header("Location: ../login/login.php");
 }
 
@@ -224,6 +224,7 @@ if (isset($_POST["submit_grup"])) {
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="stylesheet" type="text/css" href="../css/profile/editProfile.css">
 
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Edit profile</title>
@@ -231,13 +232,12 @@ if (isset($_POST["submit_grup"])) {
 
 <body>
     <header class="nav-bar">
-        <nav>
-            <a id="a1" href="../index.php"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
-            <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">CATEGORIES</a>
-            <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
-            <a id="a4" href="../profile/profileDemo.php">MY PROFILE</a>
-            <a id="a5" href="../logout.php">LOGOUT</a>
-        </nav>
+    <nav>
+                <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../categories/assets/icons/categories.png" alt="categories-icon">CATEGORIES</a>
+                <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../categories/assets/icons/about.png" alt="about-icon">ABOUT</a>
+                <a id="a7" href="../profile/profileDemo.php"><img class="nav-icon" src="../categories/assets/icons/profile.png" style="height:24px;width:24px;" alt="profile">MY PROFILE</a>
+                <a id="a5" href="../logout.php"><img class="nav-icon" src="../categories/assets/icons/logout.png" alt="logout">LOGOUT</a>
+            </nav>
     </header>
     <section id="main_section">
         <div class="main-content">

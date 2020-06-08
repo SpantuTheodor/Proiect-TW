@@ -83,10 +83,10 @@ $data = $cerere->fetchAll();
             <div id="profile_content">
                 <section id="about_user_section">
                     <?php echo '<h3><img src="assets/icons/user_icon.png" alt="user icon">'.$nume.' '.$prenume.'</h3>'?>
-                    <?php echo '<h3><img src="assets/icons/user_icon.png" alt="user icon">'.$username.'</h3>'?>
+                    <?php echo '<h3><img src="../Categories/assets/icons/username.png" alt="user icon">'.$username.'</h3>'?>
                     <?php echo '<h3><img src="assets/icons/email_icon.png" alt="email icon">'.$email.'</h3>'?>
-                    <?php echo '<h3><img src="assets/icons/location_icon.png" alt="location icon">'.$nr_telefon.'</h3>'?>
-                    <?php echo '<h3><img src="assets/icons/location_icon.png" alt="location icon">';
+                    <?php echo '<h3><img src="../Categories/assets/icons/phone.png" alt="phone icon">'.$nr_telefon.'</h3>'?>
+                    <?php echo '<h3><img src="../Categories/assets/icons/group.png" alt="group icon">';
                         foreach($data as $index){
                             echo "$index[nume] &nbsp &nbsp ";
                         }
