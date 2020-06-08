@@ -53,7 +53,7 @@ $_SESSION['index'] = 1;
             xmlhttp.send();
         }
 
-        function showResult(str) {
+        function showResult(str) { //search
             if (str.length == 0) {
                 document.getElementById("filterresults").style.display = "block";
                 document.getElementById("searchresults").style.display = "none";
@@ -142,7 +142,7 @@ $_SESSION['index'] = 1;
     <div class="DIVmare">
         <header class="nav-bar">
             <nav>
-                <a id="a1" href="../index.html"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
+                <a id="a1" href="../index.php"><img class="nav-icon" src="assets/icons/home.png" alt="home-icon">HOME</a>
                 <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="assets/icons/about.png" alt="about-icon">ABOUT</a>
                 <a id="a4" href="../signup/sign_up.php">SIGN UP</a>
                 <a id="a7" href="../profile/profileDemo.php">MY PROFILE</a>

@@ -1,169 +1,216 @@
 <?php
-    class DB
+class DB
+{
+    private static $db = NULL;
+    public static function get_connnection()
     {
-        private static $db = NULL;
-        public static function get_connnection()
-        {
-            if (is_null(self::$db)) {
-                self::$db = new PDO('mysql:host=localhost;dbname=forg_database', 'root', '');
-            }
-            return self::$db;
+        if (is_null(self::$db)) {
+            self::$db = new PDO('mysql:host=localhost;dbname=forg_database', 'root', '');
         }
+        return self::$db;
     }
-    
+}
+
+$id = $_COOKIE['id'];
+function updateFirstName($newFirstName, $id)
+{
+    $sql = "UPDATE USERS SET first_name = :newFname WHERE id = :id";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':newFname' => $newFirstName,
+        ':id'       => $id
+    ]);
+}
+
+function updateLastName($newLastName, $id)
+{
+    $sql = "UPDATE USERS SET last_name = :newLname WHERE id = :id";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':newLname' => $newLastName,
+        ':id'       => $id
+    ]);
+}
+
+function userNameAlreadyExists($username)
+{
+    // verific daca username-ul nu exista deja la alt user inregistrat
+    $sql = "SELECT username FROM users WHERE username = :uname";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        'uname' => $username
+    ]);
+    return $cerere->rowCount() >= 1;
+}
+
+function updateUsername($newUsername, $id)
+{
+    if (userNameAlreadyExists($newUsername)) {
+        echo '<script language="javascript">';
+        echo 'alert("Username already used!")';
+        echo '</script>';
+        return;
+    }
+    $sql = "UPDATE USERS SET username = :newUsername WHERE id = :id";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':newUsername' => $newUsername,
+        ':id'       => $id
+    ]);
+}
+
+function uploadImage()
+{
+    // iau imaginea incarcata si o introduc in folderul general unde se afla imaginile profilelor. 
+    // actualizez noua cale in fisierul general care va fi si calea finala pentru noua poza introdusa
+    // returnez noua cale a imaginii in caz de upload cu sucess, altfel returnez ""
+    $target_dir  = "assets/thumbnails/";
+    $target_file = $target_dir . $_FILES["image_path"]["name"];
+
+    // daca imaginea e mai mare de 5mb nu o incarc
+    if ($_FILES["image_path"]["size"] > 5000000) {
+        echo '<script language="javascript">';
+        echo 'alert("Image too big. Max file size admitted is 5mb!")';
+        echo '</script>';
+        return "";
+    }
+
+    // mut poza la calea dorita
+    if (!move_uploaded_file($_FILES["image_path"]["tmp_name"], $target_file)) {
+        echo '<script language="javascript">';
+        echo 'alert("There was a problem uploading this file!")';
+        echo '</script>';
+    }
+    return $target_file;
+}
+
+function updateImage($id)
+{
+    $image_ = uploadImage();
+    if ($image_ == "") {
+        return;
+    }
+    // actualizez calea imaginii pentru user
+    $sql = "UPDATE USERS SET cale_imagine = :newCaleImagine WHERE id = :id";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':newCaleImagine' => $image_,
+        ':id'       => $id
+    ]);
+}
+
+function emailAlreadyExists($email)
+{
+    // verific daca  mailul nu exista deja la alt user inregistrat
+    $sql = "SELECT phone_number FROM users WHERE email = :mail";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        'mail' => $email
+    ]);
+    // daca exista semnalez o eroare si returnez false
+    return $cerere->rowCount() >= 1;
+}
+
+
+function updateEmail($newEmail, $id)
+{
+    if (emailAlreadyExists($newEmail)) {
+        echo '<script language="javascript">';
+        echo 'alert("Email already used!")';
+        echo '</script>';
+        return;
+    }
+    $sql = "UPDATE USERS SET email = :newEmail WHERE id = :id";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':newEmail' => $newEmail,
+        ':id'       => $id
+    ]);
+}
+
+function updatePassword($newPassword, $id)
+{
+    $sql = "UPDATE USERS SET password = :newPassword WHERE id = :id";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':newPassword' => $newPassword,
+        ':id'       => $id
+    ]);
+}
+
+function updatePhoneNumber($newPhoneNumber, $id)
+{
+    $sql = "UPDATE USERS SET phone_number = :newPhoneNumber WHERE id = :id";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':newPhoneNumber' => $newPhoneNumber,
+        ':id'       => $id
+    ]);
+}
+
+function updateGrup($id, $idg)
+{
+    $sql = "INSERT INTO grupuri(id_utilizator,id_grup) VALUES (:idu , :idg)";
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':idu' => $id,
+        ':idg' => $idg
+    ]);
+}
+
+function resetGrup($id)
+{
+    $sql = "DELETE FROM grupuri WHERE id_utilizator = :idu";    //delete pentru toate grupurile din care face parte utilizatorul
+    $cerere = DB::get_connnection()->prepare($sql);
+    $cerere->execute([
+        ':idu' => $id
+    ]);
+}
+
+if (isset($_POST["submit_first_name"])) {
+    updateFirstName($_POST["fname"], $id);
+}
+if (isset($_POST["submit_last_name"])) {
+    updateLastName($_POST["lname"], $id);
+}
+if (isset($_POST["submit_username"])) {
+    updateUsername($_POST["uname"], $id);
+}
+if (isset($_POST["submit_image"])) {
+    updateImage($id);
+}
+if (isset($_POST["submit_email"])) {
+    updateEmail($_POST["email"], $id);
+}
+if (isset($_POST["submit_password"])) {
+    updatePassword($_POST["password"], $id);
+}
+if (isset($_POST["submit_phone_number"])) {
+    updatePhoneNumber($_POST["phone-nr"], $id);
+}
+if (isset($_POST["submit_grup"])) {
     $id = $_COOKIE['id'];
-    function updateFirstName($newFirstName, $id) {
-        $sql = "UPDATE USERS SET first_name = :newFname WHERE id = :id";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            ':newFname' => $newFirstName,
-            ':id'       => $id
-        ]);
-    }
+    resetGrup($id);
 
-    function updateLastName($newLastName, $id) {
-        $sql = "UPDATE USERS SET last_name = :newLname WHERE id = :id";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            ':newLname' => $newLastName,
-            ':id'       => $id
-        ]);
+    if (isset($_POST['grup1'])) {
+        updateGrup($id, 1);
     }
-
-    function userNameAlreadyExists($username) {
-        // verific daca username-ul nu exista deja la alt user inregistrat
-        $sql = "SELECT username FROM users WHERE username = :uname";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            'uname' => $username
-        ]);
-        return $cerere->rowCount() >= 1;
+    if (isset($_POST['grup2'])) {
+        updateGrup($id, 2);
     }
-
-    function updateUsername($newUsername, $id) {
-        if (userNameAlreadyExists($newUsername)) {
-            echo '<script language="javascript">';
-            echo 'alert("Username already used!")';
-            echo '</script>';
-            return;
-        }
-        $sql = "UPDATE USERS SET username = :newUsername WHERE id = :id";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            ':newUsername' => $newUsername,
-            ':id'       => $id
-        ]);
+    if (isset($_POST['grup2'])) {
+        updateGrup($id, 3);
     }
-
-    function uploadImage() {
-        // iau imaginea incarcata si o introduc in folderul general unde se afla imaginile profilelor. 
-        // actualizez noua cale in fisierul general care va fi si calea finala pentru noua poza introdusa
-        // returnez noua cale a imaginii in caz de upload cu sucess, altfel returnez ""
-        $target_dir  = "assets/thumbnails/";
-        $target_file = $target_dir . $_FILES["image_path"]["name"]; 
-        
-        // daca imaginea e mai mare de 5mb nu o incarc
-        if ($_FILES["image_path"]["size"] > 5000000) {
-            echo '<script language="javascript">';
-            echo 'alert("Image too big. Max file size admitted is 5mb!")';
-            echo '</script>';
-            return "";
-        }
-
-        // mut poza la calea dorita
-        if (!move_uploaded_file($_FILES["image_path"]["tmp_name"], $target_file)) {
-            echo '<script language="javascript">';
-            echo 'alert("There was a problem uploading this file!")';
-            echo '</script>';
-        }
-        return $target_file;
+    if (isset($_POST['grup1'])) {
+        updateGrup($id, 4);
     }
-
-    function updateImage($id) {
-        $image_ = uploadImage();
-        if ($image_ == "") {
-            return;
-        }
-        // actualizez calea imaginii pentru user
-        $sql = "UPDATE USERS SET cale_imagine = :newCaleImagine WHERE id = :id";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            ':newCaleImagine' => $image_,
-            ':id'       => $id
-        ]);
-    }
-
-    function emailAlreadyExists($email) {
-        // verific daca  mailul nu exista deja la alt user inregistrat
-        $sql = "SELECT phone_number FROM users WHERE email = :mail";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            'mail' => $email
-        ]);
-        // daca exista semnalez o eroare si returnez false
-        return $cerere->rowCount() >= 1;
-    }
-
-
-    function updateEmail($newEmail, $id) {
-        if (emailAlreadyExists($newEmail)) {
-            echo '<script language="javascript">';
-            echo 'alert("Email already used!")';
-            echo '</script>';
-            return;
-        }
-        $sql = "UPDATE USERS SET email = :newEmail WHERE id = :id";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            ':newEmail' => $newEmail,
-            ':id'       => $id
-        ]);
-    }
-
-    function updatePassword($newPassword, $id) {
-        $sql = "UPDATE USERS SET password = :newPassword WHERE id = :id";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            ':newPassword' => $newPassword,
-            ':id'       => $id
-        ]);
-    }
-
-    function updatePhoneNumber($newPhoneNumber, $id) {
-        $sql = "UPDATE USERS SET phone_number = :newPhoneNumber WHERE id = :id";
-        $cerere = DB::get_connnection()->prepare($sql);
-        $cerere->execute([
-            ':newPhoneNumber' => $newPhoneNumber,
-            ':id'       => $id
-        ]);
-    }
-
-    if (isset($_POST["submit_first_name"])) {
-        updateFirstName($_POST["fname"], $id);
-    }
-    if (isset($_POST["submit_last_name"])) {
-        updateLastName($_POST["lname"], $id);
-    }
-    if (isset($_POST["submit_username"])) {
-        updateUsername($_POST["uname"], $id);
-    }
-    if (isset($_POST["submit_image"])) {
-        updateImage($id);
-    }
-    if (isset($_POST["submit_email"])) {
-        updateEmail($_POST["email"], $id);
-    }
-    if (isset($_POST["submit_password"])) {
-        updatePassword($_POST["password"], $id);
-    }
-    if (isset($_POST["submit_phone_number"])) {
-        updatePhoneNumber($_POST["phone-nr"], $id);
-    }
+}
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -176,13 +223,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Edit profile</title>
 </head>
+
 <body>
     <header class="nav-bar">
         <nav>
-            <a id="a1" href="#"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
-            <a id="a2" href="#"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-            <a id="a3" href="#"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
-            <a id="a4" href="#">LOGIN</a>
+            <a id="a1" href="../index.php"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
+            <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">CATEGORIES</a>
+            <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
+            <a id="a4" href="../profile/profileDemo.php">MY PROFILE</a>
+            <a id="a5" href="../logout.php">LOGOUT</a>
         </nav>
     </header>
     <section id="main_section">
@@ -214,8 +263,19 @@
                 <input class="submit-input" type="submit" name="submit_password">
             </form>
             <form class="main_form" id="update_phone_numer" method="POST">
-                <input class="required" type="text" id="phone-nr" name="phone-nr" placeholder="Enter your phone number..." >
+                <input class="required" type="text" id="phone-nr" name="phone-nr" placeholder="Enter your phone number...">
                 <input class="submit-input" type="submit" name="submit_phone_number">
+            </form>
+            <form id="grup_form" method="POST">
+                <input class="grup" type="checkbox" name="grup1" value="grup1">
+                <label for="vehicle1">Iubitori Pizza</label><br><br>
+                <input class="grup" type="checkbox" name="grup2" value="grup2">
+                <label for="vehicle2">Vegetarieni</label><br><br>
+                <input class="grup" type="checkbox" name="grup3" value="grup3">
+                <label for="vehicle2">Anti Fast-food</label><br><br>
+                <input class="grup" type="checkbox" name="grup4" value="grup4">
+                <label for="vehicle2">Student (Zacusca lovers)</label><br><br>
+                <input class="submit-input" id="submit_grup" type="submit" name="submit_grup" value="Submit (GRUP)">
             </form>
         </div>
     </section>
@@ -230,4 +290,5 @@
         </div>
     </div>
 </body>
+
 </html>

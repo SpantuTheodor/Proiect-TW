@@ -30,6 +30,12 @@ if(!empty($data)){
     $image_path = $data["cale_imagine"];
 }
 
+$sql = "SELECT nume FROM grup a JOIN grupuri b ON a.id = b.id_grup WHERE b.id_utilizator = :index";
+$cerere = DB::get_connnection()->prepare($sql);
+$cerere->execute([
+    'index' => "$id"
+]);
+$data = $cerere->fetchAll();
 
 ?>
 
@@ -56,16 +62,14 @@ if(!empty($data)){
                 <img id="login_menu_icon" src="assets/icons/down.png" alt="drop-down menu">
             </nav>
             <div id="login_menu">
-                <a href="#">Vizualizare profil</a>
-                <a href="#">Modificare profil</a>
+                <a href="editProfile.php">Modificare profil</a>
                 <a href="#" onclick="logout()">Deconectare</a>
             </div>
             <div id="main_menu">
                 <img id="close" src="assets/icons/close.png" alt="close menu">
-                <a href="#">Acasa</a>
-                <a href="#">Catalog</a>
-                <a href="#">Lista preferate</a>
-                <a href="#">Contact</a>
+                <a href="../index.php">Acasa</a>
+                <a href="../Categories/forg.php">Catalog</a>
+                <a href="../ContactUs/contactUs.php">Contact</a>
             </div>
         </header>
         <div id="profile_section">
@@ -78,6 +82,11 @@ if(!empty($data)){
                     <?php echo '<h3><img src="assets/icons/user_icon.png" alt="user icon">'.$username.'</h3>'?>
                     <?php echo '<h3><img src="assets/icons/email_icon.png" alt="email icon">'.$email.'</h3>'?>
                     <?php echo '<h3><img src="assets/icons/location_icon.png" alt="location icon">'.$nr_telefon.'</h3>'?>
+                    <?php echo '<h3><img src="assets/icons/location_icon.png" alt="location icon">';
+                        foreach($data as $index){
+                            echo "$index[nume] &nbsp &nbsp ";
+                        }
+                    echo '</h3>';?>
                 </section>
                 
                 <section id="about_user_shopping_list">
