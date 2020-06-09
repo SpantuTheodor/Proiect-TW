@@ -81,7 +81,7 @@ if (isset($_COOKIE['user'])) {
             <div class="main-content main-content-login">
                 <h2>Please enter your username and password</h2>
                 <form id="main-form" action="" method="POST">
-                    <label for="email">Username:</label><br>
+                    <label for="username">Username:</label><br>
                     <input class="required" type="text" id="username" name="username" placeholder="Enter your username..." required><br><br>
 
                     <label for="password">Password:</label><br>

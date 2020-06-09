@@ -111,7 +111,7 @@
                         height: 400px;
                         width: auto;
                         background-size: cover;
-                        background-image: url("../home/assets/peoplehavingfun.jpg");
+                        background-image: url("../home/assets/peoplehavingfun.webp");
                         background-repeat: no-repeat;
                         background-position: center center;
                     }
@@ -228,7 +228,7 @@
                     }
                     
                     #container3 {
-                        background: url('../home/assets/doodle.png');
+                        background: url('../home/assets/doodle.webp');
                         background-size: 30% auto;
                     }
                     
@@ -265,7 +265,7 @@
                         background: white;
                     }
                     
-                    #expdivtitle {
+                    #expdivtitle1, #expdivtitle2 {
                         font-family: 'Montserrat';
                         text-emphasis: weight;
                         color: white;
@@ -273,7 +273,7 @@
                         font-size: 30px;
                     }
                     
-                    .expdivrest {
+                    .expdivrest  {
                         font-family: 'Montserrat';
                         text-emphasis: weight;
                         color: white;

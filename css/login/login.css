@@ -5,7 +5,7 @@ body {
     /* animation: backgroundAnimation 50s;
     -webkit-animation: backgroundAnimation 50s;  Pentru Safari si Chrome */
     animation-iteration-count: infinite;
-    background: url('../../profile/assets/doodle.png');
+    background: url('../../profile/assets/doodle.webp');
     background-size: 30% auto;
 }
 
@@ -109,7 +109,7 @@ button:focus {
     height: 400px !important;
 }
 
-@media only screen and (max-width: 742px)  {
+@media only screen and (max-width: 842px)  {
     .main-content-login {
         height: 500px;
         width: 70%;
@@ -119,6 +119,10 @@ button:focus {
     }
     .spacer {
         padding: 40px;
+    }
+
+    .nav-bar {
+        height: 250px;
     }
 }
 

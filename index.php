@@ -93,7 +93,7 @@
                             <br>
                             <br>
                             <br>
-                            <p id="expdivtitle"> Eating sushi </p>
+                            <p id="expdivtitle1"> Eating sushi </p>
                             <br>
                             <div class="expdivrest">
                                 <p> Sushi is a popular Japanese dish made from seasoned rice with fish, egg, or vegetables.
@@ -114,7 +114,7 @@
                             <br>
                             <br>
                             <br>
-                            <p id="expdivtitle"> Eating vegan </p>
+                            <p id="expdivtitle2"> Eating vegan </p>
                             <br>
                             <div class="expdivrest">
                                 <p> Veganism is a type of vegetarian diet that excludes meat, eggs, dairy products, and all other animal-derived ingredients.

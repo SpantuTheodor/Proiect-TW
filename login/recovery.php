@@ -103,6 +103,7 @@ if (isset($_POST["email"])) {
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/login/login.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
 <body>
     <header class="nav-bar">
