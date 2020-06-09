@@ -1,4 +1,4 @@
-*{
+* {
     font-family: 'Montserrat' !important;
 }
 
@@ -105,6 +105,7 @@ body {
     font-size: 14px;
     height: 40px;
     transition: 1s;
+    padding: 0px;
 }
 
 #srch #submit-input:hover {
@@ -189,6 +190,8 @@ h1 {
 
 #search {
     background: none;
+    height: 40px;
+    padding: 0;
 }
 
 .container {

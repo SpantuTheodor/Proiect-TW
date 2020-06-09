@@ -184,14 +184,14 @@ if (!empty($_POST)) {
                     <label for="address">Adress:</label>
                     <input class="required" type="text" id="address" name="address" placeholder="Enter your address..."><br><br><br>
 
-                    <input class="grup" type="checkbox" name="grup1" value="grup1">
-                    <label for="vehicle1">Iubitori Pizza</label><br><br>
-                    <input class="grup" type="checkbox" name="grup2" value="grup2">
-                    <label for="vehicle2">Vegetarieni</label><br><br>
-                    <input class="grup" type="checkbox" name="grup3" value="grup3">
-                    <label for="vehicle2">Anti Fast-food</label><br><br>
-                    <input class="grup" type="checkbox" name="grup4" value="grup4">
-                    <label for="vehicle2">Student (Zacusca lovers)</label><br><br>
+                    <input class="grup" type="checkbox" name="grup1" id="grup1" value="grup1">
+                    <label for="grup1">Iubitori Pizza</label><br><br>
+                    <input class="grup" type="checkbox" name="grup2" id="grup2" value="grup2">
+                    <label for="grup2">Vegetarieni</label><br><br>
+                    <input class="grup" type="checkbox" name="grup3" id="grup3" value="grup3">
+                    <label for="grup3">Anti Fast-food</label><br><br>
+                    <input class="grup" type="checkbox" name="grup4" id="grup4" value="grup4">
+                    <label for="grup4">Student (Zacusca lovers)</label><br><br>
 
 
                     <input id="submit-input" type="submit" name="Create account">

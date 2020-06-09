@@ -142,7 +142,7 @@ $_SESSION['index'] = 1;
 <body>
     <div class="DIVmare">
         <header class="nav-bar">
-        <nav>
+            <nav>
                 <a id="a1" href="../index.php"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
                 <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../categories/assets/icons/about.png" alt="about-icon">ABOUT</a>
                 <a id="a4" href="../signup/sign_up.php"><img class="nav-icon" src="../categories/assets/icons/signup.png" alt="login">SIGN UP</a>
@@ -158,7 +158,7 @@ $_SESSION['index'] = 1;
         <section class="recommendedcat">
             <ul style="list-style-type:none;" class="recommendedcatlist">
                 <li>
-                    <a style="text-decoration:none;" target = "_blank" href="getIdMancare.php?id=5">
+                    <a style="text-decoration:none;" target="_blank" href="getIdMancare.php?id=5">
                         <figure>
                             <img src="assets/Supa-crema-de-ardei-copti-de-post.jpg" style="object-fit: cover;" alt="supa photo" height="200px" width="200px">
                             <figcaption>Supa crema de ardei copti</figcaption>
@@ -167,7 +167,7 @@ $_SESSION['index'] = 1;
                 </li>
 
                 <li>
-                    <a style="text-decoration:none;" target = "_blank" href="getIdMancare.php?id=10">
+                    <a style="text-decoration:none;" target="_blank" href="getIdMancare.php?id=10">
                         <figure>
                             <img src="assets/gyros.jpg" style="object-fit: cover;" alt="gyros photo" height="200px" width="200px">
                             <figcaption>Gyros grecesc cu pui si tzatziki</figcaption>
@@ -176,7 +176,7 @@ $_SESSION['index'] = 1;
                 </li>
 
                 <li>
-                    <a style="text-decoration:none;" target = "_blank" href="getIdMancare.php?id=4">
+                    <a style="text-decoration:none;" target="_blank" href="getIdMancare.php?id=4">
                         <figure>
                             <img src="assets/briosa-visine.jpg" style="object-fit: cover;" alt="briosa photo" height="200px" width="200px">
                             <figcaption>Briosa cu visine</figcaption>
@@ -186,10 +186,11 @@ $_SESSION['index'] = 1;
             </ul>
         </section>
 
-        <div id="srch">
+        <form id="srch">
             <input type="text" id="search" name="search" placeholder="Search for a recipe..." onkeyup="showResult(this.value)">
+            <label for="search" style="opacity:0.5%;">C</label>
             <input id="submit-input" type="submit" name="submit-input" value="Caută!">
-        </div>
+        </form>
 
         <div class="lista">
             <div class="filtre">
@@ -255,7 +256,8 @@ $_SESSION['index'] = 1;
 
 
                 <form><?php $variabila = $_SESSION['index']; ?>
-                    <input id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>')" value="AFISEAZA MAI MULT">
+                    <input name="show-more" id="show-more" type="button" onclick="loadDoc('<?php echo $variabila; ?>')" value="AFISEAZA MAI MULT">
+                    <label for="show-more"></label>
                 </form>
             </section>
         </div>
