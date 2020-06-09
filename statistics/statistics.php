@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=6.0">
     <title>Statistics</title>
     <link rel="stylesheet" type="text/css" href="../css/statistics/statistics.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
@@ -121,13 +121,11 @@
                     for (var i = 0; i < array1.length; i++) {
                         pdf = array1[i] + ', pret :' + array2[i] + " RON";
                         doc.text(pdf, 15, i * 10 + 40);
-                        console.log(array1[i]);
                     }
                 } else if(ascDescPrice == 1){
                     for (var i = array1.length - 1; i >= 0; i--) {
                         pdf = array1[i] + ', pret :' + array2[i] + " RON";
                         doc.text(pdf, 15, (array1.length-i) * 10 + 40);
-                        console.log(array1[i]);
                     }
                 }
             }else if(conditie == 1){
@@ -135,13 +133,11 @@
                     for (var i = 0; i < array1.length; i++) {
                         pdf = array1[i] + ', numar aprecieri :' + array2[i] ;
                         doc.text(pdf, 15, i * 10 + 40);
-                        console.log(array1[i]);
                     }
                 } else if(ascDescLikes == 1){
                     for (var i = array1.length - 1; i >= 0; i--) {
                         pdf = array1[i] + ', numar aprecieri :' + array2[i] ;
                         doc.text(pdf, 15, (array1.length-i) * 10 + 40);
-                        console.log(array1[i]);
                     }
                 }
             }
@@ -203,28 +199,24 @@
         mostExpensiveFood = JSON.parse(mostExpensiveFood);
         for (var i = 0; i < mostExpensiveFood.length; ++i) {
             mostExpensiveFoodName.push(mostExpensiveFood[i]["nume"]);
-            console.log(mostExpensiveFood[i]);
             mostExpensiveFoodPrice.push(mostExpensiveFood[i]["pret"]);
         }
 
         lessExpensiveFood = JSON.parse(lessExpensiveFood);
         for (var i = 0; i < lessExpensiveFood.length; ++i) {
             lessExpensiveFoodName.push(lessExpensiveFood[i]["nume"]);
-            console.log(lessExpensiveFood[i]);
             lessExpensiveFoodPrice.push(lessExpensiveFood[i]["pret"]);
         }
 
         mostLikedFood = JSON.parse(mostLikedFood);
         for (var i = 0; i < mostLikedFood.length; ++i) {
             mostLikedFoodName.push(mostLikedFood[i]["nume"]);
-            console.log(mostLikedFood[i]);
             mostLikedFoodNumber.push(mostLikedFood[i]["numar_aprecieri"]);
         }
 
         leastLikedFood = JSON.parse(leastLikedFood);
         for (var i = 0; i < leastLikedFood.length; ++i) {
             leastLikedFoodName.push(leastLikedFood[i]["nume"]);
-            console.log(leastLikedFood[i]);
             leastLikedFoodNumber.push(leastLikedFood[i]["numar_aprecieri"]);
         }
 
