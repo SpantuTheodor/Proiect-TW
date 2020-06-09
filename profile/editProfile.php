@@ -219,7 +219,7 @@ if (isset($_POST["submit_grup"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=6.0">
-
+    <meta name="description" content="Pagina de profil a utilizatorului.">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="stylesheet" type="text/css" href="../css/profile/editProfile.css">
@@ -242,45 +242,52 @@ if (isset($_POST["submit_grup"])) {
     <section id="main_section">
         <div class="main-content">
             <h2>Update your profile</h2>
-            <br>
             <form class="main_form" id="update_fname" method="POST">
+                <label class="main_label" for="fname">Enter first name:</label>
                 <input class="required" type="text" id="fname" name="fname" placeholder="Enter new first name..." required>
                 <input class="submit-input" type="submit" name="submit_first_name">
             </form>
             <form class="main_form" id="update_lname" method="POST">
+                <label class="main_label" for="lname">Enter last name:</label>
                 <input class="required" type="text" id="lname" name="lname" placeholder="Enter new last name..." required>
                 <input class="submit-input" type="submit" name="submit_last_name">
             </form>
             <form class="main_form" id="update_username" method="POST">
+                <label class="main_label" for="uname">Enter username:</label>
                 <input class="required" type="text" id="uname" name="uname" placeholder="Enter new username..." required>
                 <input class="submit-input" type="submit" name="submit_username">
             </form>
             <form class="main_form" id="update_image" method="POST" enctype="multipart/form-data">
+                <label class="main_label" for="image_path">Chpose profile image:</label>
                 <input id="image_path" class="required" type="file" name="image_path" placeholder="Enter new image ..." accept="image/*" required>
                 <input class="submit-input" type="submit" name="submit_image">
             </form>
             <form class="main_form" id="update_email" method="POST">
+                <label class="main_label" for="email">Enter email:</label>
                 <input class="required" type="email" id="email" name="email" placeholder="Enter new email..." required>
                 <input class="submit-input" type="submit" name="submit_email">
             </form>
             <form class="main_form" id="update_password" method="POST">
+                <label class="main_label" for="password">Enter password:</label>
                 <input class="required" type="password" id="password" name="password" placeholder="Enter your password..." required>
                 <input class="submit-input" type="submit" name="submit_password">
             </form>
             <form class="main_form" id="update_phone_numer" method="POST">
+                <label class="main_label" for="phone-nr">Enter phone number:</label>
                 <input class="required" type="text" id="phone-nr" name="phone-nr" placeholder="Enter your phone number...">
                 <input class="submit-input" type="submit" name="submit_phone_number">
             </form>
             <form id="grup_form" method="POST">
-                <input class="grup" type="checkbox" name="grup1" value="grup1">
-                <label for="vehicle1">Iubitori Pizza</label><br><br>
-                <input class="grup" type="checkbox" name="grup2" value="grup2">
-                <label for="vehicle2">Vegetarieni</label><br><br>
-                <input class="grup" type="checkbox" name="grup3" value="grup3">
-                <label for="vehicle2">Anti Fast-food</label><br><br>
-                <input class="grup" type="checkbox" name="grup4" value="grup4">
-                <label for="vehicle2">Student (Zacusca lovers)</label><br><br>
-                <input class="submit-input" id="submit_grup" type="submit" name="submit_grup" value="Submit (GRUP)">
+                <input id="grup1" class="grup" type="checkbox" name="grup1" value="grup1">
+                <label for="grup1">Iubitori Pizza</label><br><br>
+                <input id="grup2" class="grup" type="checkbox" name="grup2" value="grup2">
+                <label for="grup2">Vegetarieni</label><br><br>
+                <input id="grup3" class="grup" type="checkbox" name="grup3" value="grup3">
+                <label for="grup3">Anti Fast-food</label><br><br>
+                <input id="grup4" class="grup" type="checkbox" name="grup4" value="grup4">
+                <label for="grup4">Student (Zacusca lovers)</label><br><br>
+
+                <input class="submit-input" id="submit_grup" type="submit" name="submit_grup">
             </form>
         </div>
     </section>

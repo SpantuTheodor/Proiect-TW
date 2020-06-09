@@ -14,14 +14,14 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background: url('../../profile/assets/doodle.png');
+    background: url('../../profile/assets/doodle.webp');
     background-size: 30% auto;
 }
 
 .main-content {
     width: 50%;
     background: rgba(255, 255, 255, 0.79);
-    height: 1200px;
+    height: 1600px;
     border-radius: 20px;
     margin: auto;
     position: relative;
@@ -39,7 +39,9 @@ body {
 
 .main_form {
     width: 90%;
-    height: 70px;
+    height: 170px;
+    position: relative;
+    top: 50px;
 }
 
 .main_form input,
@@ -84,7 +86,6 @@ input[type="file"] {
     top: 10px;
 }
 
-
 /* https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
 
 
@@ -105,10 +106,10 @@ button:focus {
     text-align: left;
     display: block;
     margin: auto;
-    position: absolute;
-    top: 900px;
     width: 90%;
     margin-left: 5%;
+    position: relative;
+    top: 50px;
 }
 
 .grup {

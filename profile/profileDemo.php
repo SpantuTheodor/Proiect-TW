@@ -94,7 +94,7 @@ $data = $cerere->fetchAll();
                 </section>
                 
                 <section id="about_user_shopping_list">
-                    <h3><img id="list_icon" class="favorite_icon" src="assets/icons/shopping_list_icon.png" alt="shopping list icon">Your shopping lists <img class="goto_icon" id="goto_food" src="assets/icons/goto_icon.png" alt="goto_icon"></h3>
+                    <h3><img id="list_icon" class="favorite_icon" src="assets/icons/shopping_list_icon.png" alt="shopping list icon">Your shopping lists <img class="goto_icon" src="assets/icons/goto_icon.png" alt="goto_icon"></h3>
                 </section>
                 <section id="about_user_favorite_food">
                     <h3><img id="food_icon" class="favorite_icon" src="assets/icons/favorite_food_icon.png" alt="favorite food icon">Your favorite food <img class="goto_icon" id="goto_food" src="assets/icons/goto_icon.png" alt="goto_icon"></h3>
