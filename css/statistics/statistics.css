@@ -1,3 +1,10 @@
+* {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    font-family: 'Montserrat';
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -6,39 +13,81 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.container {
+.nav-bar {
     width: 100%;
+    min-height: 60px;
+    background: #263238;
+    box-shadow: 0 0 15px black;
 }
 
-header {
+.nav-bar nav {
+    display: block;
+    position: relative;
+    align-content: center;
+    min-height: 40px;
+    background: #263238;
     width: 100%;
-    height: 60px;
-    background: #69f0ae;
-    box-shadow: 0 0 10px #263238;
-    position: absolute;
-    top: 0;
+    font-family: 'Montserrat';
+    text-emphasis: weight;
 }
 
-header h3 {
-    margin-left: 32px;
-    font-weight: 100;
-    display: inline;
+.nav-bar nav a {
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    padding: 0 20px 0 20px;
     position: relative;
     top: 15px;
+    text-align: left;
+    transition: 1s;
+    margin-left: 32px;
 }
 
-#godfather_icon {
-    margin-left: 32px;
+.nav-icon {
+    padding: 0 8px 0 0;
     position: relative;
-    top: 20px;
-    cursor: pointer;
+    top: 5px;
+}
+
+#a1 {
+    padding-top: 20px;
+}
+
+#a1:hover {
+    color: #ff9100;
+}
+
+#a2:hover {
+    color: #64dd17;
+}
+
+#a3:hover {
+    color: #0091ea;
+}
+
+#a4:hover {
+    color: #f50057;
+}
+
+#sign_up_section {
+    height: 850px;
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-bar nav a {
+        display: block;
+        margin-bottom: 12px;
+    }
+    .nav-bar {
+        height: 180px;
+    }
 }
 
 .main_content {
     width: 80%;
-    height: 800px;
-    background: #eceff1;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    height: 2100px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     position: relative;
     top: 120px;
     margin: auto;
@@ -48,7 +97,7 @@ header h3 {
 }
 
 .spacer {
-    padding: 100px;
+    height: 270px;
 }
 
 .options {
@@ -68,7 +117,7 @@ header h3 {
     border-radius: 5px;
     color: white;
     cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     text-align: left;
     transition: .5s;
 }
@@ -78,9 +127,8 @@ header h3 {
 }
 
 .options_exec_area {
-    width: 70%;
+    width: 100%;
     background: white;
-    
 }
 
 #price_stats_area {
@@ -91,9 +139,7 @@ header h3 {
 #likes_stats_area {
     width: 100%;
     height: 100%;
-    display: none;
 }
-
 
 #logout_link {
     float: right;
@@ -106,34 +152,50 @@ header h3 {
 }
 
 .chart_filters {
-    width: 85%;
-    height: 40px;
+    width: 100%;
+    height: 100px;
     margin: auto;
     position: relative;
     top: 65px;
+    text-align: center;
 }
 
-#pret_crescator, #pret_descrescator {
+.chart_filters button {
+    margin: auto;
+    text-align: center;
+}
+
+#pret_crescator,
+#pret_descrescator,
+#likes_crescator,
+#likes_descrescator {
     width: 150px;
     padding: 12px 20px;
     background: orangered;
     color: white;
     border: none;
     cursor: pointer;
-    margin: 0 5px;
+    margin: auto;
     border-radius: 3px;
     transition: .7s;
 }
 
-#pret_crescator:hover, #pret_descrescator:hover {
+#pret_crescator:hover,
+#pret_descrescator:hover,
+#pret_crescator:hover,
+#pret_descrescator:hover {
     background: orange;
 }
 
 .chart {
-    width: 85%;
+    width: 100%;
     height: 350px;
     margin: auto;
     margin-bottom: 20px;
-    position: relative;
-    top: 95px;
+    padding-top: 100px;
+    display: inline-block;
+}
+
+.chart canvas {
+    margin: auto;
 }

@@ -10,6 +10,7 @@ userShoppingListsContainer.addEventListener('click', () => {
     window.open("shopping_list.php");
 })
 
+
 userStatisticsContainer.addEventListener('click', () => {
-    window.open("statstics.html");
+    window.open("../statistics/statistics.php");
 });
