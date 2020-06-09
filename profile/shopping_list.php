@@ -52,7 +52,7 @@ $data = $cerere->fetchAll();
                 foreach($data as $mancare){
                     echo "<div class='favorite_food' id='list$mancare[3]'>
                     <img class='remove_favorite_icon' src='assets/icons/x.png' alt='remove from shopping list icon' style=\"height:25px;width:25px;\" onclick=\"deleteFromList('$mancare[3]');deleteJS('list$mancare[3]')\">
-                    <img class='food_pic' src='../Categories/$mancare[1]' alt='food pic'>
+                    <img class='food_pic' src='../Categories/$mancare[1]' style=\"object-fit:cover\" alt='food pic'>
                     <p class='food_title'>$mancare[0]</p>
                     <p class='food_basic_info'>$mancare[2]</p>
                     </div>";

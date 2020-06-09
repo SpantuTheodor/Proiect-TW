@@ -44,33 +44,33 @@
         </div>
 
         <div>
-            <h1> Recommended Categories </h1>
+            <h1> Recommended Recipes </h1>
         </div>
         <section class="recommendedcat">
             <ul style="list-style-type:none;" class="recommendedcatlist">
                 <li>
-                    <a href="http://css-tricks.com">
+                    <a style="text-decoration:none;" target = "_blank" href="Categories/getIdMancare.php?id=5">
                         <figure>
-                            <img id="burger" src="home/assets/burger.jpeg" alt="burger photo" width="200px" />
-                            <figcaption>Burgers</figcaption>
+                            <img src="Categories/assets/Supa-crema-de-ardei-copti-de-post.jpg" style="object-fit: cover;" alt="supa photo" height="200px" width="200px">
+                            <figcaption>Supa crema de ardei copti</figcaption>
                         </figure>
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://css-tricks.com">
+                    <a style="text-decoration:none;" target = "_blank" href="Categories/getIdMancare.php?id=10">
                         <figure>
-                            <img id="pizza" src="home/assets/pizza.jpeg" alt="pizza photo" width="200px" />
-                            <figcaption>Pizzas</figcaption>
+                            <img src="Categories/assets/gyros.jpg" alt="gyros photo" style="object-fit: cover;" height="200px" width="200px">
+                            <figcaption>Gyros grecesc cu pui si tzatziki</figcaption>
                         </figure>
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://css-tricks.com">
+                    <a style="text-decoration:none;" target = "_blank" href="Categories/getIdMancare.php?id=4">
                         <figure>
-                            <img id="salad" src="home/assets/salad.jpeg" alt="salad photo" width="200px" />
-                            <figcaption>Salads</figcaption>
+                            <img src="Categories/assets/briosa-visine.jpg" alt="briosa photo" style="object-fit: cover;" height="200px" width="200px">
+                            <figcaption>Briosa cu visine</figcaption>
                         </figure>
                     </a>
                 </li>

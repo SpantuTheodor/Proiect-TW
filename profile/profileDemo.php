@@ -104,7 +104,7 @@ $data = $cerere->fetchAll();
                 </section>
             </div>
         </div>
-        <div class="spacer"></div>
+        <div id="spacer" style="height:300px;"></div>
         <!-- FOOTER START -->
         <div class="footer">
             <div class="contain">

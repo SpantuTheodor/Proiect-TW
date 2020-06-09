@@ -195,6 +195,8 @@ if (!empty($_POST)) {
             </div>
         </form>
     </div>
+
+    <div id="spacer" style="height:100px;"></div>
     <div class="footer">
             <div class="contain">
                 <div class="col">

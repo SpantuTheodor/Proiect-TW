@@ -152,33 +152,33 @@ $_SESSION['index'] = 1;
         </header>
 
         <div>
-            <h1> Recommended Categories </h1>
+            <h1> Recommended Recipes </h1>
         </div>
         <section class="recommendedcat">
             <ul style="list-style-type:none;" class="recommendedcatlist">
                 <li>
-                    <a href="http://css-tricks.com/%22%3E">
+                    <a style="text-decoration:none;" target = "_blank" href="getIdMancare.php?id=5">
                         <figure>
-                            <img id="burger" src="assets/burger.jpeg" alt="burger photo" width="200px">
-                            <figcaption>Burgers</figcaption>
+                            <img src="assets/Supa-crema-de-ardei-copti-de-post.jpg" style="object-fit: cover;" alt="supa photo" height="200px" width="200px">
+                            <figcaption>Supa crema de ardei copti</figcaption>
                         </figure>
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://css-tricks.com/%22%3E">
+                    <a style="text-decoration:none;" target = "_blank" href="getIdMancare.php?id=10">
                         <figure>
-                            <img id="pizza" src="assets/pizza.jpeg" alt="pizza photo" width="200px">
-                            <figcaption>Pizzas</figcaption>
+                            <img src="assets/gyros.jpg" style="object-fit: cover;" alt="gyros photo" height="200px" width="200px">
+                            <figcaption>Gyros grecesc cu pui si tzatziki</figcaption>
                         </figure>
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://css-tricks.com/%22%3E">
+                    <a style="text-decoration:none;" target = "_blank" href="getIdMancare.php?id=4">
                         <figure>
-                            <img id="salad" src="assets/salad.jpeg" alt="salad photo" width="200px">
-                            <figcaption>Salads</figcaption>
+                            <img src="assets/briosa-visine.jpg" style="object-fit: cover;" alt="briosa photo" height="200px" width="200px">
+                            <figcaption>Briosa cu visine</figcaption>
                         </figure>
                     </a>
                 </li>
@@ -192,7 +192,7 @@ $_SESSION['index'] = 1;
 
         <div class="lista">
             <div class="filtre">
-                <h3>Filtre</h3>
+                <h3>Filters</h3>
                 <label class="container">Fast Food
                     <input type="checkbox" id="id0" onclick="bifare(this.id);filtrare(this.id);">
                     <span class="checkmark"></span>
