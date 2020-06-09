@@ -55,7 +55,6 @@ $data = $cerere->fetchAll();
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="../logout.js"></script>
 </head>
 <body>
     <div id="app_content" class="container">
@@ -67,7 +66,7 @@ $data = $cerere->fetchAll();
             </nav>
             <div id="login_menu">
                 <a href="editProfile.php">Modificare profil</a>
-                <a href="#" onclick="logout()">Deconectare</a>
+                <a href="../logout.php">Deconectare</a>
             </div>
             <div id="main_menu">
                 <img id="close" src="assets/icons/close.png" alt="close menu">

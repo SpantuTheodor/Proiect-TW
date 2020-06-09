@@ -106,10 +106,12 @@ if (isset($_POST["email"])) {
 <body>
     <header class="nav-bar">
         <nav>
-            <a id="a1" href="#"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
-            <a id="a2" href="#"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
-            <a id="a3" href="#"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
-            <a id="a4" href="#">LOGIN</a>
+            <a id="a1" href="../index.php"><img class="nav-icon" src="../profile/assets/icons/home.png" alt="home-icon">HOME</a>
+            <a id="a2" href="../Categories/forg.php"><img class="nav-icon" src="../profile/assets/icons/trending.png" alt="trending-icon">TRENDING</a>
+            <a id="a3" href="../ContactUs/contactUs.php"><img class="nav-icon" src="../profile/assets/icons/about.png" alt="about-icon">ABOUT</a>
+            <a id="a4" href="../signup/sign_up.php"><img class="nav-icon" src="../categories/assets/icons/signup.png" alt="login">SIGN UP</a>
+            <a id="a6" href="login.php"><img class="nav-icon" src="../categories/assets/icons/login.png" alt="login" style="height:24px;width:24px;">LOGIN</a>
+            
         </nav>
     </header>
     <div class="container">
