@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Forg Godfathers</title>
+    <title>Statistics</title>
     <link rel="stylesheet" type="text/css" href="../css/statistics/statistics.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
             <div class="options_exec_area">
                 <div id="price_stats_area">
                     <div class="chart_filters">
-                        <button id="pret_crescator">Pret &nbsp&nbsp &nbsp  crescator</button>
+                        <button id="pret_crescator">Pret &nbsp&nbsp &nbsp crescator</button>
                         <button id="pret_descrescator">Pret descrescator</button>
                     </div>
                     <div class="chart">
@@ -38,6 +38,12 @@
                         </div>
                         <canvas id="likesChartContainer" style="margin-top:13%" height=200px></canvas>
                     </div>
+                </div>
+                <div class="chart_filters">
+                    <button class="export" onclick="exportCSV(mostExpensiveFoodName,mostExpensiveFoodPrice)">Export CSV - pret</button>
+                    <button class="export" onclick="exportCSV(mostLikedFoodName,mostLikedFoodNumber)">Export CSV - aprecieri</button>
+                    <button class="export" onclick="exportPDF(mostExpensiveFoodName,mostExpensiveFoodPrice)">Export PDF - pret</button>
+                    <button class="export" onclick="exportPDF(mostLikedFoodName,mostLikedFoodNumber)">Export PDF - aprecieri</button>
                 </div>
             </div>
         </div>
@@ -53,6 +59,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="../js/statistics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script>
         let mostExpensiveFood;
         let lessExpensiveFood;
@@ -72,6 +79,51 @@
         let mostLikedFoodNumber = [];
         let leastLikedFoodNumber = [];
 
+
+        function exportCSV(array1, array2) {
+            let csv = "data:text/csv;charset=utf-8,";
+
+            if (ascDesc == 1) {
+                for (var i = 0; i < array1.length; i++) {
+                    csv += array1[i] + ',' + array2[i] + ',' + "\r\n";
+                }
+            } else {
+                for (var i = array1.length - 1; i >= 0; i--) {
+                    csv += array1[i] + ',' + array2[i] + ',' + "\r\n";
+                }
+            }
+
+            var encodedUri = encodeURI(csv);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "my_data.csv");
+            document.body.appendChild(link); // https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side
+
+            link.click();
+        }
+
+        function exportPDF(array1, array2) {
+            var doc = new jsPDF();
+            doc.setFontSize(40);
+            doc.text("Export from FORG", 35, 25);
+            var pdf;
+
+            doc.setFontSize(10);
+
+            if (ascDesc == 1) {
+                for (var i = 0; i < array1.length; i++) {
+                    pdf += array1[i] + ',' + array2[i] + "\r\n";
+                    doc.text(pdf, 20, 55);
+                }
+            } else {
+                for (var i = array1.length - 1; i >= 0; i--) {
+                    pdf += array1[i] + ',' + array2[i] + "\r\n";
+                    doc.text(pdf, 35, 25);
+                }
+            }
+            doc.save("forg.pdf");   
+
+        }
 
         function loadJsonLessExpensiveFood() {
             var xmlhttp = new XMLHttpRequest();
@@ -223,20 +275,26 @@
         priceChartContainer.style.display = 'block';
         likesChartContainer.style.display = 'block';
 
+        var ascDesc = 1;
+
         priceAscBtn.addEventListener('click', function() {
             updateChart(mostExpensiveFoodName, mostExpensiveFoodPrice, '#ff4500', '#37474f');
+            ascDesc = 1;
         });
 
         priceDescBtn.addEventListener('click', function() {
             updateChart(lessExpensiveFoodName, lessExpensiveFoodPrice, '#37474f', '#ff4500');
+            ascDesc = 2;
         });
 
         likesAscBtn.addEventListener('click', function() {
             updateChart2(mostLikedFoodName, mostLikedFoodNumber, '#ff4500', '#37474f');
+            ascDesc = 1;
         });
 
         likesDescBtn.addEventListener('click', function() {
             updateChart2(leastLikedFoodName, leastLikedFoodNumber, '#37474f', '#ff4500');
+            ascDesc = 2;
         });
     </script>
 </body>
