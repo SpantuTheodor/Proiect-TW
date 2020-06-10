@@ -19,7 +19,8 @@ $_SESSION['index'] = 1;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=6.0">
     <meta name="description" content="Pagina de categorii si cautare produse.">
-
+    <title>Categories</title>
+    <link rel="shortcut icon" href="../home/assets/banana_de_nigga.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Dosis%7CRoboto&display=swap" rel="stylesheet">

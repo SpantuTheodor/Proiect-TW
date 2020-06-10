@@ -100,6 +100,7 @@ if (isset($_POST["email"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=6.0">
     <meta name="description" content="Pagina de resetare a parolei.">
     <title>Account recovery</title>
+    <link rel="shortcut icon" href="../home/assets/banana_de_nigga.png">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/login/login.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">

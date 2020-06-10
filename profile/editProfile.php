@@ -225,7 +225,8 @@ if (isset($_POST["submit_grup"])) {
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Edit profile</title>
+    <?php echo "<title>Editing $_COOKIE[user]'s Profile</title>";?>
+    <link rel="shortcut icon" href="../home/assets/banana_de_nigga.png">
 </head>
 
 <body>

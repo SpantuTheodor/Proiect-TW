@@ -68,13 +68,13 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=6.0">
     <meta name="description" content="Pagina de informatii despre aplicatie.">
-    <title>FORG</title>
+    <title>About & Contact FORG team</title>
+    <link rel="shortcut icon" href="../home/assets/banana_de_nigga.png">
     <link rel="stylesheet" type="text/css" href="../css/contactUs/contactUs.css">
     <link rel="stylesheet" type='text/css' href="../css/footer.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/banana_de_nigga.png">
     <script src="../logout.js"></script>
 </head>
 
