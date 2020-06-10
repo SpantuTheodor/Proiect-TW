@@ -216,7 +216,7 @@ if (isset($_POST["submit_grup"])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=6.0">
+    <meta name="viewport" content="user-scalable=yes" />
     <meta name="description" content="Pagina de profil a utilizatorului.">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">

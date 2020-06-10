@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=6.0">
+    <meta name="viewport" content="user-scalable=yes" />
     <meta name="description" content="Pagina principala a aplicatiei.">
     <title>Home Page</title>
     <link rel="shortcut icon" href="home/assets/banana_de_nigga.png">
@@ -19,12 +19,12 @@
     <div class="container1">
         <header class="nav-bar">
             <nav>
-                <a id="a2" href="Categories/forg.php"><img  loading="lazy" class="nav-icon" src="categories/assets/icons/categories.png" alt="categories-icon">CATEGORIES</a>
-                <a id="a3" href="ContactUs/contactUs.php"><img  loading="lazy" class="nav-icon" src="categories/assets/icons/about.png" alt="about-icon">ABOUT</a>
-                <a id="a4" href="signup/sign_up.php"><img  loading="lazy" class="nav-icon" src="categories/assets/icons/signup.png" alt="login">SIGN UP</a>
-                <a id="a7" href="profile/profileDemo.php"><img  loading="lazy" class="nav-icon" src="categories/assets/icons/profile.png" style="height:24px;width:24px;" alt="profile">MY PROFILE</a>
-                <a id="a5" href="logout.php"><img  loading="lazy" class="nav-icon" src="categories/assets/icons/logout.png" alt="logout">LOGOUT</a>
-                <a id="a6" href="login/login.php"><img  loading="lazy" class="nav-icon" src="categories/assets/icons/login.png" alt="login" style="height:24px;width:24px;">LOGIN</a>
+                <a id="a2" href="Categories/forg.php"><img class="nav-icon" src="categories/assets/icons/categories.png" alt="categories-icon">CATEGORIES</a>
+                <a id="a3" href="ContactUs/contactUs.php"><img class="nav-icon" src="categories/assets/icons/about.png" alt="about-icon">ABOUT</a>
+                <a id="a4" href="signup/sign_up.php"><img class="nav-icon" src="categories/assets/icons/signup.png" alt="login">SIGN UP</a>
+                <a id="a7" href="profile/profileDemo.php"><img class="nav-icon" src="categories/assets/icons/profile.png" style="height:24px;width:24px;" alt="profile">MY PROFILE</a>
+                <a id="a5" href="logout.php"><img class="nav-icon" src="categories/assets/icons/logout.png" alt="logout">LOGOUT</a>
+                <a id="a6" href="login/login.php"><img class="nav-icon" src="categories/assets/icons/login.png" alt="login" style="height:24px;width:24px;">LOGIN</a>
             </nav>
         </header>
         <div class="container2">
@@ -53,7 +53,7 @@
                 <li>
                     <a style="text-decoration:none;" target = "_blank" href="Categories/getIdMancare.php?id=5">
                         <figure>
-                            <img  loading="lazy" src="Categories/assets/Supa-crema-de-ardei-copti-de-post.jpg" style="object-fit: cover;" alt="supa photo" height="200px" width="200px">
+                            <img src="Categories/assets/Supa-crema-de-ardei-copti-de-post.jpg" style="object-fit: cover;" alt="supa photo" height="200px" width="200px">
                             <figcaption>Supa crema de ardei copti</figcaption>
                         </figure>
                     </a>
@@ -62,7 +62,7 @@
                 <li>
                     <a style="text-decoration:none;" target = "_blank" href="Categories/getIdMancare.php?id=10">
                         <figure>
-                            <img  loading="lazy" src="Categories/assets/gyros.jpg" alt="gyros photo" style="object-fit: cover;" height="200px" width="200px">
+                            <img src="Categories/assets/gyros.jpg" alt="gyros photo" style="object-fit: cover;" height="200px" width="200px">
                             <figcaption>Gyros grecesc cu pui si tzatziki</figcaption>
                         </figure>
                     </a>
@@ -71,7 +71,7 @@
                 <li>
                     <a style="text-decoration:none;" target = "_blank" href="Categories/getIdMancare.php?id=4">
                         <figure>
-                            <img  loading="lazy" src="Categories/assets/briosa-visine.jpg" alt="briosa photo" style="object-fit: cover;" height="200px" width="200px">
+                            <img src="Categories/assets/briosa-visine.jpg" alt="briosa photo" style="object-fit: cover;" height="200px" width="200px">
                             <figcaption>Briosa cu visine</figcaption>
                         </figure>
                     </a>
@@ -127,8 +127,8 @@
                 </li>
 
 
-                <li><img  loading="lazy" src="home/assets/sushi.jpg" alt="sushi image" height="400px" width="550px" id="expimg1"></li>
-                <li><img  loading="lazy" src="home/assets/salad.jpg" alt="salad image" height="400px" width="550px" id="expimg2"></li>
+                <li><img src="home/assets/sushi.jpg" alt="sushi image" height="400px" width="550px" id="expimg1"></li>
+                <li><img src="home/assets/salad.jpg" alt="salad image" height="400px" width="550px" id="expimg2"></li>
 
                 <li>
                     <div class="buttons">
