@@ -11,7 +11,7 @@ class DB
         return self::$db;
     }
 }
-//print_r($_COOKIE);
+
 $id_user = $_COOKIE['id'];
 $id = $_GET['i'];
 

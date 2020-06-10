@@ -85,7 +85,7 @@
         function exportCSV(array1, array2) {
             let csv = "data:text/csv;charset=utf-8,";
 
-            if (ascDesc == 1) {
+            if (ascDescPrice == 1) {
                 for (var i = 0; i < array1.length; i++) {
                     csv += array1[i] + ',' + array2[i] + ',' + "\r\n";
                 }

@@ -200,7 +200,6 @@ if (!empty($_POST)) {
 
 
 if (isset($_COOKIE['user'])) {  //daca avem user logat
-    print_r($_COOKIE);
     echo "<script>document.getElementById(\"a4\").style.display = \"none\";
                   document.getElementById(\"a6\").style.display = \"none\";
                   document.getElementById(\"a5\").style.display = \"inline\";

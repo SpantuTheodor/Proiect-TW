@@ -23,7 +23,7 @@ $cerere->execute([
 ]);
 $data = $cerere->fetch();
 
-$query = "SELECT r.nume,r.locatie FROM restaurant r JOIN mancare m ON m.id_restaurant = :index"; //restaurant
+$query = "SELECT r.nume,r.locatie FROM restaurant r JOIN mancare m ON r.id = :index"; //restaurant
 $request = DB::get_connnection()->prepare($query);
 $request->execute([
     'index' => $data["id_restaurant"]

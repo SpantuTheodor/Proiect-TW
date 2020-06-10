@@ -3,7 +3,6 @@ session_start();
 $conexiune = mysqli_connect("localhost", "root", "", "forg_database");
 
 if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
 
@@ -84,7 +83,6 @@ $_SESSION['index'] = 1;
 
             xmlhttp.open("GET", "addToFav.php?i=" + id, true);
             xmlhttp.send();
-            console.log(id);
         }
 
 
@@ -93,7 +91,6 @@ $_SESSION['index'] = 1;
 
             xmlhttp.open("GET", "addToList.php?i=" + id, true);
             xmlhttp.send();
-            console.log(id);
         }
 
         function deleteFromFavorites(id) {
@@ -101,7 +98,6 @@ $_SESSION['index'] = 1;
 
             xmlhttp.open("GET", "deleteFromFav.php?i=" + id, true);
             xmlhttp.send();
-            console.log(id);
         }
 
         function deleteFromShoppingList(id) {
@@ -109,7 +105,6 @@ $_SESSION['index'] = 1;
 
             xmlhttp.open("GET", "deleteFromList.php?i=" + id, true);
             xmlhttp.send();
-            console.log(id);
         }
 
         function decreaseOpacity(id) {
