@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORG Report</title>
+    <link text="text/css" href="report.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="shortcut icon" href="../home/assets/banana_de_nigga.png">
+</head>
+<body>
+    <h1>FORG Report</h1>
+    <h2>Contents</h2>
+    <ol>
+        <li>
+            <a href="#intro"> Introduction </a>
+        </li>
+        <li>
+            <a href="#technologies">Used technologies</a>
+            <ul>
+                <li>
+                    <a href="#html5">HTML5</a>
+                </li>
+                <li>
+                    <a href="#css">CSS</a>
+                </li>
+                <li>
+                    <a href="#js">Vanilla JavaScript</a>
+                </li>
+                <li>
+                    <a href="#php">PHP</a>
+                </li>
+                <li>
+                    <a href="#mysql">MySQL</a>
+                </li>
+                <li>
+                    <a href="#ajax">AJAX</a>
+                </li>
+                <li>
+                    <a href="#xml">XML</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#architecture">Application architecture</a>
+        </li>
+        <li>
+            <a href="#implementation">Implementation</a>
+        </li>
+        <li>
+            <a href="#sources">Sources</a>
+        </li>
+    </ol>
+    <h3 id="intro">Introduction</h3>
+    <p><b>FORG (Food Organizer)</b> is a web application which provides tools for managing culinary preferences, creating shopping lists and helping you discover recipes.</p>
+    <h3 id="technologies">Used technologies</h3>
+    <ol>
+        <li class="techs" id="html5">
+            HTML5
+        </li>
+        <p><b>HTML (HyperText Markup Language)</b> is the most basic building block of the Web. It defines the meaning and structure of web content. HTML5 is the latest evolution of the standard that defines HTML. It is a new version of the language HTML, with new elements, attributes, and behaviors, and a larger set of technologies that allows the building of more diverse and powerful Web sites and applications.</p>
+        <li class="techs" id="css">
+            CSS
+        </li>
+        <p><b>Cascading Style Sheets (CSS)</b> is a style sheet language used for describing the presentation of a document written in a markup language like HTML. CSS is designed to enable the separation of presentation and content, including layout, colors, and fonts.</p>
+        <li class="techs" id="js">
+            Vanilla JavaScript
+        </li>
+        <p><b>JavaScript</b>, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web. JavaScript enables interactive web pages and is an essential part of web applications.</p>
+        <li class="techs" id="php">
+            PHP
+        </li>
+        <p><b>PHP</b> is a popular general-purpose scripting language that is especially suited to web development. PHP code is usually processed on a web server by a PHP interpreter implemented as a module, a daemon or as a Common Gateway Interface (CGI) executable.</p>
+        <li class="techs" id="mysql">
+            MySQL
+        </li>
+        <p><b>MySQL</b> is a relational database management system based on SQL – Structured Query Language. The application is used for a wide range of purposes, including data warehousing, e-commerce, and logging applications. The most common use for MySQL however, is for the purpose of a web database.</p>
+        <li class="techs" id="ajax">
+            AJAX
+        </li>
+        <p><b>Ajax</b> (short for "Asynchronous JavaScript and XML") is a set of web development techniques using many web technologies on the client side to create asynchronous web applications. With Ajax, web applications can send and retrieve data from a server asynchronously (in the background) without interfering with the display and behavior of the existing page.</p>
+        <li class="techs" id="xml">
+            XML
+        </li>
+        <p><b>Extensible Markup Language (XML)</b> is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. The design goals of XML emphasize simplicity, generality, and usability across the Internet.</p>
+    </ol>
+    <h3 id="architecture">Application architecture</h3>
+    <div class="diagrama">
+        <img src="Untitled_Diagram.jpg" style="height: 500px; display: block;margin: auto;">
+    </div>
+    <h3 id="Implementation">Implementation</h3>
+    <p>We used HTML5 along with PHP for creating the structures of pages using data from the MySQL database, aswell as their dynamic loading realised with AJAX technologies suite.</p>
+    <p>We used CSS3 to display a simplistic design, but at the same time elegant enchanced by an expressive dynamism realised by JavaScript.</p>
+    <p>For storing and managing data we used the database administration system named "MySQL" which is a standard for Web applications development.</p>
+    <p>We also used the AJAX technologies suite for realising some of the dynamic data loads, for example the functionality of the button "Afiseaza mai mult", realised without reloading the page.</p>
+    <p>For representing the RSS flow we used XML and for the statistics we used the open-source library "ChartJS". When it comes to exporting data, files of type csv or pdf (realised with "jsPDF" library) will be exported.</p>
+
+    <h3 id="sources">Sources</h3>
+    <ol>
+        <li>
+            <a href="https://www.wikipedia.org/">Wikipedia</a>
+        </li>
+        <li>
+            <a href="https://stackoverflow.com/">StackOverflow</a>
+        </li>
+        <li>
+            <a href="https://app.diagrams.net/">Draw.io - Diagram</a>
+        </li>
+        <li>
+            <a href="https://developer.mozilla.org/">MDN web docs</a>
+        </li>
+    </ol>
+</body>
+</html>

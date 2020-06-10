@@ -1,0 +1,19 @@
+*{
+    font-family: 'Montserrat';
+}
+
+h1{
+    text-align: center;
+}
+p{
+    text-align: justify;
+    margin-right: 40px;
+}
+
+.techs{
+    font-weight: bold;
+}
+
+.diagrama{
+    
+}

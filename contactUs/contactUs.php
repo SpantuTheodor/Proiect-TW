@@ -118,11 +118,7 @@ if (!empty($_POST)) {
                 </div>
                 <div class="breakl"></div>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged</p>
+                    <p>Îndrăgostiți de mâncare, ne străduim de peste două decenii să ne răsfățăm clienții cu cele mai bune preparate. </p>
                 </div>
             </div>
 
@@ -133,11 +129,7 @@ if (!empty($_POST)) {
                 <div id="image2">
                 </div>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged</p>
+                    <p>Echipa noastră își propune în fiecare zi să îmbunătățească experiența culinară a utilizatorilor acestei aplicații. Ne adaptăm fiecărui client în parte, preferințele dumneavoastră fiind o prioritate pentru noi - de la informații detaliate despre rețetele noastre până la liste de cumpărături, suntem oricând gata să vă fim alături!</p>
                 </div>
             </div>
 
@@ -148,12 +140,8 @@ if (!empty($_POST)) {
                 <div id="image3">
                 </div>
                 <div class="breakl"></div>
-                <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged</p>
+                <div >
+                    <p class="ultim">Spuneți DA inițiativei FORG și vă garantăm experiențe gustative de neuitat!</p>
                 </div>
             </div>
         </div>
