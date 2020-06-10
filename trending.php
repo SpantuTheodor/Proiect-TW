@@ -22,9 +22,9 @@ if ($i >= 1 && $i <= 10) {
         $cale_imagine = $data["imagine"];
         echo "<h1> Food trending</h1>
         <div class=\"slideshow\" style=\" background-image:url('Categories/$cale_imagine');background-size: cover; background-repeat: no-repeat; background-position: center center;\">
-            <div class=\"previous\" onclick=\"previousTrending($i)\"></div>
+            <div class=\"previous\" aria-label=\"Previous trending item\" onclick=\"previousTrending($i)\"></div>
             <div class=\"text\"><span class=\"nume-mancare\"> $nume </span></div>
-            <div class=\"next\" onclick=\"nextTrending($i)\"></div>
+            <div class=\"next\" aria-label=\"Next trending item\" onclick=\"nextTrending($i)\"></div>
         </div> ";
     }
 }

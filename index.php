@@ -41,7 +41,7 @@
                 <li>
                     <p> than the love for food.</p>
                 </li>
-                <li><a href="ContactUs/contactUs.php"><button id="button">How it works</button></a></li>
+                <li><a href="ContactUs/contactUs.php"><button id="button" aria-label="Go to About page">How it works</button></a></li>
             </ul>
         </div>
 
@@ -132,8 +132,8 @@
 
                 <li>
                     <div class="buttons">
-                        <button onclick="sushiFunction()">Sushi</button>
-                        <button onclick="veganFunction()">Vegan</button>
+                        <button aria-label="Eat Sushi" onclick="sushiFunction()">Sushi</button>
+                        <button aria-label="Eat Vegan" onclick="veganFunction()">Vegan</button>
                     </div>
                 </li>
             </ul>
@@ -193,7 +193,7 @@
 
         <div id="slideshow-container"> </div>
         <a href="exportRSS.php" target="_blank" style="text-decoration:none;">
-            <div id="exportRSS" style="
+            <div id="exportRSS" aria-label="Export clasament" style="
                         width:200px;
                         border-radius: 5px;
                         outline-style: none;
