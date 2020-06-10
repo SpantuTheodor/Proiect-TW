@@ -29,17 +29,3 @@ $request->execute([
 ]);
 
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=yes" />
-    <meta name="description" content="Pagina de profil a utilizatorului.">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
