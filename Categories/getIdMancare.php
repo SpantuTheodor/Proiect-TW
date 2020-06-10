@@ -75,9 +75,6 @@ if (!empty($data)) {
 
 ?>
 
-<script>
-    document.getElementById("info-page").innerHTML = this.responseText;
-</script>
 
 <!DOCTYPE html>
 <html lang="en">

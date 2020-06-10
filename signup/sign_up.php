@@ -147,7 +147,7 @@ if (!empty($_POST)) {
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Sign Up</title>
-    <link rel="shortcut icon" href="home/assets/banana_de_nigga.png">
+    <link rel="shortcut icon" href="../home/assets/banana_de_nigga.png">
 </head>
 
 <body>
