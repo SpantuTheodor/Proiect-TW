@@ -118,7 +118,7 @@ if (!empty($_POST)) {
                 </div>
                 <div class="breakl"></div>
                 <div>
-                    <p>Îndrăgostiți de mâncare, ne străduim de peste două decenii să ne răsfățăm clienții cu cele mai bune preparate. </p>
+                <p>FORG (Food Organizer) este o aplicatie web ce ofera suport pentru gestionarea preferintelor culinare, prin crearea listelor de cumparaturi, ajutandu-va sa descoperiti noi retete.Echipa noastră își propune în fiecare zi să îmbunătățească experiența culinară a utilizatorilor acestei aplicații. Ne adaptăm fiecărui client în parte, preferințele dumneavoastră fiind o prioritate pentru noi - de la informații detaliate despre rețetele noastre până la liste de cumpărături, suntem oricând gata să vă fim alături!</p>
                 </div>
             </div>
 
@@ -129,7 +129,7 @@ if (!empty($_POST)) {
                 <div id="image2">
                 </div>
                 <div>
-                    <p>Echipa noastră își propune în fiecare zi să îmbunătățească experiența culinară a utilizatorilor acestei aplicații. Ne adaptăm fiecărui client în parte, preferințele dumneavoastră fiind o prioritate pentru noi - de la informații detaliate despre rețetele noastre până la liste de cumpărături, suntem oricând gata să vă fim alături!</p>
+                <p>Despre noi trebuie sa stiti ca suntem trei studenti de la facultatea de informatica ce impartasesc pasiunea pentru Tehnologii Web si pentru mancare. Îndrăgostiți de mâncare, ne-am străduit acest semestru să ne răsfățăm clienții cu cele mai bune preparate. Gama noastra de retete se intinde de la lucruri simple precum briose cu visine pana la retete complexe precum somon cu sos de spanac, o reteta traditional greceasca. </p>
                 </div>
             </div>
 
@@ -141,7 +141,7 @@ if (!empty($_POST)) {
                 </div>
                 <div class="breakl"></div>
                 <div >
-                    <p class="ultim">Spuneți DA inițiativei FORG și vă garantăm experiențe gustative de neuitat!</p>
+                    <p class="ultim">Operatorii nostri actualizeaza sunt mereu aici sa va raspunda la intrebari si recomanda mereu pe pagina principala tipuri inedite de mancare si experiente pe care ar trebui sa le incercati macar o data in viata. Daca v-am impresionat cu informatiile acestea si sunteti interati de acest subiect spuneți DA inițiativei FORG și vă garantăm experiențe gustative de neuitat!</p>
                 </div>
             </div>
         </div>
